@@ -1,0 +1,378 @@
+body {
+    background-color: #F0ECE7;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+}
+:root {
+    --font-main: "Playfair Display", serif;
+    --font-second: "Lato", sans-serif;
+    --font-alt:font-family: "Raleway", sans-serif;
+    --font-btn:"Montserrat", sans-serif;
+    --font-alt2:"Fredoka", sans-serif;
+}
+
+
+
+.header , .footer , .main {
+    margin-inline: auto;
+    max-width: 60%;
+}
+
+.main {
+    flex: 1;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-bottom: 100px;
+}
+/*IMAGENES*/
+.logo-rabe {
+    width: 100px;
+}
+
+.icon-rabe {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    color: white;
+}
+
+.img-sabores {
+    width: 80px;
+    height:80px;
+    border-radius: 50%;
+}
+
+/*</IMAGENES**/
+.header-sabores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-sabores {
+    font-size: 1.5rem;
+    color: #3F648E;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+
+}
+
+
+.tipo-sabor {
+    font-size: 4rem;
+    color: #3F648E;
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.footer {
+    margin-top: 100px;
+    border-top: 1px rgb(170, 170, 170) solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.copyright {
+    font-family: "Courier New";
+    text-align: center;
+}
+
+
+
+.header , .footer , .main {
+    margin-inline: auto;
+    width: 600px;
+}
+
+/*IMAGENES*/
+.logo-rabe {
+width: 100px;
+left: 20px;
+top: 30px;
+position: absolute;
+}
+
+.menu {
+width: 80px;
+height: 80px;
+position: absolute;
+right: 0;
+top: 35px;
+font-size: 1.5rem;
+cursor: pointer;
+}
+
+.img-sabores {
+width: 80px;
+height:80px;
+border-radius: 50%;
+}
+
+/*</IMAGENES**/
+
+/*HEADER*/
+
+.header {
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+width: 100%;
+height: 200px;
+}
+.title-sabores {
+font-size: 3rem;
+color: #3F648E;
+font-family: "Pacifico", cursive;
+font-weight: 500;
+text-align: center;
+position: relative;
+opacity: 0.9;
+}
+
+.title-sabores::before , .title-sabores::after{
+content: "";
+position: absolute;
+width: 80%;
+height: 2px;
+background-color:#3f648e70;
+bottom: -10px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+.title-sabores::after {
+bottom: -20px;
+width: 50%;
+}
+
+/*HEADER*/
+/*SABORES*/
+
+
+.header-sabores {
+width: 100%;
+display: flex;
+align-items: center;
+gap: 10px;
+margin-top: 20px;
+}
+
+.tipo-sabor {
+font-size: 3rem;
+color: #3F648E;
+font-family: "Pacifico", cursive;
+font-weight: 400;
+font-style: normal;
+}
+
+.left-header {
+justify-content: flex-start;
+padding-left: 20px;
+}
+.right-header {
+justify-content: flex-end;
+padding-right: 20px;
+}
+.sabores {
+padding-top: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 10px;
+position: relative;
+}
+
+.left-sabores::before {
+    content: "";
+    width: 3px;
+    height: 60%;
+    background-color: #3f658e97;
+    position: absolute;
+    left: -50px;
+}
+
+.right-sabores::before {
+    content: "";
+    width: 3px;
+    height: 60%;
+    background-color: #3f658e97;
+    position: absolute;
+    right: -50px;
+}
+
+
+
+.left-sabores {
+margin-left: 40px;
+align-items: flex-start;
+}
+
+.right-sabores {
+margin-right: 40px;
+align-items: flex-end;
+}
+
+
+.item-sabor {
+font-family: 'Courier New', Courier, monospace;
+font-weight: bold;
+text-align: center;
+color: #3F648E;
+font-size: 1.1rem;
+opacity: 0.9;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 500px) {
+    body {
+        min-height: 100%;
+    }
+    .header , .footer , .main {
+        margin-inline: auto;
+        min-width: 100%;
+    }
+    
+/*IMAGENES*/
+.logo-rabe {
+    width: 100px;
+    left: 20px;
+    top: 30px;
+    position: absolute;
+}
+
+.icon-rabe {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    color: white;
+}
+
+.img-sabores {
+    width: 80px;
+    height:80px;
+    border-radius: 50%;
+}
+
+/*</IMAGENES**/
+
+/*HEADER*/
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+.title-sabores {
+    font-size: 1.7rem;
+    color: #3F648E;
+    font-family: "Pacifico", cursive;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    opacity: 0.9;
+}
+
+.title-sabores::before , .title-sabores::after{
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background-color:#3f648e70;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.title-sabores::after {
+bottom: -20px;
+width: 50%;
+}
+
+/*HEADER*/
+/*SABORES*/
+
+
+.header-sabores {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tipo-sabor {
+    font-size: 2.3rem;
+    color: #3F648E;
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.left-header {
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+.right-header {
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+.sabores {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.left-sabores {
+    margin-left: 40px;
+    align-items: flex-start;
+}
+
+.right-sabores {
+    margin-right: 40px;
+    align-items: flex-end;
+}
+
+
+.item-sabor {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-align: center;
+    color: #3F648E;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/*SABORES*/
+       }

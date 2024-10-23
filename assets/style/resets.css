@@ -1,0 +1,27 @@
+html, html::after, html::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul, ol {
+    list-style: none;
+  }
+
+  a img {
+    border: none;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }

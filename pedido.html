@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido</title>
+    <link rel="stylesheet" href="assets/style/pedido.css">
+    <script src="https://kit.fontawesome.com/6f5cee736b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+
+        <div class="header-absolute">
+            <img src="assets/images/home/logo.png" alt="logoRabe">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        
+        <div class="content-img">
+            <img src="assets/images/pedido/not-products/header.png" alt="header-imagen" class="item-img">
+            <div class="overlay-header"></div>
+        </div>
+
+
+        <article class="content-options">
+         <div class="content-type-envio">
+            <input type="radio" id="Local" name="type-of-envio" checked >
+            <label for="Local" class="type-envio">Retiro en Local</label>
+
+            <input type="radio" id="Envio" name="type-of-envio">
+            <label for="Envio" class="type-envio">Delevery</label>
+         </div>
+         <div class="content-choise-sede">
+            <input type="radio" name="sede" id="muniz" checked>
+            <label for="muniz" class="choise-sede">Muñiz</label>
+
+            <input type="radio" name="sede" id="villaDMayo">
+            <label for="villaDMayo" class="choise-sede">Villa de Mayo</label>
+ 
+            <input type="radio" name="sede" id="BellaVista">
+            <label for="BellaVista" class="choise-sede">Bella Vista</label>
+         </div>
+        </article>
+     
+
+    </header>
+
+    <main class="main">
+        <div class="header-main-links">
+            <h4 class="title title-categoria">Categorias</h4>
+          <ul class="content-links">
+            <div class="slide-links">
+            <li><a class="link" href="#">Helados</a></li>
+            <li><a class="link" href="#">Cafes</a></li>
+            <li><a class="link" href="#">Tostados</a></li>
+            <li><a class="link" href="#">Panaderia</a></li>
+            <li><a class="link" href="#">Postres</a></li>
+            <li><a class="link" href="#">Tostados</a></li>
+            <li><a class="link" href="#">Panaderia</a></li>
+            <li><a class="link" href="#">Postres</a></li>
+            </div>  
+        </ul>
+        </div>
+
+<!-- CONTAINER DESTACADO DE LA SEMANA -->
+
+
+        <h4 class="title title-destacado">Descatado de la semana</h4>
+        <div class="destacado">
+   
+            <div class="content-slider-destacado">
+
+
+
+            <template id="template-destacado">
+                <div class="container-item">
+                    <div class="item">
+                        <div class="item-body">
+                            <div class="item-header">
+                            <span class="item-title"></span>
+                            <span class="item-desc"></span>
+                        </div>
+                        <div class="content-price">
+                            <span class="item-price"></span>
+                        </div>    
+                        </div>
+                        <div class="content-img-item">
+                            <img src="assets/images/pedido/productos/helado.png" alt="helado">
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            </div>
+
+        </div>
+
+<!-- CONTAINER - COMBOS - OFERTAS -->
+
+        <h4 class="title title-combos-oferta">Combos y Ofertas</h4>   
+        <div class="container-combos-promos">
+
+            <div class="content-combos-promos">
+                
+                    <template id="template-combo">
+
+                        <div class="card-combo">
+                            <div class="container-item-combo"> 
+                                <div class="item-img-combo">
+                                    <img src="" alt="helado">
+                                </div>        
+                        
+                                <div class="combo-body">
+                                        <div class="combo-header">
+                                            <span class="title-prod-combo"></span>
+                                            <span class="descripcion-prod-combo"></span>
+                                            
+                                            <div class="content-price">
+                                                <span class="item-price"></span>
+                                            </div>    
+                                        </div>
+                                        <ul class="lista-items-combo">
+                                        </ul>
+                                </div>
+                            </div>
+                          </div>
+
+
+                    </template>
+            </div>
+
+        </div>
+
+
+
+        <!--CONTAINER ACORDEON ALL PRODUCTS-->
+
+      <div class="content-all-prods">
+
+        <div class="container-prod">
+
+            <div class="content-prod"> 
+                <img src="assets/images/sabores/dulceDeLeche.png" alt="Helados">
+                <div class="label-prod">
+                    <p class="label-title">HELADERIA</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
+                </div>
+            </div>
+
+            <div class="acordion-container">
+                    <div class="acordion-content">
+                        <div class="header-acordion">
+                            <div class="header-container-img header-heladeria">
+
+                            </div>
+                        </div>
+                        <div class="container-items body-heladeria">
+                            <template class="template-heladeria">
+                                <div class="item-menu">
+                                    <div class="item-body">
+                                        <div class="item-header">
+                                        <span class="item-title"></span>
+                                        <span class="item-desc"></span>
+                                        
+                                    </div>
+                                    <div class="content-price">
+                                        <span class="item-price"></span>
+                                        <span class="item-price-descuento"></span>
+                                        <span class="options"></span>
+                                    </div>    
+                                    </div>
+                                    <div class="content-img-item">
+                                    </div>
+                                    <span class="is-fav"></span>
+                                </div>
+                            </template>
+
+                        </div> 
+                    </div>
+            </div>
+
+        </div>
+ 
+        <!--
+        HELADERIA
+        -
+        PASTELERIA
+        <img src="assets/images/home/dulces.png" alt="Pasteleria">
+        -
+        PANADERIA
+        -
+        SALUDABLES
+        <img src="assets/images/home/saludables.png" alt="Saludables">
+        -
+        SALADO/TOSTADOS
+         <img src="assets/images/home/sandwich.png" alt="Helados">
+        -
+         CAFES
+        <img src="assets/images/home/cafe.png" alt="Cafes">
+        DESAYUNO RAPIDO
+        -
+        -->
+
+        
+            <!---->
+            <div class="container-prod">
+
+                <div class="content-prod"> 
+                    <img src="assets/images/pedido/not-products/panaderia.png" alt="Panaderia">
+                    <div class="label-prod">
+                        <p class="label-title">PANADERIA</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
+                    </div>
+                </div>
+    
+                <div class="acordion-container">
+                        <div class="acordion-content">
+                            <div class="header-acordion">
+                                <div class="header-container-img header-panaderia">
+    
+                                </div>
+                            </div>
+                            <div class="container-items body-panaderia">
+                                <template class="template-panaderia">
+                                    <div class="item-menu">
+                                        <div class="item-body">
+                                            <div class="item-header">
+                                            <span class="item-title"></span>
+                                            <span class="item-desc"></span>
+                                        </div>
+                                        <div class="content-price">
+                                            <span class="item-price"></span>
+                                            <span class="item-price-descuento"></span>
+                                            <span class="options"></span>
+                                        </div>    
+                                        </div>
+                                        <div class="content-img-item">
+                                        </div>
+                                        <span class="is-fav"></span>
+                                    </div>
+                                </template>
+    
+                            </div> 
+                        </div>
+                </div>
+
+            <!---->
+            <!---->
+            <div class="container-prod">
+
+                <div class="content-prod"> 
+                    <img src="assets/images/home/sandwich.png" alt="sandwich">
+                    <div class="label-prod">
+                        <p class="label-title">SALADO / TOSTADOS</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
+                    </div>
+                </div>
+    
+                <div class="acordion-container">
+                        <div class="acordion-content">
+                            <div class="header-acordion">
+                                <div class="header-container-img header-salado">
+    
+                                </div>
+                            </div>
+                            <div class="container-items body-salado">
+                                <template class="template-salado">
+                                    <div class="item-menu">
+                                        <div class="item-body">
+                                            <div class="item-header">
+                                            <span class="item-title"></span>
+                                            <span class="item-desc"></span>
+                                        </div>
+                                        <div class="content-price">
+                                            <span class="item-price"></span>
+                                            <span class="item-price-descuento"></span>
+                                            <span class="options"></span>
+                                        </div>    
+                                        </div>
+                                        <div class="content-img-item">
+                                        </div>
+                                        <span class="is-fav"></span>
+                                    </div>
+                                </template>
+    
+                            </div> 
+                        </div>
+                </div>
+
+            <!---->
+
+            <div class="container-prod">
+                <div class="content-prod"> 
+                    <img src="assets/images/home/dulces.png" alt="Pasteleria">
+                    <div class="label-prod">
+                        <p class="label-title">PASTELERIA</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
+                    </div>
+                </div>
+    
+                <div class="acordion-container">
+                        <div class="acordion-content">
+                            <div class="header-acordion">
+                                <div class="header-container-img header-pasteleria">
+    
+                                </div>
+                            </div>
+                            <div class="container-items body-pasteleria">
+                                <template class="template-pasteleria">
+                                    <div class="item-menu">
+                                        <div class="item-body">
+                                            <div class="item-header">
+                                            <span class="item-title"></span>
+                                            <span class="item-desc"></span>
+                                        </div>
+                                        <div class="content-price">
+                                            <span class="item-price"></span>
+                                            <span class="item-price-descuento"></span>
+                                            <span class="options"></span>
+                                        </div>    
+                                        </div>
+                                        <div class="content-img-item">
+                                        </div>
+                                        <span class="is-fav"></span>
+                                    </div>
+                                </template>
+    
+                            </div> 
+                        </div>
+                </div>
+
+            <!---->
+            
+            <div class="container-prod">
+
+                <div class="content-prod"> 
+                    <img src="assets/images/home/saludables.png" alt="Saludables">
+                    <div class="label-prod">
+                        <p class="label-title">SALUDABLES</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
+                    </div>
+                </div>
+    
+                <div class="acordion-container">
+                        <div class="acordion-content">
+                            <div class="header-acordion">
+                                <div class="header-container-img header-saludables">
+    
+                                </div>
+                            </div>
+                            <div class="container-items body-saludables">
+                                <template class="template-saludables">
+                                    <div class="item-menu">
+                                        <div class="item-body">
+                                            <div class="item-header">
+                                            <span class="item-title"></span>
+                                            <span class="item-desc"></span>
+                                        </div>
+                                        <div class="content-price">
+                                            <span class="item-price"></span>
+                                            <span class="item-price-descuento"></span>
+                                            <span class="options"></span>
+                                        </div>    
+                                        </div>
+                                        <div class="content-img-item">
+                                        </div>
+                                        <span class="is-fav"></span>
+                                    </div>
+                                </template>
+    
+                            </div> 
+                        </div>
+                </div>
+
+            <!---->
+
+            
+            <div class="content-all-prods">
+
+                <div class="container-prod">
+        
+                    <div class="content-prod"> 
+                        <img src="assets/images/pedido/not-products/rapido.png" alt="Desayuno rapido">
+                    
+                        <div class="label-prod">
+                            <p class="label-title">CAFE / BEBIDAS</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
+                        </div>
+                    </div>
+        
+                    <div class="acordion-container">
+                            <div class="acordion-content">
+                                <div class="header-acordion">
+                                    <div class="header-container-img header-cafe">
+        
+                                    </div>
+                                </div>
+                                <div class="container-items body-cafe">
+                                    <template class="template-cafe">
+                                        <div class="item-menu">
+                                            <div class="item-body">
+                                                <div class="item-header">
+                                                <span class="item-title"></span>
+                                                <span class="item-desc"></span>
+                                            </div>
+                                            <div class="content-price">
+                                                <span class="item-price"></span>
+                                                <span class="item-price-descuento"></span>
+                                                <span class="options"></span>
+                                            </div>    
+                                            </div>
+                                            <div class="content-img-item">
+                                            </div>
+                                            <span class="is-fav"></span>
+                                        </div>
+                                    </template>
+        
+                                </div> 
+                            </div>
+                    </div>
+        
+                </div>
+
+            <!---->
+
+            
+            <div class="content-all-prods">
+
+                <div class="container-prod">
+        
+                    <div class="content-prod"> 
+                        <img src="assets/images/home/cafe.png" alt="Cafe">
+                        <div class="label-prod">
+                            <p class="label-title">DESAYUNO RAPIDO</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
+                        </div>
+                    </div>
+        
+                    <div class="acordion-container">
+                            <div class="acordion-content">
+                                <div class="header-acordion">
+                                    <div class="header-container-img header-rapido">
+        
+                                    </div>
+                                </div>
+                                <div class="container-items body-rapido">
+                                    <template class="template-rapido">
+                                        <div class="item-menu">
+                                            <div class="item-body">
+                                                <div class="item-header">
+                                                <span class="item-title"></span>
+                                                <span class="item-desc"></span>
+                                            </div>
+                                            <div class="content-price">
+                                                <span class="item-price"></span>
+                                                <span class="item-price-descuento"></span>
+                                                <span class="options"></span>
+                                            </div>    
+                                            </div>
+                                            <div class="content-img-item">
+                                            </div>
+                                            <span class="is-fav"></span>
+                                        </div>
+                                    </template>
+        
+                                </div> 
+                            </div>
+                    </div>
+        
+                </div>
+
+            <!---->
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="content-footer">
+           <div class="first-content-footer">
+               <img src="assets/images/home/iconRabe.png" alt="iconRabe" class="icon-rabe-footer">
+               <div class="footer-redes">
+                   <h6>Seguinos y conoce mas de nuestros helados y menus del momento!</h6>
+                    <ul>
+                       <li><i class="fa-brands fa-whatsapp"></i></li>
+                       <li><i class="fa-brands fa-instagram"></i></li>
+                       <li class="content-py"><p class="text-pedidosYa"><img src="assets/images/home/pedidosYa.png" alt="pedidosYa">PedidosYa</p></li>
+                    </ul>
+               </div>
+            </div>
+            <div class="second-content-footer">
+               <h6>Recorda dejarnos una recomendacion o reclamo</h6>
+               <p>No olvides que tambien hacemos servicio de venta por mayor de helado para heladerias!</p>
+               <a href="#">CONTACTANOS</a>
+            </div>
+        </div>
+        <p class="copyright">Copyright 2023. Rabelia . Todos Los Derechos Reservados</p>
+       </footer>
+        <div id="myModal">
+          <div class="modal">
+            <span id="close">x</span>
+            <div class="modal-content"> 
+                <div class="modal-header">
+                    <img src="" alt="" class="modal-img">
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal-title">ALFAJOR</h4>
+                    <span class="modal-descripcion">Alfajor de frutos rojos XL</span>
+                       <h5 class="modal-subtitle">OPCIONES</h5>
+                            <ul class="modal-content-options">
+
+                                <!-- OPTIONS TEMPLATE-->
+
+                            </ul>
+                            <h5 class="modal-subtitle">ACLARACIONES</h5>
+                            <input id="aclaraciones" type="text" class="text" placeholder="Aclaraciones...">
+                            <h5 class="modal-subtitle">UNIDADES</h5>
+                            <div class="container-unidades">
+                                <div id="unidades-menos" class="btn-unidades">-</div>
+                                <div id="unidades" class="btn-unidades">1</div>
+                                <div id="unidades-mas" class="btn-unidades">+</div>
+                            </div>
+                </div>
+             </div>
+             <div class="modal-footer">
+                <button id="pushPedido">Agregar a mi pedido</button>
+             </div>
+            </div>
+        </div>
+        <template class="template-optionsModal">
+            <li class="list-option">
+                <div class="title-price">
+                    <label class="label-title" for="option1">Alfajor XL de Chocolate uno</label>
+                    <span class="modal-price">$4600</span>
+                </div>
+                <input type="radio" name="option" id="option" class="input-option">
+            </li>
+        </template>
+
+
+
+        <template class="template-sabores">
+         <li>
+            <span>title</span>
+            <label for="">nombre Helao </label>
+         </li>
+         <!--<li class="sabores"> 
+            <label for="sabor-name"> <input name= "sabores" value="sabor-name" >
+         </li> -->
+         <span class="sabores-title" id="tradicionales">Tradicionales</span>
+         <span class="sabores-title" id="DulceDeLeche">Dulce de leche</span>
+         <span class="sabores-title" id="bombas">Bombas</span>
+         <span class="sabores-title" id="frutales">Frutales</span>
+        </template>
+
+
+    <span class="carrito"><i class="fa-solid fa-cart-shopping"></i></span>
+   <div class="overlay">
+   </div>
+    <div class="carritoProd">
+        <article class="cart">
+        <div class="carrito-header">
+            <span class="carrito-header-title">Tu pedido:</span>
+        </div>
+        <div class="carrito-body">
+            <div class="slide-carrito">
+          <!-- TEMPLATE-->
+         </div>
+        </div>
+        <div class="total"><span>TOTAL:</span><span class="carrito-final-price">$12400</span></div>
+        <div class="carrito-footer">
+            <button id="final-pedido">FINALIZAR PEDIDO</button>
+        </div>
+        </article>
+    </div>
+
+
+    <template class="template-carrito-item">
+        <div class="carrito-item">
+           <span class="carrito-delete">x</span>
+           <div class="carrito-item-content">
+               <span class="carrito-item-title"></span>
+               <p class="carrito-item-desc"></p>
+               <div class="carrito-sumar-restar">
+                <span class="carrito-item-price"></span>
+                <div class="cant">
+                    <span class="carrito-cantidad carrito-menos">-</span>
+                    <span class="carrito-cantidad prod-cant">1</span>
+                    <span class="carrito-cantidad carrito-mas">+</span>
+                </div>
+            </div>
+           </div>
+           <div class="carrito-options">
+               <div class="carrito-content-img">
+                <img src="assets/images/pedido/productos/panaderia/alfajor.png" alt="alfajore" class="img-cart">
+            </div>
+           </div>
+        </div>
+       </template>
+
+    <script src="assets/js/pedido.js" type="module"></script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+                                <!-- <li class="list-option">
+                                    <div class="title-price">
+                                    <label for="option1">Alfajor XL de Chocolate uno</label>
+                                    <span class="modal-price">$4600</span>    
+                                    </div>
+                                    <input type="radio" name="option" id="option1">
+                                </li>
+                                <li class="list-option">
+                                    <div class="title-price">
+                                    <label for="option2">Alfajor de frutos rojos XL</label>
+                                    <span class="modal-price">$4400</span>    
+                                    </div>
+                                    <input type="radio" name="option" id="option2">
+                                </li>
+                                <li class="list-option">
+                                    <div class="title-price">
+                                    <label for="option3">Alfajor XL de Maicena</label>
+                                    <span class="modal-price">$3500</span>
+                                </div>
+                                    <input type="radio" name="option" id="option3">
+                                </li>
+                                <li class="list-option">
+                                    <div class="title-price">
+                                    <label for="option4">Alfacookie XL</label>
+                                    <span class="modal-price">$5500</span>
+                                    </div>
+                                    <input type="radio" name="option" id="option4">
+                                </li> -->
+                                

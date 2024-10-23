@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Contacto</title>
+    <link rel="stylesheet" href="assets/style/contacto.css">
+
+
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <script type="text/javascript">
+    emailjs.init('lnP2i7Iuc8TCcxvpT')
+  </script>
+
+
+</head>
+<body>
+    <header class="header">
+      <div class="content-header">
+        <img src="assets/images/home/logo.png" alt="Rabelia logo">
+        <span>NAV</span>
+      </div>
+    </header>
+    <main class="main">
+      <div class="content-title">
+        <h1>Contacto</h1>
+        <p>Dinos tus reclamos o sugerencias, recuerda que tambien contamos con servicio de venta por mayor</p>
+    </div>
+    <form id="form">
+        <div class="field">
+          <label for="from_name">Nombre</label>
+          <input type="text" name="from_name" id="from_name">
+        </div>
+
+        <div class="field">
+            <label for="email_id">Correo</label>
+            <input type="text" name="email_id" id="email_id">
+          </div>
+
+        <div class="field">
+          <label for="message">Mensaje</label>
+          <textarea  name="message" id="message" >
+          </textarea>
+        </div>
+        <fieldset class="field">
+            <legend>Como te atendimos hoy</legend>
+          <ul>
+            <li class="lista">
+                <input type="radio" name="trato"  id="atencion1" value="Muy bien"  class="input-radio">
+                <label  class="label-radio" for="atencion1">Muy Bien</label>
+            </li>
+            <li class="lista" >
+                <input type="radio" name="trato" id="atencion2" value="Bien"  class="input-radio"  >
+                <label class="label-radio" for="atencion2">Bien</label>
+            </li>
+            <li class="lista" >
+                <input type="radio" name="trato" id="atencion3"  value="Normal" class="input-radio"  >
+                <label class="label-radio" for="atencion3">Normal</label>
+            </li>
+            <li class="lista">
+                <input type="radio" name="trato" id="atencion4" value="Mal"  class="input-radio"  >
+                <label class="label-radio" for="atencion4">Mal</label>
+            </li>
+            <li class="lista" >
+                <input type="radio" name="trato" id="atencion5"  value="Muy mal" class="input-radio"  >
+                <label class="label-radio" for="atencion5">Muy mal</label>
+            </li>
+          </ul>
+        </fieldset>
+        <input type="submit" id="button" value="Enviar" >
+      </form>
+    </main>
+    <footer class="footer">
+        <img src="assets/images/home/iconRabe.png" alt="rabelia icono">
+        <p class="copyright">Copyright 2023. Rabelia . Todos Los Derechos Reservados</p>
+    </footer>
+
+    <script src="assets/js/contacto.js"></script>
+</body>
+</html>
