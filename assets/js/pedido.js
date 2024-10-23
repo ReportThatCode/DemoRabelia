@@ -185,7 +185,7 @@ document.addEventListener("click", (e) => {
         const numeroTelefono = "5491159740964"; // El número de WhatsApp en formato internacional (sin +)
         const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensaje}`;
         
-       // window.location.href = enlaceWhatsApp;
+        window.location.href = enlaceWhatsApp;
         console.log(enlaceWhatsApp);  
         console.log(mensaje)
 
