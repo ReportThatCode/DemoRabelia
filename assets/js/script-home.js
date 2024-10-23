@@ -5,27 +5,19 @@ sedemap = document.querySelector(".mapa"),
 sedeImg = document.querySelector(".sede-img"),
 allSedes = document.querySelectorAll(".sede-option")
 
-console.log(sedeNumber)
-console.log(sedeCuidad)
-console.log(sedeDireccion)
-console.log(sedemap)
-console.log(sedeImg)
-console.log(allSedes)
-
-
-
-
-
-
-
-
 
 //logica carrucel
 const widthIMG = document.querySelector(".img-item").clientWidth,
 imgList = document.querySelector(".img-list");
 imgList.scrollLeft = 900;
 //logica carrucel </
+
+document.querySelector(".welcome").addEventListener("click",(e)=>{
+  document.querySelector(".hambuerget-menu").classList.toggle("hamburger-active")
+})
 document.addEventListener("click",(e)=>{
+
+
         //logica carrucel
         if(e.target.matches(".slide-btn-right")){
         imgList.scrollLeft += widthIMG;
@@ -77,19 +69,6 @@ document.addEventListener("click",(e)=>{
             break;
 
           }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         }
