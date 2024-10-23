@@ -16,12 +16,12 @@ containerDestacado = document.querySelector(".content-slider-destacado");
 
 
 destacado.forEach((el) => {
-
+     
     $template.querySelector(".item-title").textContent = el.title;
     $template.querySelector(".item-desc").textContent = el.descripcion;
     $template.querySelector(".item-price").textContent = "$" + el.price;
     $template.querySelector("img").src = el.img;
-    
+    $template.querySelector(".item").dataset.id = el.id;
     let $clone = document.importNode($template,true);
     
     $fragmen.appendChild($clone);
@@ -41,7 +41,7 @@ combos.forEach((el)=>{
     $templateCombo.querySelector(".descripcion-prod-combo").textContent = el.descripcion;
     $templateCombo.querySelector(".item-price").textContent = "$" + el.price;
     $templateCombo.querySelector("img").src = el.img;
-    
+    $templateCombo.querySelector(".container-item-combo").dataset.id = el.id;
   
     const listaCombos = $templateCombo.querySelector(".lista-items-combo");
     listaCombos.innerHTML = "";
@@ -174,11 +174,21 @@ showProducts(".template-rapido",".header-rapido",".body-rapido",productos.desayu
 /* CARRITO DE COMPRAS*/
 
 let shoppingCart = [];
-
 // DOCUMENT EVENTOS GENERALES CON DELEGACION DE EVENTOS
 document.addEventListener("click", (e) => {
     const itemMenu = e.target.closest(".item-menu");    
+    const itemDestacado = e.target.closest(".item");
+    const carritoFixed = e.target.closest(".carrito");
+    const itemCombo = e.target.closest(".container-item-combo");
+
+    if(itemCombo){
+        pushCart(itemCombo.dataset.id,"combos")
+    }
     
+    if(itemDestacado){
+        pushCart(itemDestacado.dataset.id,"destacado")
+    }
+
     if(e.target.matches("#final-pedido")){
 
         const mensaje = encodeURIComponent(generarListaDeProductos(shoppingCart));
@@ -203,7 +213,7 @@ document.addEventListener("click", (e) => {
     if(e.target.matches("#myModal *")){
         hearModal(e);
     }
-    if(e.target.matches(".carrito")){
+    if(carritoFixed){
       const cartContent = document.querySelector(".carritoProd");
       document.querySelector(".overlay").classList.toggle("overlay-active")
       cartContent.classList.toggle("openCart");
@@ -243,6 +253,7 @@ document.addEventListener("click", (e) => {
     if(e.target.matches(".carrito-delete")){
         let idDelete = parseInt(e.target.dataset.delete);
         shoppingCart = shoppingCart.filter(el => el.id !== idDelete);
+
         showCarrito(shoppingCart);
     }
 });
@@ -254,6 +265,22 @@ document.addEventListener("change",(e)=>{
 function pushCart(id,typeProd){
 
 const idProd = parseInt(id);
+
+if(typeProd === "combos"){
+    const getProd = combos.find(el => el.id === idProd);
+    
+    let newDescripcion = [];
+    for(let y = 0; y < getProd.has.length; y++){
+        newDescripcion.push(getProd.has[y].name);
+    }
+    getProd.descripcion = newDescripcion.join(" - ")
+    openModalOrPush(getProd);
+}
+
+if(typeProd === "destacado"){
+    const getProd = destacado.find(el => el.id === idProd);
+    openModalOrPush(getProd);
+}
 
 if(typeProd === "heladeria"){
     const getProd = productos.heladeria.prod.find(el => el.id === idProd);
@@ -565,6 +592,7 @@ function hearCheckbox(maximo){
 
 //id: getProd.id, img: getProd.img, title: getProd.title, descripcion: getProd.descripcion, options: getProd.withOptions
 function openModalOrPush(objeto){
+
     const {id,img,title,descripcion,price,withOptions} = objeto
     img != null ? img : null
     if(objeto.hasOptions){
