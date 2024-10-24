@@ -185,6 +185,20 @@ document.addEventListener("click", (e) => {
         pushCart(itemCombo.dataset.id,"combos")
     }
     
+
+
+
+
+    if(e.target.matches(".icon-rabe-footer")){
+        console.log("toke toke")
+        document.querySelector(".newProduct").classList.toggle("show-new-product")
+    }
+
+
+
+
+
+
     if(itemDestacado){
         pushCart(itemDestacado.dataset.id,"destacado")
     }
@@ -217,7 +231,6 @@ document.addEventListener("click", (e) => {
       const cartContent = document.querySelector(".carritoProd");
       document.querySelector(".overlay").classList.toggle("overlay-active")
       cartContent.classList.toggle("openCart");
-      actualizarCarrito();
     }
    
     // sumar cantidad carrito 
@@ -412,8 +425,11 @@ function hearModal(e){
                 let tope = 3;
                 cantidadSabores += tope
                 console.log(cantidadSabores)
-            }
+            
+        }
 
+        document.querySelector(".modal-descripcion").textContent = `Hasta ${cantidadSabores} sabores`
+        btnUnidades[1].textContent = cantidad;
         }
         if(e.target.matches("#unidades-menos")){
             
@@ -431,9 +447,11 @@ function hearModal(e){
                 cantidadSabores -= tope
                 console.log(cantidadSabores)
             }
+     
+            document.querySelector(".modal-descripcion").textContent = `Hasta ${cantidadSabores} sabores`
+            btnUnidades[1].textContent = cantidad;
         }
-        document.querySelector(".modal-descripcion").textContent = `Hasta ${cantidadSabores} sabores`
-        btnUnidades[1].textContent = cantidad;
+     
     
         
    
@@ -470,6 +488,7 @@ function hearModal(e){
                     el.cantidad += parseInt(cantidadProductos);
                     showCarrito(shoppingCart);
                     actualizarCarrito();
+                    addProdNotification();
                     return closeModal();
                     }
                 })
@@ -486,6 +505,7 @@ function hearModal(e){
             })
                 showCarrito(shoppingCart);
                 actualizarCarrito();
+                addProdNotification();
                 return closeModal();
              }
              
@@ -505,6 +525,7 @@ function hearModal(e){
                         el.cantidad += parseInt(cantidadProductos);
                         showCarrito(shoppingCart);
                         actualizarCarrito();
+                        addProdNotification();
                         return closeModal();
                         }
                     })
@@ -521,6 +542,7 @@ function hearModal(e){
                     cantidad = 1;                
                     showCarrito(shoppingCart);
                     actualizarCarrito();
+                    addProdNotification();
                     return closeModal();
                 }
             }
@@ -607,12 +629,12 @@ function openModalOrPush(objeto){
         })
         if(estaEnCarrito){
 
-
             shoppingCart.find(el => {
                 if(el.id === id){
                 el.cantidad += 1;
                 showCarrito(shoppingCart);
                 actualizarCarrito();
+                addProdNotification();
                 return closeModal();
                 }
             })
@@ -626,6 +648,7 @@ function openModalOrPush(objeto){
                 cantidad: 1
             })
             showCarrito(shoppingCart);
+            addProdNotification();
             actualizarCarrito();
         }        
      }
@@ -679,6 +702,7 @@ acumulador += el.cantidad * el.price
 });
 console.log(shoppingCart)
 total.textContent = "$" + acumulador;
+carritoLenght();
 }
 
 
@@ -716,3 +740,23 @@ function generarListaDeProductos(productos) {
     return lista;
   }
 
+function carritoLenght(){
+    console.log(document.querySelector(".howMuch"));
+    let countProducts = shoppingCart.length
+    console.log(countProducts)
+    document.querySelector(".howMuch").textContent = countProducts;
+}
+
+
+function addProdNotification(){
+    document.querySelector(".newProduct").classList.add("show-new-product");
+
+    setTimeout((()=>{
+        document.querySelector(".newProduct").classList.remove("show-new-product")
+    }),2000)
+
+}
+
+//reset carrito
+carritoLenght();
+document.querySelector(".carrito-final-price").textContent = "0";

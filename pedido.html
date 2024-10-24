@@ -49,14 +49,13 @@
             <h4 class="title title-categoria">Categorias</h4>
           <ul class="content-links">
             <div class="slide-links">
-            <li><a class="link" href="#">Helados</a></li>
-            <li><a class="link" href="#">Cafes</a></li>
-            <li><a class="link" href="#">Tostados</a></li>
-            <li><a class="link" href="#">Panaderia</a></li>
-            <li><a class="link" href="#">Postres</a></li>
-            <li><a class="link" href="#">Tostados</a></li>
-            <li><a class="link" href="#">Panaderia</a></li>
-            <li><a class="link" href="#">Postres</a></li>
+            <li><a class="link" href="#link-heladeria">Helados</a></li>
+            <li><a class="link" href="#link-cafes">Cafes</a></li>
+            <li><a class="link" href="#link-panaderia">Panaderia</a></li>
+            <li><a class="link" href="#link-salado">Salados</a></li>
+            <li><a class="link" href="#link-pasteleria">Pasteleria</a></li>
+            <li><a class="link" href="#link-saludables">Saludables</a></li>
+            <li><a class="link" href="#link-rapido">Desayuno Rapido</a></li>
             </div>  
         </ul>
         </div>
@@ -65,7 +64,7 @@
 
 
         <h4 class="title title-destacado">Descatado de la semana</h4>
-        <div class="destacado">
+        <div class="destacado" id="link-destacado">
    
             <div class="content-slider-destacado">
 
@@ -95,7 +94,7 @@
 <!-- CONTAINER - COMBOS - OFERTAS -->
 
         <h4 class="title title-combos-oferta">Combos y Ofertas</h4>   
-        <div class="container-combos-promos">
+        <div class="container-combos-promos" id="link-combos">
 
             <div class="content-combos-promos">
                 
@@ -132,11 +131,11 @@
 
         <!--CONTAINER ACORDEON ALL PRODUCTS-->
 
-      <div class="content-all-prods">
+      <div class="content-all-prods" >
 
         <div class="container-prod">
 
-            <div class="content-prod"> 
+            <div id="link-heladeria" class="content-prod"> 
                 <img src="assets/images/sabores/dulceDeLeche.png" alt="Helados">
                 <div class="label-prod">
                     <p class="label-title">HELADERIA</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
@@ -176,32 +175,10 @@
             </div>
 
         </div>
- 
-        <!--
-        HELADERIA
-        -
-        PASTELERIA
-        <img src="assets/images/home/dulces.png" alt="Pasteleria">
-        -
-        PANADERIA
-        -
-        SALUDABLES
-        <img src="assets/images/home/saludables.png" alt="Saludables">
-        -
-        SALADO/TOSTADOS
-         <img src="assets/images/home/sandwich.png" alt="Helados">
-        -
-         CAFES
-        <img src="assets/images/home/cafe.png" alt="Cafes">
-        DESAYUNO RAPIDO
-        -
-        -->
 
-        
-            <!---->
             <div class="container-prod">
 
-                <div class="content-prod"> 
+                <div id="link-panaderia" class="content-prod"> 
                     <img src="assets/images/pedido/not-products/panaderia.png" alt="Panaderia">
                     <div class="label-prod">
                         <p class="label-title">PANADERIA</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
@@ -243,7 +220,7 @@
             <!---->
             <div class="container-prod">
 
-                <div class="content-prod"> 
+                <div id="link-salado" class="content-prod"> 
                     <img src="assets/images/home/sandwich.png" alt="sandwich">
                     <div class="label-prod">
                         <p class="label-title">SALADO / TOSTADOS</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
@@ -284,7 +261,7 @@
             <!---->
 
             <div class="container-prod">
-                <div class="content-prod"> 
+                <div id="link-pasteleria" class="content-prod"> 
                     <img src="assets/images/home/dulces.png" alt="Pasteleria">
                     <div class="label-prod">
                         <p class="label-title">PASTELERIA</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
@@ -326,7 +303,7 @@
             
             <div class="container-prod">
 
-                <div class="content-prod"> 
+                <div id="link-saludables" class="content-prod"> 
                     <img src="assets/images/home/saludables.png" alt="Saludables">
                     <div class="label-prod">
                         <p class="label-title">SALUDABLES</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
@@ -371,7 +348,7 @@
 
                 <div class="container-prod">
         
-                    <div class="content-prod"> 
+                    <div id="link-cafes" class="content-prod"> 
                         <img src="assets/images/pedido/not-products/rapido.png" alt="Desayuno rapido">
                     
                         <div class="label-prod">
@@ -419,7 +396,7 @@
 
                 <div class="container-prod">
         
-                    <div class="content-prod"> 
+                    <div id="link-rapido" class="content-prod"> 
                         <img src="assets/images/home/cafe.png" alt="Cafe">
                         <div class="label-prod">
                             <p class="label-title">DESAYUNO RAPIDO</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
@@ -545,7 +522,13 @@
         </template>
 
 
-    <span class="carrito"><i class="fa-solid fa-cart-shopping"></i></span>
+    <div class="carrito">
+        <div class="content-carrito">
+            <span class="cart-i"><i class="fa-solid fa-cart-shopping"></i></span>
+            <span class="howMuch">4</span>
+            <span class="newProduct">Se agrego al carrito</span>
+        </div>
+    </div>
    <div class="overlay">
    </div>
     <div class="carritoProd">
@@ -564,7 +547,6 @@
         </div>
         </article>
     </div>
-
 
     <template class="template-carrito-item">
         <div class="carrito-item">
