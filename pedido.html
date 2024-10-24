@@ -23,20 +23,20 @@
 
         <article class="content-options">
          <div class="content-type-envio">
-            <input type="radio" id="Local" name="type-of-envio" checked >
+            <input type="radio" id="Local" name="type-of-envio" checked value="local">
             <label for="Local" class="type-envio">Retiro en Local</label>
 
-            <input type="radio" id="Envio" name="type-of-envio">
+            <input type="radio" id="Envio" name="type-of-envio" value="delevery">
             <label for="Envio" class="type-envio">Delevery</label>
          </div>
          <div class="content-choise-sede">
-            <input type="radio" name="sede" id="muniz" checked>
+            <input class="sede-input" type="radio" name="sede" id="muniz" value="muniz" checked>
             <label for="muniz" class="choise-sede">Muñiz</label>
 
-            <input type="radio" name="sede" id="villaDMayo">
+            <input class="sede-input" type="radio" name="sede" id="villaDMayo" value="villaDeMayo">
             <label for="villaDMayo" class="choise-sede">Villa de Mayo</label>
  
-            <input type="radio" name="sede" id="BellaVista">
+            <input class="sede-input" type="radio" name="sede" id="BellaVista" value="bellaVista">
             <label for="BellaVista" class="choise-sede">Bella Vista</label>
          </div>
         </article>
@@ -45,6 +45,7 @@
     </header>
 
     <main class="main">
+      
         <div class="header-main-links">
             <h4 class="title title-categoria">Categorias</h4>
           <ul class="content-links">

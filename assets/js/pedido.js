@@ -16,7 +16,9 @@ containerDestacado = document.querySelector(".content-slider-destacado");
 
 
 destacado.forEach((el) => {
-     
+    if(el.title !== "1kg de Helado") {
+        $template.querySelector(".item").dataset.all = "allItems";
+    }
     $template.querySelector(".item-title").textContent = el.title;
     $template.querySelector(".item-desc").textContent = el.descripcion;
     $template.querySelector(".item-price").textContent = "$" + el.price;
@@ -37,6 +39,8 @@ containerCombo = document.querySelector(".content-combos-promos");
 
 combos.forEach((el)=>{
 
+
+    $templateCombo.querySelector(".container-item-combo").dataset.all = "allItems";
     $templateCombo.querySelector(".title-prod-combo").textContent = el.title;
     $templateCombo.querySelector(".descripcion-prod-combo").textContent = el.descripcion;
     $templateCombo.querySelector(".item-price").textContent = "$" + el.price;
@@ -92,9 +96,12 @@ function showProducts (template,contentHeader,contentBody,producto,typeProd){
     //Set data-id
     
     //BODY  
+    if(typeProd !== "heladeria"){
+        $template.querySelector(".item-menu").dataset.all = "allItems"    
+    } 
     $template.querySelector(".item-menu").dataset.categoria = typeProd;
     $template.querySelector(".item-menu").dataset.id = item.id;
-    $template.querySelector(".item-title").textContent = item.title;
+    $template.querySelector(".item-title").textContent = item.title;    
     $template.querySelector(".item-desc").textContent = item.descripcion;
     $template.querySelector(".item-price").textContent = "$" + item.price;
    
@@ -182,25 +189,19 @@ document.addEventListener("click", (e) => {
     const itemCombo = e.target.closest(".container-item-combo");
 
     if(itemCombo){
+        if(itemCombo.dataset.all && document.querySelector("#villaDMayo").checked){return}
         pushCart(itemCombo.dataset.id,"combos")
     }
     
-
-
-
-
     if(e.target.matches(".icon-rabe-footer")){
         console.log("toke toke")
         document.querySelector(".newProduct").classList.toggle("show-new-product")
     }
 
-
-
-
-
-
     if(itemDestacado){
+        if(itemDestacado.dataset.all  && document.querySelector("#villaDMayo").checked){return}
         pushCart(itemDestacado.dataset.id,"destacado")
+        
     }
 
     if(e.target.matches("#final-pedido")){
@@ -216,9 +217,10 @@ document.addEventListener("click", (e) => {
     }
     //evento para Get Prod / id / categoria
     if (itemMenu) {
-        const prodID = itemMenu.dataset.id;  
-       pushCart(prodID,itemMenu.dataset.categoria)
-       cantidadSabores = parseInt(itemMenu.dataset.cantSabores);
+       const prodID = itemMenu.dataset.id;  
+       if(itemMenu.dataset.all  && document.querySelector("#villaDMayo").checked){return}
+        pushCart(prodID,itemMenu.dataset.categoria)
+        cantidadSabores = parseInt(itemMenu.dataset.cantSabores); 
     }
     if(e.target.id === "close"){
         closeModal();
@@ -700,7 +702,6 @@ let acumulador = 0;
 shoppingCart.forEach(el => {
 acumulador += el.cantidad * el.price    
 });
-console.log(shoppingCart)
 total.textContent = "$" + acumulador;
 carritoLenght();
 }
@@ -740,13 +741,10 @@ function generarListaDeProductos(productos) {
     return lista;
   }
 
-function carritoLenght(){
-    console.log(document.querySelector(".howMuch"));
+function carritoLenght(){  
     let countProducts = shoppingCart.length
-    console.log(countProducts)
     document.querySelector(".howMuch").textContent = countProducts;
 }
-
 
 function addProdNotification(){
     document.querySelector(".newProduct").classList.add("show-new-product");
@@ -760,3 +758,64 @@ function addProdNotification(){
 //reset carrito
 carritoLenght();
 document.querySelector(".carrito-final-price").textContent = "0";
+
+// addEventLiseners
+
+const allProducts = document.querySelectorAll(`[data-all="allItems"]`);
+
+const contentReDirec = document.createElement("div");
+contentReDirec.style.display = "none";
+
+document.addEventListener("change",(e)=>{
+    //resets
+    contentReDirec.innerHTML = "";
+    contentReDirec.style.display = "none";
+
+    if(e.target.value === "muniz"){
+   
+       
+        let resetBellaVista = document.querySelector(".content-re-direc");
+    
+        document.querySelector(".main").style.display = "block";
+        if(!document.querySelector(".overlay-item")){ return}
+        else{
+            allProducts.forEach(el => {
+                let children = document.querySelector(".overlay-item");
+                el.removeChild(children);
+                el.classList.remove("all-items-disabled")
+            })
+        }
+        
+    }
+
+    if(e.target.value === "villaDeMayo"){
+
+        document.querySelector(".main").style.display = "block";
+    if(document.querySelector(".overlay-item")){ return}
+      else {allProducts.forEach(el => {  
+        const overlayItem = document.createElement("div");
+        overlayItem.textContent = "No Disponible"
+        overlayItem.classList.add("overlay-item")
+        el.appendChild(overlayItem);
+        el.classList.add("all-items-disabled");
+          
+    })
+    }
+    }
+
+    if(e.target.value === "bellaVista"){
+        document.querySelector(".main").style.display = "none";
+        contentReDirec.style.display = "block";
+
+        contentReDirec.classList.add("content-re-direc");
+        contentReDirec.innerHTML = `<p class="re-direc-p">
+        En este momento solo contamos con envios por Pedidos ya
+        </p><br>
+        <div class="pedidos-ya">
+        <span><img src="assets/images/home/pedidosYa.png" alt="pedidosYa">PedidosYa</span>
+        </div>
+        `
+
+        document.querySelector(".header").insertAdjacentElement("afterend",contentReDirec);
+    }
+})
