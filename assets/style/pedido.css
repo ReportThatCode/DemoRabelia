@@ -608,6 +608,7 @@ color: white;
    display: flex;
    align-content: flex-end;
    padding-bottom: 5rem;
+   z-index: 999;
  }
  .modal {
    margin: 0 auto;
@@ -622,6 +623,7 @@ color: white;
    border-radius: 12px;
    overflow: hidden;
    position: relative;
+   z-index: 999;
 
  }
 
@@ -1284,7 +1286,11 @@ text-wrap: wrap;
 }
 
 .all-items-disabled * {
-   color: rgb(131, 129, 129);
+   color: rgba(131, 129, 129, 0.644);
+}
+
+.all-items-disabled .is-fav {
+   display: none;
 }
 
 .overlay-item {
@@ -1301,7 +1307,7 @@ text-wrap: wrap;
    display: flex;
    justify-content: center;
    align-items: center;
-   z-index: 500;
+   z-index: 100;
 }
 
 

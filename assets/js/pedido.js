@@ -19,6 +19,9 @@ destacado.forEach((el) => {
     if(el.title !== "1kg de Helado") {
         $template.querySelector(".item").dataset.all = "allItems";
     }
+    if(el.envio === false){
+        $template.querySelector(".item").dataset.envio = "false" 
+    }
     $template.querySelector(".item-title").textContent = el.title;
     $template.querySelector(".item-desc").textContent = el.descripcion;
     $template.querySelector(".item-price").textContent = "$" + el.price;
@@ -38,6 +41,11 @@ const $templateCombo = document.querySelector("#template-combo").content,
 containerCombo = document.querySelector(".content-combos-promos");
 
 combos.forEach((el)=>{
+
+    if(el.envio === false){
+        $templateCombo.querySelector(".container-item-combo").dataset.envio = "false" 
+    }
+
 
 
     $templateCombo.querySelector(".container-item-combo").dataset.all = "allItems";
@@ -94,11 +102,19 @@ function showProducts (template,contentHeader,contentBody,producto,typeProd){
  
    producto.prod.forEach(item => {
     //Set data-id
-    
     //BODY  
     if(typeProd !== "heladeria"){
         $template.querySelector(".item-menu").dataset.all = "allItems"    
-    } 
+    }
+ 
+    if(item.envio === false){
+        $template.querySelector(".item-menu").dataset.envio = "false";    
+    }
+    else{
+        $template.querySelector(".item-menu").removeAttribute("data-envio"); 
+        
+    }
+    
     $template.querySelector(".item-menu").dataset.categoria = typeProd;
     $template.querySelector(".item-menu").dataset.id = item.id;
     $template.querySelector(".item-title").textContent = item.title;    
@@ -190,6 +206,9 @@ document.addEventListener("click", (e) => {
 
     if(itemCombo){
         if(itemCombo.dataset.all && document.querySelector("#villaDMayo").checked){return}
+        
+        if(itemCombo.querySelector(".overlay-item")){return}
+
         pushCart(itemCombo.dataset.id,"combos")
     }
     
@@ -200,6 +219,7 @@ document.addEventListener("click", (e) => {
 
     if(itemDestacado){
         if(itemDestacado.dataset.all  && document.querySelector("#villaDMayo").checked){return}
+        if(itemDestacado.querySelector(".overlay-item")){return}
         pushCart(itemDestacado.dataset.id,"destacado")
         
     }
@@ -219,7 +239,8 @@ document.addEventListener("click", (e) => {
     if (itemMenu) {
        const prodID = itemMenu.dataset.id;  
        if(itemMenu.dataset.all  && document.querySelector("#villaDMayo").checked){return}
-        pushCart(prodID,itemMenu.dataset.categoria)
+       if(itemMenu.querySelector(".overlay-item")){return}
+       pushCart(prodID,itemMenu.dataset.categoria)
         cantidadSabores = parseInt(itemMenu.dataset.cantSabores); 
     }
     if(e.target.id === "close"){
@@ -762,7 +783,7 @@ document.querySelector(".carrito-final-price").textContent = "0";
 // addEventLiseners
 
 const allProducts = document.querySelectorAll(`[data-all="allItems"]`);
-
+const allNotSend = document.querySelectorAll(`[data-envio="false"]`);
 const contentReDirec = document.createElement("div");
 contentReDirec.style.display = "none";
 
@@ -770,38 +791,37 @@ document.addEventListener("change",(e)=>{
     //resets
     contentReDirec.innerHTML = "";
     contentReDirec.style.display = "none";
+    resetDisabled();
 
-    if(e.target.value === "muniz"){
-   
-       
-        let resetBellaVista = document.querySelector(".content-re-direc");
+    if(document.querySelector("#muniz").checked && document.querySelector("#Envio").checked){      
+        if(document.querySelector(".overlay-item")){ return}
+        allNotSend.forEach(el => {  
+            const overlayItem = document.createElement("div");
+            overlayItem.textContent = "No Disponible"
+            overlayItem.classList.add("overlay-item")
+            el.appendChild(overlayItem);
+            el.classList.add("all-items-disabled");
+        })
+    }
+
+    if(document.querySelector("#muniz").checked){
+        document.querySelector(".main").style.display = "block";
+    }
+
+    if(document.querySelector("#villaDMayo").checked){
+
+        document.querySelector(".main").style.display = "block";
+
+          allProducts.forEach(el => {  
+            const overlayItem = document.createElement("div");
+            overlayItem.textContent = "No Disponible"
+            overlayItem.classList.add("overlay-item")
+            el.appendChild(overlayItem);
+            el.classList.add("all-items-disabled");
+              
+        })
+    }
     
-        document.querySelector(".main").style.display = "block";
-        if(!document.querySelector(".overlay-item")){ return}
-        else{
-            allProducts.forEach(el => {
-                let children = document.querySelector(".overlay-item");
-                el.removeChild(children);
-                el.classList.remove("all-items-disabled")
-            })
-        }
-        
-    }
-
-    if(e.target.value === "villaDeMayo"){
-
-        document.querySelector(".main").style.display = "block";
-    if(document.querySelector(".overlay-item")){ return}
-      else {allProducts.forEach(el => {  
-        const overlayItem = document.createElement("div");
-        overlayItem.textContent = "No Disponible"
-        overlayItem.classList.add("overlay-item")
-        el.appendChild(overlayItem);
-        el.classList.add("all-items-disabled");
-          
-    })
-    }
-    }
 
     if(e.target.value === "bellaVista"){
         document.querySelector(".main").style.display = "none";
@@ -815,7 +835,23 @@ document.addEventListener("change",(e)=>{
         <span><img src="assets/images/home/pedidosYa.png" alt="pedidosYa">PedidosYa</span>
         </div>
         `
-
         document.querySelector(".header").insertAdjacentElement("afterend",contentReDirec);
     }
 })
+
+
+function resetDisabled(){
+    if(document.querySelector(".overlay-item")){
+
+    const getAllItems = document.querySelectorAll(".overlay-item");
+     
+    getAllItems.forEach(el=>{
+        el.remove();
+    })
+    const getAllStyles = document.querySelectorAll(".all-items-disabled");
+    getAllStyles.forEach(el => {
+        el.classList.remove("all-items-disabled");
+    })
+
+    }
+}

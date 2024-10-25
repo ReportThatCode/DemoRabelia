@@ -97,6 +97,7 @@ export const combos = [
         title: "Combo salado",
         descripcion: "Ideal para compartir",
         img: "assets/images/pedido/productos/ComboSalado.png",
+        envio: false,
         price: 24000,
         offer: 25100,
         has: [
@@ -113,6 +114,7 @@ export const combos = [
         title: "Combo Fit",
         descripcion: "Super natural",
         img: "assets/images/pedido/productos/ComboFit.png",
+        envio: false,
         price: 24500,
         offer: "",
         has: [
@@ -128,6 +130,7 @@ export const combos = [
         title: "Combo Dulce",
         descripcion: "Ideal para 1 personas",
         img: "assets/images/pedido/productos/ComboDulce.png",
+        envio: false,
         price: 24000,
         offer: "",
         has: [
@@ -143,6 +146,7 @@ export const combos = [
         title: "Combo Mix",
         descripcion: "Mix Dulce/Salado",
         img: "assets/images/pedido/productos/ComboMix.png",
+        envio: false,
         price: 24500,
         offer: 24900,
         has: [
@@ -160,6 +164,7 @@ export const combos = [
         title: "Combo Rabelia",
         descripcion: "para reventar!",
         img: "assets/images/pedido/productos/ComboRabelia.png",
+        envio: false,
         price: 30000,
         offer: 31200,
         has: [
@@ -237,7 +242,7 @@ heladeria: {
         price: 2600,
         offer: null,
         isFav: false,
-        envio: true,
+        envio: false,
         hasOptions: false,
         withOptions: []
     },
@@ -287,7 +292,7 @@ heladeria: {
         price: 3000,    
         offer: null,
         isFav: true,
-        envio: false,
+        envio: true,
         hasOptions: true,
         withOptions: [
             { name: "Budin marmolado", price: 3000},
@@ -304,7 +309,7 @@ heladeria: {
         price: 2900,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: true,
         withOptions: [
             { name: "Muffin de Vainilla y chips", price: 2900},
@@ -320,7 +325,7 @@ heladeria: {
         price: 6000,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: false,
         withOptions: [
        
@@ -334,7 +339,7 @@ heladeria: {
         price: 6000,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: false,
         withOptions: [
 
@@ -348,7 +353,7 @@ heladeria: {
         price: 6400,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: false,
         withOptions: [
         ]
@@ -417,7 +422,7 @@ heladeria: {
         price: 6200,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: false,
         withOptions: [
         ]
@@ -430,7 +435,7 @@ heladeria: {
         price: 6100,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: false,
         withOptions: [
         ]
@@ -443,7 +448,7 @@ heladeria: {
         price: 6800,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: false,
         withOptions: [
         ]
@@ -456,7 +461,7 @@ heladeria: {
         price: 5900,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: false,
         withOptions: [
         ]
@@ -539,7 +544,7 @@ heladeria: {
         price: 9000,
         offer: null,
         isFav: true,
-        envio: false,
+        envio: true,
         hasOptions: true,
         withOptions: [
             { name: "Mortadela + mooza + pesto de albahaca + tomates cherry confitados", price: 9000},
@@ -555,7 +560,7 @@ heladeria: {
         price: 4400,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: true,
         withOptions: [
             { name: "Pan de molde - jamon y queso", price: 4400},
@@ -570,7 +575,7 @@ heladeria: {
         price: 5400,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: true,
         withOptions: [
             { name: "Pan de molde - jamon y queso", price: 5400},
@@ -586,7 +591,7 @@ heladeria: {
         price: 4600,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: true,
         withOptions: [
             { name: "Pan de molde - jamon y queso", price: 4600},
@@ -602,7 +607,7 @@ heladeria: {
         price: 4000,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: true,
         withOptions: [
             { name: "Pan de molde - jamon y queso", price: 4000},
@@ -618,7 +623,7 @@ heladeria: {
         price: 4600,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: true,
         withOptions: [
             { name: "Pan de molde - jamon y queso", price: 4600},
@@ -691,7 +696,7 @@ heladeria: {
         price: 4600,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: true,
         withOptions: [
             { name: "Alfajor de frutos rojos XL", price: 4600},
@@ -711,7 +716,7 @@ heladeria: {
         price: 2400,
         offer: null,
         isFav: false,
-        envio: false,
+        envio: true,
         hasOptions: true,
         withOptions: [
             { name: "Cookie de Chocolate", price: 2400},
