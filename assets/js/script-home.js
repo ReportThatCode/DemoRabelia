@@ -12,11 +12,26 @@ imgList = document.querySelector(".img-list");
 imgList.scrollLeft = 900;
 //logica carrucel </
 
-document.querySelector(".welcome").addEventListener("click",(e)=>{
-  document.querySelector(".hambuerget-menu").classList.toggle("hamburger-active")
+
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+  fetch("header.html")
+  .then(res => res.text())
+  .then(data =>{
+  console.log(data)
+  document.querySelector("#placeholder-header").outerHTML = data;
+  })
+
 })
+
+
 document.addEventListener("click",(e)=>{
 
+      if(e.target.matches(".menu-hamburger")){
+        document.querySelector(".comp-header").classList.toggle("header-is-active");
+      }
 
         //logica carrucel
         if(e.target.matches(".slide-btn-right")){

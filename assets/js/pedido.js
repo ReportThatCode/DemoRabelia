@@ -9,7 +9,15 @@ let cantidadSabores = 4;
 
 // DESTACADO
 
- 
+fetch("header.html")
+.then(res => res.text())
+.then(data =>{
+console.log(data)
+document.querySelector("#placeholder-header").outerHTML = data;
+})
+
+
+
 const $template = document.querySelector("#template-destacado").content,
 $fragmen = document.createDocumentFragment(),
 containerDestacado = document.querySelector(".content-slider-destacado");
@@ -203,6 +211,12 @@ document.addEventListener("click", (e) => {
     const itemDestacado = e.target.closest(".item");
     const carritoFixed = e.target.closest(".carrito");
     const itemCombo = e.target.closest(".container-item-combo");
+
+
+
+    if(e.target.matches(".menu-hamburger")){
+        document.querySelector(".comp-header").classList.toggle("header-is-active");
+      }
 
     if(itemCombo){
         if(itemCombo.dataset.all && document.querySelector("#villaDMayo").checked){return}

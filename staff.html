@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff</title>
     <link rel="stylesheet" href="assets/style/staff.css">
+    <link rel="stylesheet" href="assets/style/header.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
+    <script src="https://kit.fontawesome.com/6f5cee736b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+    <div id="placeholder-header"></div>
     <header class="header">
         <img src="assets/images/home/iconRabe.png" alt="icon rabe" class="icon-rabe-header">
         <h1 class="equipo-h1">Nuestro increible equipo</h1>
@@ -164,5 +167,19 @@
     <footer class="footer"><img src="assets/images/home/iconRabe.png" alt="icon-rabe" class="footer-img">
         <p class="copyright">Copyright 2023. Rabelia . Todos Los Derechos Reservados</p>
 </footer>
+<script>
+        fetch("header.html")
+        .then(res => res.text())
+        .then(data =>{
+        console.log(data)
+        document.querySelector("#placeholder-header").outerHTML = data;
+        })
+
+        document.addEventListener("click",(e)=>{
+    if(e.target.matches(".menu-hamburger")){
+        document.querySelector(".comp-header").classList.toggle("header-is-active");
+      }
+})
+</script>
 </body>
 </html>

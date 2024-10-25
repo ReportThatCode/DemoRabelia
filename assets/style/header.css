@@ -1,0 +1,271 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.comp-header {
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: -1px 2px 15px rgba(0, 0, 0, 0.218);
+    z-index: 990;
+    position: fixed;
+    top: 0;
+}
+
+
+.header-imgs {
+    display: flex;
+    padding-left: 2.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconRabe-comp {
+    height: 100px;
+    width: 100px;
+    display: none;
+}
+
+.iconRabe-comp img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+.logoRabe-comp {
+    width: 100px;
+    height: 100%;
+}
+
+
+.logoRabe-comp img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.list-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    padding-right: 9rem;
+}
+
+
+
+.list-links li {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    gap: 10px;
+}
+
+.list-links li i {
+    color: white;
+    cursor: pointer;
+    font-size: 0.6rem;
+}
+
+.link-comp {
+display: block;
+text-decoration: none;
+font-family: sans-serif;
+margin-right: 0.5rem;
+font-weight: bold;
+color: rgb(247, 247, 247);
+position: relative;
+cursor: pointer;
+font-size: 0.7rem;
+}
+
+.link-comp::after {
+    content: "";
+    height: 2px;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.64);
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.manu-hambuerger {
+    display: none;
+}
+.link-comp:hover.link::after {
+    width: 80%;
+}
+.oferta {
+    display: none;
+}
+.burger-contact {
+    display: none;
+}
+@media (max-width:900px) {
+
+    .menu-hamburger {
+        position: fixed;
+        display: block;
+        right: 15px;
+        top: 15px;
+        z-index: 999;
+        cursor: pointer;
+        padding: 0.2rem 0.4rem;
+
+    }
+
+    .comp-header {
+        position: fixed;
+        top: 0;
+        right: -400px;
+        bottom: 0;
+        width: 280px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        background-color: rgb(110, 166, 185);
+        transition: all 0.3s ease;
+        box-shadow: -20px 2px 20px rgba(0, 0, 0, 0.14);
+    }
+
+
+     .header-is-active {
+        right: 0;
+     }
+
+    .stick {
+        height: 3px;
+        width: 25px;
+        background-color: black;
+        margin-top: 5px;
+    }
+
+
+    .header-imgs {
+        width: auto;
+        margin-top: 3rem;
+        justify-content: flex-start;
+        padding: 0;
+        padding-bottom: 2rem;
+    }
+
+    .iconRabe-comp {
+        display: block;
+        padding: 0;
+        background-color: rgb(110, 166, 185);
+        border-radius: 50%;
+        height: 130px;
+        width: 130px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: -50px 2px 30px rgba(0, 0, 0, 0.07);
+    }
+
+    .iconRabe img {
+        width: 90%;
+        height: 90%;
+    }
+    .logoRabe-comp {
+        width: 130px;
+        margin-right: 70px;
+        position: relative;
+    }
+
+    .logoRabe::after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 120%;
+        background-color: rgba(227, 227, 227, 0.657);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    
+    .list-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0;
+        padding: 2rem 0.7rem;
+        position: relative;
+        background-color: #F7F3EF;
+        flex: 1;
+    }
+
+
+    .list-links li {
+        width: 50%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 2rem;
+        padding-top: 15px;
+    }
+    .link-comp {
+        padding: 0 .5rem ;
+        color: #3E6897;
+        font-size: 0.8rem;
+    }
+
+    .link-comp::after {
+        display: none;
+    }
+    .list-links li i {
+        color: #3E6897;
+        font-size: 0.9rem;
+    }
+    .link::after {
+     display: none;
+    }
+
+    .burger-contact {
+        height: 60px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-right: 15px;
+        background-color: #F7F3EF;
+    }
+    
+    .burger-contact i {
+        padding: 0.7rem;
+        background-color: rgb(110, 166, 185);
+        border-radius: 50%;
+        color: rgb(238, 238, 238);
+        margin-left: 15px;
+        box-shadow: -1px 2px 10px rgba(0, 0, 0, 0.218);
+    }
+
+    .oferta {
+        display: block;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        padding: 0.3rem 0.7rem;
+        background-color: white;
+        border-radius: 12px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 0.7rem;
+        box-shadow: -1px 2px 20px rgba(0, 0, 0, 0.14);
+    }
+
+
+
+}

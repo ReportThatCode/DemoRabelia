@@ -18,3 +18,16 @@ document.getElementById('form')
       alert(JSON.stringify(err));
     });
 });
+
+fetch("header.html")
+.then(res => res.text())
+.then(data =>{
+console.log(data)
+document.querySelector("#placeholder-header").outerHTML = data;
+})
+
+document.addEventListener("click",(e)=>{
+if(e.target.matches(".menu-hamburger")){
+document.querySelector(".comp-header").classList.toggle("header-is-active");
+}
+})

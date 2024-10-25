@@ -23,31 +23,6 @@ body {
     position: relative;
 }
 
-
-.header-absolute {
- position: fixed;
- left: 0;
- top: 0 ;
- width: 100%;
- display: flex;
- justify-content: space-between;
- align-items: center;
- z-index: 999;
- background-color: rgba(0, 0, 0, 0.237);
-}
-
-.header-absolute img {
-width: 70px;
-height: 40px;
-object-fit: cover;
-padding-left: 10px;
-}
-
-.header-absolute i {
-    font-size: 1.4rem;
-    padding-right: 15px;
-}
-
 .content-img {
     width: 100%;
     height: 300px;

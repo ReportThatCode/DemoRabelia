@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style/sabores.css">
     <link rel="stylesheet" href="assets/style/resets.css">
+    <link rel="stylesheet" href="assets/style/header.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,11 +15,11 @@
     <title>sabores</title>
 </head>
 <body>
+    <div id="placeholder-header"></div>
     <header class="header">
         <img src="assets/images/home/logoBlue.png" alt="rabelia logo" class="logo-rabe">
         <img src="assets/images/home/anotherIcon.png" alt="rabelia icono" class="icon-rabe">
         <h1 class="title-sabores">Nuestros Sabores</h1>
-        <i class="fa-solid fa-bars menu"></i>
     </header>
     <main class="main">
     <div class="content-sabores">
@@ -113,5 +114,19 @@
     <footer class="footer"><img src="assets/images/home/iconRabe.png" alt="icon-rabe" class="footer-img">
         <p class="copyright">Copyright 2023. Rabelia . Todos Los Derechos Reservados</p>
 </footer>
+<script>
+fetch("header.html")
+.then(res => res.text())
+.then(data =>{
+console.log(data)
+document.querySelector("#placeholder-header").outerHTML = data;
+})
+
+document.addEventListener("click",(e)=>{
+    if(e.target.matches(".menu-hamburger")){
+        document.querySelector(".comp-header").classList.toggle("header-is-active");
+      }
+})
+</script>
 </body>
 </html>
