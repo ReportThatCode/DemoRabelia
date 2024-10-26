@@ -110,6 +110,10 @@ font-size: 0.7rem;
 .burger-contact {
     display: none;
 }
+
+.horarios-comp {
+    display: none;
+}
 @media (max-width:900px) {
 
     .menu-hamburger {
@@ -135,6 +139,7 @@ font-size: 0.7rem;
         justify-content: flex-end;
         align-items: flex-end;
         background-color: rgb(110, 166, 185);
+        background-color: #404E7A;
         transition: all 0.3s ease;
         box-shadow: -20px 2px 20px rgba(0, 0, 0, 0.14);
     }
@@ -158,12 +163,14 @@ font-size: 0.7rem;
         justify-content: flex-start;
         padding: 0;
         padding-bottom: 2rem;
+        position: relative;
     }
 
     .iconRabe-comp {
         display: block;
         padding: 0;
         background-color: rgb(110, 166, 185);
+        background-color: #404E7A;
         border-radius: 50%;
         height: 130px;
         width: 130px;
@@ -195,6 +202,17 @@ font-size: 0.7rem;
         transform: translateX(-50%);
     }
 
+    .horarios-comp {
+        display: block;
+        position: absolute;
+        top: -20px;
+        text-wrap:nowrap ;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 0.7rem;
+    }
     
     .list-links {
         display: flex;
@@ -205,7 +223,9 @@ font-size: 0.7rem;
         padding: 2rem 0.7rem;
         position: relative;
         background-color: #F7F3EF;
+        background-color: #F5F4EF;
         flex: 1;
+        position: relative;
     }
 
 
@@ -219,7 +239,7 @@ font-size: 0.7rem;
     }
     .link-comp {
         padding: 0 .5rem ;
-        color: #3E6897;
+        color: #404E7A;
         font-size: 0.8rem;
     }
 
@@ -227,7 +247,7 @@ font-size: 0.7rem;
         display: none;
     }
     .list-links li i {
-        color: #3E6897;
+        color: #404E7A;
         font-size: 0.9rem;
     }
     .link::after {
@@ -246,7 +266,7 @@ font-size: 0.7rem;
     
     .burger-contact i {
         padding: 0.7rem;
-        background-color: rgb(110, 166, 185);
+        background-color: #404E7A;
         border-radius: 50%;
         color: rgb(238, 238, 238);
         margin-left: 15px;
