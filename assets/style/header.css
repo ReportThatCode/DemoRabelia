@@ -251,7 +251,7 @@ font-size: 0.7rem;
     .flowerTwo-comp {
         display: block;
         position: absolute;
-        bottom: 100px;
+        top: 5px;
         right: -80px;
         width: 180px;
         transform: rotate(-20deg);

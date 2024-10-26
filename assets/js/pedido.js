@@ -836,7 +836,7 @@ document.addEventListener("change",(e)=>{
     }
     
 
-    if(e.target.value === "bellaVista"){
+    if(document.querySelector("#BellaVista").checked){
         document.querySelector(".main").style.display = "none";
         contentReDirec.style.display = "block";
 
