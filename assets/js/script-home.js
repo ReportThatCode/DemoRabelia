@@ -29,10 +29,12 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 document.addEventListener("click",(e)=>{
 
-      if(e.target.matches(".menu-hamburger")){
-        document.querySelector(".comp-header").classList.toggle("header-is-active");
-      }
+  const hamburgerIcon = e.target.closest(".menu-hamburger");
 
+
+  if(hamburgerIcon){
+      document.querySelector(".comp-header").classList.toggle("header-is-active");
+    }
         //logica carrucel
         if(e.target.matches(".slide-btn-right")){
         imgList.scrollLeft += widthIMG;

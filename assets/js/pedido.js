@@ -211,10 +211,10 @@ document.addEventListener("click", (e) => {
     const itemDestacado = e.target.closest(".item");
     const carritoFixed = e.target.closest(".carrito");
     const itemCombo = e.target.closest(".container-item-combo");
+    const hamburgerIcon = e.target.closest(".menu-hamburger");
 
 
-
-    if(e.target.matches(".menu-hamburger")){
+    if(hamburgerIcon){
         document.querySelector(".comp-header").classList.toggle("header-is-active");
       }
 
@@ -227,7 +227,6 @@ document.addEventListener("click", (e) => {
     }
     
     if(e.target.matches(".icon-rabe-footer")){
-        console.log("toke toke")
         document.querySelector(".newProduct").classList.toggle("show-new-product")
     }
 

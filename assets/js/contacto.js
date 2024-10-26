@@ -27,7 +27,10 @@ document.querySelector("#placeholder-header").outerHTML = data;
 })
 
 document.addEventListener("click",(e)=>{
-if(e.target.matches(".menu-hamburger")){
-document.querySelector(".comp-header").classList.toggle("header-is-active");
-}
+  const hamburgerIcon = e.target.closest(".menu-hamburger");
+
+
+  if(hamburgerIcon){
+      document.querySelector(".comp-header").classList.toggle("header-is-active");
+    }
 })
