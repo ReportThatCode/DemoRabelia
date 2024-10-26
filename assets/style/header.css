@@ -114,6 +114,14 @@ font-size: 0.7rem;
 .horarios-comp {
     display: none;
 }
+
+.flower-comp {
+    display: none;
+}
+
+.flowerTwo-comp {
+    display: none;
+}
 @media (max-width:900px) {
 
     .menu-hamburger {
@@ -211,7 +219,24 @@ font-size: 0.7rem;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: 0.7rem;
     }
-    
+    .flower-comp {
+        display: block;
+        position: absolute;
+        bottom: -20px;
+        right: 20px;
+        width: 100px;
+        transform: rotate(100deg);
+        opacity: 0.4;
+    }
+    .flowerTwo-comp {
+        display: block;
+        position: absolute;
+        bottom: 20px;
+        right: -80px;
+        width: 180px;
+        transform: rotate(-50deg);
+        opacity: 0.5;
+    }
     .list-links {
         display: flex;
         flex-direction: column;
