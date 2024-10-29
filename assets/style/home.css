@@ -1115,6 +1115,12 @@ right: -20px;
 /*-------------></FOOTER<-------------*/
 
 @media (max-width: 1600px) {
+   body {
+    min-width: 100%;
+   }
+    .sections3 {
+        padding-bottom: 20px;
+    }
     .container-home  .left {
         width: 40%;
     }
@@ -1134,11 +1140,61 @@ right: -20px;
     .sede-content {
         width: 80%;
     }
+
+    .container-header-ig {
+        padding-bottom: 5px;
+    }
     .ig {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .description-ig p {
+        display: none;
+    }
+    .text-perfil-ig {
         display: none;
     }
     .redes-item {
         font-size: 1rem !important;
+    }
+
+    .header-ig {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .perfil-ig {
+        margin: 0;
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .perfil-ig img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .slide-ig {
+        overflow: hidden;
+    }
+    .container-img-ig {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    
+    .container-img-ig a {
+        display: block;
+        min-width: 280px;
     }
 }
 @media (max-width: 800px) {
@@ -1419,8 +1475,8 @@ body {
 
 .ig {
     width: 90%;
-    display: none;
 }
+
 .sede-option{
     font-size: 1rem;
     text-align: center;
