@@ -212,6 +212,7 @@ document.addEventListener("click", (e) => {
     const carritoFixed = e.target.closest(".carrito");
     const itemCombo = e.target.closest(".container-item-combo");
     const hamburgerIcon = e.target.closest(".menu-hamburger");
+    
 
 
     if(hamburgerIcon){

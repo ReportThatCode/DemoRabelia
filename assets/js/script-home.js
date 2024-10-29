@@ -31,7 +31,11 @@ document.addEventListener("click",(e)=>{
 
   const hamburgerIcon = e.target.closest(".menu-hamburger");
   const reDirecPedido = e.target.closest(".menu-show");
+  const pedidosYa = e.target.closest(".content-py");
 
+  if(pedidosYa){
+    window.location.href = "https://www.pedidosya.com.ar/restaurantes/san-miguel/rabelia-muniz-bc3bf8f8-ec32-4039-b795-0e0f1d1613cd-menu"
+  }
   if(reDirecPedido){
     window.location.href = "pedido.html"
   }
