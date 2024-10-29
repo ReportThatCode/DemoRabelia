@@ -216,6 +216,7 @@ document.addEventListener("click", (e) => {
 
     if(hamburgerIcon){
         document.querySelector(".comp-header").classList.toggle("header-is-active");
+        document.querySelector("body").classList.toggle("scroll-none");
       }
 
     if(itemCombo){
@@ -267,6 +268,7 @@ document.addEventListener("click", (e) => {
       const cartContent = document.querySelector(".carritoProd");
       document.querySelector(".overlay").classList.toggle("overlay-active")
       cartContent.classList.toggle("openCart");
+      document.querySelector("body").classList.toggle("scroll-none");
     }
    
     // sumar cantidad carrito 
@@ -363,6 +365,7 @@ function openModal(prod){
 
 document.querySelector("#myModal").style.display = "block";
 document.querySelector(".modal-header").style.display = "block"
+document.querySelector("body").classList.add("scroll-none")
 const {id,img,title,descripcion,withOptions,price} = prod;
 //variables modal
 const imgModal = document.querySelector(".modal-img"),
@@ -436,6 +439,7 @@ else {
 
 function closeModal(){
     document.querySelector("#myModal").style.display = "none";
+    document.querySelector("body").classList.remove("scroll-none");
 }
 closeModal()
 

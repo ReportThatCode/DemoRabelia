@@ -15,6 +15,10 @@ body {
     width: 100%;
 }
 
+.scroll-none {
+   overflow: hidden;
+}
+
 .modal,#mymodal {
    display: none;
 }
