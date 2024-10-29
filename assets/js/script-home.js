@@ -30,7 +30,11 @@ document.addEventListener("DOMContentLoaded",()=>{
 document.addEventListener("click",(e)=>{
 
   const hamburgerIcon = e.target.closest(".menu-hamburger");
+  const reDirecPedido = e.target.closest(".menu-show");
 
+  if(reDirecPedido){
+    window.location.href = "pedido.html"
+  }
 
   if(hamburgerIcon){
       document.querySelector(".comp-header").classList.toggle("header-is-active");

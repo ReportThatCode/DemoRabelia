@@ -1148,6 +1148,7 @@ right: -20px;
         margin-top: 10px;
         display: flex;
         flex-direction: column;
+        padding-bottom: 20px;
     }
 
 
@@ -1185,13 +1186,19 @@ right: -20px;
     .slide-ig {
         overflow: hidden;
     }
+    .header-ig::before {
+        bottom: -20px;
+    }
     .container-img-ig {
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
         scrollbar-width: none;
+        padding-top: 40px;
     }
-    
+    .sedes-options {
+        margin-top: 15px;
+    }
     .container-img-ig a {
         display: block;
         min-width: 280px;
