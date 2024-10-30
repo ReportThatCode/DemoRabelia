@@ -16,7 +16,8 @@
     </div>
     <header class="header">        
         <div class="content-img">
-            <img src="assets/images/pedido/not-products/header.png" alt="header-imagen" class="item-img">
+            <!--  assets/images/pedido/not-products/header.png  -->
+            <img src="assets/images/home/Muniz.jpg" alt="header-imagen" class="item-img">
             <div class="overlay-header"></div>
         </div>
 
@@ -576,9 +577,49 @@
            </div>
         </div>
        </template>
+       <div class="modal-last-step" style="display: none;">
+        <span class="close-last">Cancelar</span>
+        <h4>Ultimo paso:</h4>
+        <div class="content-type-envio-last">
+            <input type="radio" id="Local-last" name="type-of-envio-last" checked value="local">
+            <label for="Local-last" class="type-envio">Retiro en Local</label>
+
+            <input type="radio" id="Envio-last" name="type-of-envio-last" value="delevery">
+            <label for="Envio-last" class="type-envio">Delevery</label>
+         </div>
+            <div class="delevery-last">
+
+                <input type="text" placeholder="Calle">
+                <div class="number-dpto">
+                    <input type="number" placeholder="Numero" class="number-house">
+                    <input type="text" placeholder="Dpto (Optional)" class="dpto">
+                </div>
+                <input type="text" placeholder="Localidad">
+                <p class="price-envio">Costo envio: <span class="price-send">700$</span></p>
+            </div>
+         
+         <div class="method-payment">
+            <p class="title-metodo-pago">Metodo de pago</p>
+            <select name="payment" id="type-pay">
+                <option value="Efectivo">Efectivo</option>
+                <option value="Transferencia">Transferencia</option>
+                <option value="DebitoOrCredito">Tarjeta Debito / Credito</option>
+            </select>
+            <input type="number" placeholder="Monto con el que abona" id="monto-abonar">
+         </div>
+ 
+         <div class="footer-last-step">
+            <div class="total-last">
+                <span class="total-title-last">Total:</span>
+                <span class="total-price-last">$12500</span>
+            </div>
+            
+            <button id="reDirecToWsp">Finalizar pedido</button>
+         </div>
+       </div>
 
     <script src="assets/js/pedido.js" type="module"></script>
-
+  
 
 
 </body>

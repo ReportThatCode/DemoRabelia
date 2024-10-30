@@ -810,6 +810,204 @@ color: white;
    font-size: 0.8rem;
 }
 
+/*MODAL ULTIMO PASO FINAL PEDIDO*/
+
+.modal-last-step {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+background-color: white;
+width: 90%;
+border: solid 1px rgb(176, 176, 176);
+border-radius: 6px;
+padding: 1rem;
+display: flex;
+flex-direction: column;
+z-index: 950;
+}
+
+.close-last {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 0.2rem 0.4rem;
+   border-radius: 2px;
+   cursor: pointer;
+   border: solid 1px rgb(154, 154, 154);
+   color: #464545;
+}
+
+.modal-last-step h4 {
+   font-size: 1.1rem;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   font-weight: 500;
+}
+
+.content-type-envio-last {
+   display: flex;
+   width: 95%;
+   border-radius: 6px;
+   justify-content: space-evenly;
+   padding: 0.2rem 0rem;
+   margin-top: 10px;
+   
+   border: solid 1px rgb(232, 232, 232);
+
+}
+
+.type-envio {
+   width: 48%;
+   text-align: center;
+   padding: 0.6rem 0;
+   border-radius: 6px;
+   cursor: pointer;
+   font-size: 0.9rem;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#Envio-last , #Local-last {
+   display: none;
+}
+
+#Envio-last:checked + .type-envio {
+background-color: var(--main-Color);
+color: white;
+}   
+
+#Local-last:checked + .type-envio {
+   background-color: var(--main-Color);
+   color: white;
+   }
+
+
+.method-payment {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding-bottom: 1rem ;
+}
+
+
+#type-pay {
+   width: 90%;
+   padding: 0.4rem .5rem;
+   border: solid 1px rgba(171, 171, 171, 0.678);
+}
+#type-pay option:active {
+background-color: green;
+}
+
+#monto-abonar {
+   padding: 0.4rem .5rem;
+   width: 90%;
+   margin-top: 10px;
+   border: solid 1px rgba(171, 171, 171, 0.678);
+}
+
+
+
+.title-metodo-pago {
+   font-size: 1rem;
+   padding: 0.5rem 0;
+   position: relative;
+   color: var(--main-Color);
+   font-weight: bold;
+}
+
+.title-metodo-pago::after , .title-metodo-pago::before {
+   content: "";
+   position: absolute;
+   width: 70px;
+   height: 2px;
+   background-color: var(--main-Color);
+   top: 50%;
+   transform: translateY(-50%);
+}
+
+.title-metodo-pago::after {
+   right: -75px;
+}
+
+.title-metodo-pago::before {
+   left: -75px;
+}
+.footer-last-step {
+   width: 100%;
+   padding: 1rem 0rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+.total-last {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 0.3rem 0.6rem;
+   margin-left: 10px;
+   border-radius: 2px;
+}
+
+.total-title-last {
+   font-size: 0.9rem;
+   color: #4e4e4e;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.total-price-last {
+   font-size: 0.96rem;
+   color: #2d2d2d;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#reDirecToWsp {
+   background-color: var(--main-Color);
+   margin-right: 10px;
+   width: 60%;
+   border-radius: 4px;
+   color: white;
+   padding-bottom: 0.1rem;
+   border: none;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.delevery-last {
+   padding: 0.6rem 0;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.delevery-last input {
+   padding: 0.4rem .5rem;
+   width: 90%;
+   margin-top: 10px;
+   border: solid 1px rgba(171, 171, 171, 0.678);
+   border-radius: 2px;
+}
+.number-dpto {
+   display: flex;
+   justify-content: space-between;
+   width: 90%;
+   gap: 10px;
+}
+.number-house {
+   max-width: 30%;
+}
+.dpto {
+   width: 70%;
+}
+
+.price-envio {
+   font-size: 0.9rem;
+   color: rgb(61, 61, 61);
+   padding-top: 0.5rem;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif      ;
+}
  /*FOOTER */
 
  .footer {
@@ -984,7 +1182,7 @@ color: white;
    right: 0;
    bottom: 0;
    background-color: rgba(0, 0, 0, 0.43);
-   z-index: 900;
+   z-index: 940;
 }
 
 .overlay.overlay-active {

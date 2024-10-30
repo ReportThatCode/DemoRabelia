@@ -213,6 +213,12 @@ document.addEventListener("click", (e) => {
     const hamburgerIcon = e.target.closest(".menu-hamburger");
     
 
+    if(e.target.matches(".close-last")){
+       document.querySelector(".modal-last-step").style.display = "none";
+       document.querySelector(".overlay").classList.remove("overlay-active");
+       document.querySelector("body").classList.remove("scroll-none");
+       document.querySelector(".carrito").style.zIndex = 989;
+    }
 
     if(hamburgerIcon){
         document.querySelector(".comp-header").classList.toggle("header-is-active");
@@ -239,16 +245,21 @@ document.addEventListener("click", (e) => {
     }
 
     if(e.target.matches("#final-pedido")){
-
         const pedidoName = document.querySelector("#nombre-pedido");
-        console.log(pedidoName)
-        console.log(pedidoName.value)
+
         if(pedidoName.value === "") {
             document.querySelector(".name-error").style.display = "Flex"
            return setTimeout(()=>{
                 document.querySelector(".name-error").style.display = "none"
             },3000)
         }
+
+       document.querySelector(".modal-last-step").style.display = "flex";
+       document.querySelector(".carritoProd").classList.remove("openCart");
+       document.querySelector(".overlay").classList.add("overlay-active")
+       document.querySelector("body").classList.add("scroll-none");
+       document.querySelector(".carrito").style.zIndex = 300;
+
 
        if(document.querySelector("#Envio").checked){
         console.log("MODAL DE ENVIOOO")
