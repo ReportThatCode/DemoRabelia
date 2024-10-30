@@ -1059,13 +1059,46 @@ color: white;
    opacity: 0.9;
    font-size: 1.1rem;
 }
+.content-input-name {
+   position: relative;
+}
 #nombre-pedido {
    padding: 0.4rem 0.4rem;
    width: 130px;
    border: solid 1px rgba(0, 0, 0, 0.345);
    border-radius: 4px;
+   position: relative;
+   display: block;
 }
 
+.name-error {
+ display: none;
+ justify-content: center;
+ align-items: center;
+ border-radius: 2px;
+ width: 100px;
+ height: 25px;
+ background-color: rgb(217, 41, 41);
+ position: absolute;
+ top: -30px;
+ left: -50px;
+ font-size: 0.73rem;
+ color: white;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ padding-bottom: 0.1rem;
+ z-index: 900;
+}
+.name-error::after {
+   content: "";
+   position: absolute;
+   right: 10px;
+   bottom: -5px;
+   background-color: rgb(217, 41, 41);
+   width: 10px;
+   height: 10px;
+   transform: rotate(130deg);
+   z-index: 800;
+}
 /*PRODUCTO CARRITO*/ 
 
 .carrito-item {

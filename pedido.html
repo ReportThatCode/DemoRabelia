@@ -464,8 +464,10 @@
         </div>
         <p class="copyright">Copyright 2023. Rabelia . Todos Los Derechos Reservados</p>
        </footer>
+
+
         <div id="myModal">
-          <div class="modal">
+          <div class="modal" style="display: none;">
             <span id="close">x</span>
             <div class="modal-content"> 
                 <div class="modal-header">
@@ -535,7 +537,10 @@
         <article class="cart">
         <div class="carrito-header">
             <span class="carrito-header-title">Tu pedido:</span>
-            <input type="text" placeholder="Nombre..." id="nombre-pedido">
+            <div class="content-input-name">
+            <input type="text" placeholder="Nombre..." id="nombre-pedido" class="name-pedido">
+            <p class="name-error">Ingrese Nombre</p>
+            </div>
         </div>
         <div class="carrito-body">
             <div class="slide-carrito">

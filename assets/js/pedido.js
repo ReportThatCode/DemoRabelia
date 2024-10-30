@@ -12,7 +12,6 @@ let cantidadSabores = 4;
 fetch("header.html")
 .then(res => res.text())
 .then(data =>{
-console.log(data)
 document.querySelector("#placeholder-header").outerHTML = data;
 })
 
@@ -241,13 +240,33 @@ document.addEventListener("click", (e) => {
 
     if(e.target.matches("#final-pedido")){
 
-        const mensaje = encodeURIComponent(generarListaDeProductos(shoppingCart));
-        const numeroTelefono = "5491159740964"; // El número de WhatsApp en formato internacional (sin +)
-        const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensaje}`;
+        const pedidoName = document.querySelector("#nombre-pedido");
+        console.log(pedidoName)
+        console.log(pedidoName.value)
+        if(pedidoName.value === "") {
+            document.querySelector(".name-error").style.display = "Flex"
+           return setTimeout(()=>{
+                document.querySelector(".name-error").style.display = "none"
+            },3000)
+        }
+
+       if(document.querySelector("#Envio").checked){
+        console.log("MODAL DE ENVIOOO")
+       }
+       else {
+        console.log("directo al wsp")
+       }
+       
+
+
+
+        // const mensaje = encodeURIComponent(generarListaDeProductos(shoppingCart));
+        // const numeroTelefono = "5491159740964"; // El número de WhatsApp en formato internacional (sin +)
+        // const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensaje}`;
         
-        window.location.href = enlaceWhatsApp;
-        console.log(enlaceWhatsApp);  
-        console.log(mensaje)
+        // window.location.href = enlaceWhatsApp;
+        // console.log(enlaceWhatsApp);  
+        // console.log(mensaje)
 
     }
     //evento para Get Prod / id / categoria
