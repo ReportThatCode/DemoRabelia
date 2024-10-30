@@ -1,6 +1,6 @@
 import { destacado , combos , productos ,sabores} from "../../data/productos.js";
 
-
+document.querySelector(".delevery-last").style.display = "none"
 
 const contentLinks = document.querySelectorAll(".content-links"),
 containerAcordion = document.querySelectorAll(".content-prod")
@@ -245,14 +245,14 @@ document.addEventListener("click", (e) => {
     }
 
     if(e.target.matches("#final-pedido")){
-        const pedidoName = document.querySelector("#nombre-pedido");
-
-        if(pedidoName.value === "") {
-            document.querySelector(".name-error").style.display = "Flex"
-           return setTimeout(()=>{
-                document.querySelector(".name-error").style.display = "none"
-            },3000)
-        }
+        
+        //const pedidoName = document.querySelector("#nombre-pedido");
+        // if(pedidoName.value === "") {
+        //     document.querySelector(".name-error").style.display = "Flex"
+        //    return setTimeout(()=>{
+        //         document.querySelector(".name-error").style.display = "none"
+        //     },3000)
+        // }
 
        document.querySelector(".modal-last-step").style.display = "flex";
        document.querySelector(".carritoProd").classList.remove("openCart");
@@ -841,6 +841,39 @@ document.addEventListener("change",(e)=>{
     contentReDirec.style.display = "none";
     resetDisabled();
 
+ 
+    
+    let methodPay = document.querySelector("#type-pay").value;
+    
+    if(e.target.matches("#type-pay")){
+        return methodPayFunction(methodPay)
+    }
+
+
+    if(e.target.matches("#Local-last")){
+        return document.querySelector(".delevery-last").style.display = "none"
+       }
+    
+       if(e.target.matches("#Envio-last")){
+        return document.querySelector(".delevery-last").style.display = "flex"
+       }
+
+
+    if(document.querySelector("#muniz").checked && e.target.matches("#Envio")){
+        document.querySelector(".delevery-last").style.display = "flex"
+        document.querySelector("#Envio-last").checked = true;  
+    }
+
+    if(document.querySelector("#muniz").checked && e.target.matches("#Local")){
+        document.querySelector(".delevery-last").style.display = "none"
+        document.querySelector("#Local-last").checked = true;
+    }
+
+
+   
+
+
+
     if(document.querySelector("#muniz").checked && document.querySelector("#Envio").checked){      
         if(document.querySelector(".overlay-item")){ return}
         allNotSend.forEach(el => {  
@@ -849,9 +882,9 @@ document.addEventListener("change",(e)=>{
             overlayItem.classList.add("overlay-item")
             el.appendChild(overlayItem);
             el.classList.add("all-items-disabled");
+            document.querySelector(".delevery-last").style.display = "flex"
         })
     }
-
     if(document.querySelector("#muniz").checked){
         document.querySelector(".main").style.display = "block";
     }
@@ -902,4 +935,10 @@ function resetDisabled(){
     })
 
     }
+}
+
+function methodPayFunction (value) {
+    if(value === "Efectivo"){ return document.querySelector("#monto-abonar").style.display = "block"}
+    if(value === "Transferencia"){ return document.querySelector("#monto-abonar").style.display = "none"}
+    if(value === "DebitoOrCredito"){ return document.querySelector("#monto-abonar").style.display = "none"}
 }
