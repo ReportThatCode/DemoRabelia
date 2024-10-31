@@ -1010,35 +1010,32 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
         let armadoMensaje = generarListaDeProductos(shoppingCart)
 
         if(envioOrLocal === "envio"){
-            armadoMensaje += `\n\nCalle: ${calle}\n` 
+            armadoMensaje += "\n"
+            armadoMensaje += `Calle: ${calle}\n`
             armadoMensaje += `Numero: ${casaNumero}\n`
             if(dpto !== ""){ armadoMensaje += `Dpto: ${dpto}\n`}
             armadoMensaje += `Localidad: ${localidad}\n`
             armadoMensaje += `Envio: $700\n`
-            armadoMensaje += `Total ${finalPrice}\n`
             if(typePago === "Efectivo"){
             armadoMensaje += `Paga Con: ${monto} (${typePago}) \n`
             }
             if(typePago !== "Efectivo"){armadoMensaje += `Paga Con: ${typePago} \n`}
+            armadoMensaje += `Total ${finalPrice}\n`
             armadoMensaje += `Nombre: ${nombre}\n`
 
             mensajeFinal = encodeURIComponent(armadoMensaje); 
         } 
 
         if(envioOrLocal === "local"){
-
-            armadoMensaje += `\n\nTotal ${finalPrice}\n`
+            armadoMensaje += "\n"
             if(typePago === "Efectivo"){
             armadoMensaje += `Paga Con: ${monto} (${typePago}) \n`}
             if(typePago !== "Efectivo"){armadoMensaje += `Paga Con: ${typePago} \n`}
+            armadoMensaje += `Total ${finalPrice}\n`
             armadoMensaje += `Nombre: ${nombre}\n`
 
             mensajeFinal = encodeURIComponent(armadoMensaje); 
         } 
-
-
-
-
 
 
         //mensajeFinal = encodeURIComponent(generarListaDeProductos(shoppingCart));
