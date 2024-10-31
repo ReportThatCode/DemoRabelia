@@ -600,7 +600,7 @@
                 <option value="Transferencia">Transferencia</option>
                 <option value="DebitoOrCredito">Tarjeta Debito / Credito</option>
             </select>
-            <div class="avisoRequired monto-required"><input type="number" placeholder="Monto con el que abona" id="monto-abonar"></div>
+            <div class="avisoRequired monto-required"><input type="number" placeholder="Monto con el que abona" id="monto-abonar" required></div>
          </div>
          <div class="content-input-name">
             <p class="title-name-last">Nombre del pedido</p>
@@ -610,7 +610,7 @@
          <div class="footer-last-step">
             <div class="total-last">
                 <span class="total-title-last">Total:</span>
-                <span class="total-price-last">$12500</span>
+                <span class="total-price-last"><span>$</span><span class="final-price">12500</span></span>
             </div>
             
             <button id="reDirecToWsp">Finalizar pedido</button>

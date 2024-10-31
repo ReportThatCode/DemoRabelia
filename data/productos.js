@@ -70,7 +70,7 @@ export const destacado = [
         hasOptions: true,
         withOptions:[
         { name: "Muffin de vainilla", price: 2900},
-        { name: "Muffin de vainilla y chips", price: 300},
+        { name: "Muffin de vainilla y chips", price: 3000},
         { name: "Muffin de chocolate", price: 9100},
         { name: "Muffin de frambuesa", price: 3300}
     ]

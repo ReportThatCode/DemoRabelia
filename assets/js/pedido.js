@@ -5,7 +5,7 @@ document.querySelector(".delevery-last").style.display = "none"
 const contentLinks = document.querySelectorAll(".content-links"),
 containerAcordion = document.querySelectorAll(".content-prod")
 
-
+let finalPrice;
 let allRequireds = document.querySelectorAll("[required]");
 
 let cantidadSabores = 4;
@@ -55,7 +55,6 @@ combos.forEach((el)=>{
     if(el.envio === false){
         $templateCombo.querySelector(".container-item-combo").dataset.envio = "false" 
     }
-
 
 
     $templateCombo.querySelector(".container-item-combo").dataset.all = "allItems";
@@ -255,15 +254,7 @@ document.addEventListener("click", (e) => {
        document.querySelector("body").classList.add("scroll-none");
        document.querySelector(".carrito").style.zIndex = 300;
 
-       
-        // const mensaje = encodeURIComponent(generarListaDeProductos(shoppingCart));
-        // const numeroTelefono = "5491159740964"; // El número de WhatsApp en formato internacional (sin +)
-        // const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensaje}`;
-        
-        // window.location.href = enlaceWhatsApp;
-        // console.log(enlaceWhatsApp);  
-        // console.log(mensaje)
-
+       document.querySelector(".final-price").textContent = finalPrice;
     }
 
 
@@ -273,16 +264,14 @@ document.addEventListener("click", (e) => {
         numberHouse = document.querySelector(".number-house").value,
         dpto = document.querySelector(".dpto").value,
         localidad = document.querySelector(".localidad").value,
-        conCuantoPaga = document.querySelector("#monto-abonar").value,
+        conCuantoPaga = document.querySelector("#monto-abonar"),
         nombrePedido = document.querySelector("#nombre-pedido"),
         choisedMethodPay = document.querySelector("#type-pay");
 
        if(document.querySelector("#Envio-last").checked){
-        if(street && numberHouse && localidad && nombrePedido.value){
-            return console.log(street,numberHouse,localidad,nombrePedido.value,choisedMethodPay.value)
-        }
-           else {
-            allRequireds.forEach(input => {
+        
+
+        allRequireds.forEach(input => {
 
             let parentInput = input.parentElement;
 
@@ -291,16 +280,37 @@ document.addEventListener("click", (e) => {
                parentInput.classList.add("requiredActive");
             }
          })
-        }
 
+        if(choisedMethodPay.value === "Efectivo" && conCuantoPaga.value === "" ){
+            conCuantoPaga.required = true;
+            allRequireds = document.querySelectorAll("[required]");
+          return  conCuantoPaga.parentElement.classList.add("requiredActive");
+            }
+
+
+        if(street && numberHouse && localidad && nombrePedido.value){
+            return messageToWsp("envio",street,numberHouse,dpto,localidad,choisedMethodPay.value,conCuantoPaga.value,nombrePedido.value); 
+            //(calle,casaNumero,dpto,localidad,typePago,monto,nombre)
+            //console.log(street,numberHouse,localidad,nombrePedido.value,choisedMethodPay.value)
+        }
 
       }
        if(document.querySelector("#Local-last").checked){
-        nombrePedido.parentElement.classList.remove("requiredActive")
+        conCuantoPaga.parentElement.classList.remove("requiredActive");
+        nombrePedido.parentElement.classList.remove("requiredActive");
+
+        if(choisedMethodPay.value === "Efectivo" && conCuantoPaga.value === "" ){
+        conCuantoPaga.required = true;
+        allRequireds = document.querySelectorAll("[required]");
+        conCuantoPaga.parentElement.classList.add("requiredActive");
+        }
         if(nombrePedido.value === ""){
            return nombrePedido.parentElement.classList.add("requiredActive");
         }
-        return console.log(nombrePedido.value, choisedMethodPay.value);
+        
+        return messageToWsp("local",street,numberHouse,dpto,localidad,choisedMethodPay.value,conCuantoPaga.value,nombrePedido.value)
+        
+        //console.log(nombrePedido.value, choisedMethodPay.value);
        }
     } 
 
@@ -415,7 +425,6 @@ if(typeProd === "cafes"){
     }
 }
 
-
 /* OPEN AND CLOSE MODAL*/
 function openModal(prod){
 
@@ -492,15 +501,12 @@ else {
 
 }
 
-
 function closeModal(){
     document.querySelector("#myModal").style.display = "none";
     document.querySelector("body").classList.remove("scroll-none");
 }
+
 closeModal()
-
-
-
 
 function hearModal(e){
   const btnUnidades = document.querySelectorAll(".btn-unidades");
@@ -647,7 +653,6 @@ function hearModal(e){
   
 }
 
-
 function CreabeInputSabor(type,sabores, containerOptionss){
 
        const contentSabores = document.createElement("li");
@@ -706,7 +711,6 @@ function hearCheckbox(maximo){
         }  
     })
 }
-
 
 //id: getProd.id, img: getProd.img, title: getProd.title, descripcion: getProd.descripcion, options: getProd.withOptions
 function openModalOrPush(objeto){
@@ -784,23 +788,16 @@ document.querySelector(".slide-carrito").appendChild($fragmenCarrito);
  actualizarCarrito();
 }
 
-
-
-
-
 function actualizarCarrito (){
 const total = document.querySelector(".carrito-final-price")
-
 let acumulador = 0;
-
 shoppingCart.forEach(el => {
 acumulador += el.cantidad * el.price    
 });
+finalPrice = acumulador;
 total.textContent = "$" + acumulador;
 carritoLenght();
 }
-
-
 
 containerAcordion.forEach(el => {
     el.addEventListener("click",(e)=>{
@@ -815,25 +812,6 @@ containerAcordion.forEach(el => {
     })
 });
 
-
-// REDIRECCION A WHATSAPP
-
-function generarListaDeProductos(productos) {
-    let lista = "Lista de productos:\n\n";
-    
-    productos.forEach((producto) => {
-
-      lista += `${producto.title}\n`;
-      lista += `Precio: $${producto.price}\n`;
-      lista += `cantidad: ${producto.cantidad}\n`;
-      console.log(productos.descripcion)
-      if((typeof(producto.descripcion) === "string") || (typeof(producto.descripcion) === "object")){
-      lista += `Descripción: ${producto.descripcion}\n\n`;
-      }      
-    });
-    
-    return lista;
-  }
 
 function carritoLenght(){  
     let countProducts = shoppingCart.length
@@ -876,6 +854,7 @@ document.addEventListener("change",(e)=>{
 
 
     if(e.target.matches("#Local-last")){
+        document.querySelector(".final-price").textContent = finalPrice;
         allRequireds.forEach(input => {
             input.value = ""
             let parentInput = input.parentElement;
@@ -885,6 +864,7 @@ document.addEventListener("change",(e)=>{
        }
     
        if(e.target.matches("#Envio-last")){
+        document.querySelector(".final-price").textContent = finalPrice + 700;
         allRequireds.forEach(input => {
             input.value = ""
             let parentInput = input.parentElement;
@@ -903,10 +883,6 @@ document.addEventListener("change",(e)=>{
         document.querySelector(".delevery-last").style.display = "none"
         document.querySelector("#Local-last").checked = true;
     }
-
-
-   
-
 
 
     if(document.querySelector("#muniz").checked && document.querySelector("#Envio").checked){      
@@ -973,17 +949,111 @@ function resetDisabled(){
 }
 
 function methodPayFunction (value) {
-     document.querySelector(".monto-required").classList.remove("requiredActive")
-    if(value === "Efectivo"){ return document.querySelector("#monto-abonar").style.display = "block"}
-    if(value === "Transferencia"){ return document.querySelector("#monto-abonar").style.display = "none"}
-    if(value === "DebitoOrCredito"){ return document.querySelector("#monto-abonar").style.display = "none"}
+     document.querySelector(".monto-required").classList.remove("requiredActive");
+    if(value === "Efectivo"){ 
+        document.querySelector("#monto-abonar").required = true;
+        allRequireds = document.querySelectorAll("[required]");
+        return document.querySelector("#monto-abonar").style.display = "block"}
+    if(value === "Transferencia"){
+         document.querySelector("#monto-abonar").required = false;
+         allRequireds = document.querySelectorAll("[required]");
+         return document.querySelector("#monto-abonar").style.display = "none"}
+    if(value === "DebitoOrCredito"){
+        document.querySelector("#monto-abonar").required = false;
+        allRequireds = document.querySelectorAll("[required]");
+        return document.querySelector("#monto-abonar").style.display = "none"}
 }
 
 //LOGICA LAST FORM TO SEND WSP
 
+
+
+// REDIRECCION A WHATSAPP
+
+function generarListaDeProductos(productos) {
+    let lista = "Buenas RABELIA este es mi pedido:\n\n";
+    
+    productos.forEach((producto) => {
+
+      lista += `${producto.title}\n`;
+      lista += `Precio: $${producto.price}\n`;
+      lista += `cantidad: ${producto.cantidad}\n`;
+      if((typeof(producto.descripcion) === "string") || (typeof(producto.descripcion) === "object")){
+      lista += `Descripción: ${producto.descripcion}\n\n`;
+      }      
+    });
+    
+
+    return lista;
+  }
+
 // let allRequireds = document.querySelectorAll("[required]");
 // console.log(allRequireds)
 
-function messageToWsp(){
+
+function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,monto,nombre){
+
+        let mensajeFinal;
+        console.log("FUNCTIOON MESSAGE TO WSP")
+        console.log(envioOrLocal)
+        console.log(calle)
+        console.log(casaNumero)
+        console.log(dpto)
+        console.log(localidad)
+        console.log(typePago)
+        console.log(monto)
+        console.log(nombre)
+
+       
+        
+
+        let armadoMensaje = generarListaDeProductos(shoppingCart)
+
+        if(envioOrLocal === "envio"){
+            armadoMensaje += `Calle: ${calle}\n` 
+            armadoMensaje += `Numero: ${casaNumero}\n`
+            if(dpto !== ""){ armadoMensaje += `Dpto: ${dpto}\n`}
+            armadoMensaje += `Localidad: ${localidad}\n`
+            armadoMensaje += `Total ${finalPrice}\n`
+            if(typePago === "Efectivo"){
+            armadoMensaje += `Paga Con: ${monto} (${typePago}) \n`
+            }
+            if(typePago !== "Efectivo"){armadoMensaje += `Paga Con: ${typePago} \n`}
+            armadoMensaje += `Nombre: ${nombre}\n`
+
+            mensajeFinal = encodeURIComponent(armadoMensaje); 
+        } 
+
+        if(envioOrLocal === "local"){
+
+            armadoMensaje += `Total ${finalPrice}\n`
+            if(typePago === "Efectivo"){
+            armadoMensaje += `Paga Con: ${monto} (${typePago}) \n`}
+            if(typePago !== "Efectivo"){armadoMensaje += `Paga Con: ${typePago} \n`}
+            armadoMensaje += `Nombre: ${nombre}\n`
+
+            mensajeFinal = encodeURIComponent(armadoMensaje); 
+        } 
+
+
+
+
+
+
+        //mensajeFinal = encodeURIComponent(generarListaDeProductos(shoppingCart));
+        
+         const numeroTelefono = "5491159740964", // El número de WhatsApp en formato internacional (sin +)
+         enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensajeFinal}`;
+         
+         return window.location.href = enlaceWhatsApp;
+
+        //console.log(enlaceWhatsApp);  
+        //console.log(mensaje)
+
+
+
+
+
+
 
 }
