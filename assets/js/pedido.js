@@ -5,6 +5,9 @@ document.querySelector(".delevery-last").style.display = "none"
 const contentLinks = document.querySelectorAll(".content-links"),
 containerAcordion = document.querySelectorAll(".content-prod")
 
+
+let allRequireds = document.querySelectorAll("[required]");
+
 let cantidadSabores = 4;
 
 // DESTACADO
@@ -245,14 +248,6 @@ document.addEventListener("click", (e) => {
     }
 
     if(e.target.matches("#final-pedido")){
-        
-        //const pedidoName = document.querySelector("#nombre-pedido");
-        // if(pedidoName.value === "") {
-        //     document.querySelector(".name-error").style.display = "Flex"
-        //    return setTimeout(()=>{
-        //         document.querySelector(".name-error").style.display = "none"
-        //     },3000)
-        // }
 
        document.querySelector(".modal-last-step").style.display = "flex";
        document.querySelector(".carritoProd").classList.remove("openCart");
@@ -260,17 +255,7 @@ document.addEventListener("click", (e) => {
        document.querySelector("body").classList.add("scroll-none");
        document.querySelector(".carrito").style.zIndex = 300;
 
-
-       if(document.querySelector("#Envio").checked){
-        console.log("MODAL DE ENVIOOO")
-       }
-       else {
-        console.log("directo al wsp")
-       }
        
-
-
-
         // const mensaje = encodeURIComponent(generarListaDeProductos(shoppingCart));
         // const numeroTelefono = "5491159740964"; // El número de WhatsApp en formato internacional (sin +)
         // const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensaje}`;
@@ -280,6 +265,46 @@ document.addEventListener("click", (e) => {
         // console.log(mensaje)
 
     }
+
+
+    if(e.target.matches("#reDirecToWsp")){
+
+        let street = document.querySelector(".street").value,
+        numberHouse = document.querySelector(".number-house").value,
+        dpto = document.querySelector(".dpto").value,
+        localidad = document.querySelector(".localidad").value,
+        conCuantoPaga = document.querySelector("#monto-abonar").value,
+        nombrePedido = document.querySelector("#nombre-pedido"),
+        choisedMethodPay = document.querySelector("#type-pay");
+
+       if(document.querySelector("#Envio-last").checked){
+        if(street && numberHouse && localidad && nombrePedido.value){
+            return console.log(street,numberHouse,localidad,nombrePedido.value,choisedMethodPay.value)
+        }
+           else {
+            allRequireds.forEach(input => {
+
+            let parentInput = input.parentElement;
+
+            parentInput.classList.remove("requiredActive");
+            if(input.value === ""){
+               parentInput.classList.add("requiredActive");
+            }
+         })
+        }
+
+
+      }
+       if(document.querySelector("#Local-last").checked){
+        nombrePedido.parentElement.classList.remove("requiredActive")
+        if(nombrePedido.value === ""){
+           return nombrePedido.parentElement.classList.add("requiredActive");
+        }
+        return console.log(nombrePedido.value, choisedMethodPay.value);
+       }
+    } 
+
+    
     //evento para Get Prod / id / categoria
     if (itemMenu) {
        const prodID = itemMenu.dataset.id;  
@@ -841,8 +866,8 @@ document.addEventListener("change",(e)=>{
     contentReDirec.style.display = "none";
     resetDisabled();
 
- 
-    
+    if(e.target.matches("#monto-abonar") || e.target.matches("#nombre-pedido")){return}
+
     let methodPay = document.querySelector("#type-pay").value;
     
     if(e.target.matches("#type-pay")){
@@ -851,13 +876,23 @@ document.addEventListener("change",(e)=>{
 
 
     if(e.target.matches("#Local-last")){
+        allRequireds.forEach(input => {
+            input.value = ""
+            let parentInput = input.parentElement;
+            parentInput.classList.remove("requiredActive");
+        }) 
         return document.querySelector(".delevery-last").style.display = "none"
        }
     
        if(e.target.matches("#Envio-last")){
+        allRequireds.forEach(input => {
+            input.value = ""
+            let parentInput = input.parentElement;
+            parentInput.classList.remove("requiredActive");
+        }) 
         return document.querySelector(".delevery-last").style.display = "flex"
        }
-
+      
 
     if(document.querySelector("#muniz").checked && e.target.matches("#Envio")){
         document.querySelector(".delevery-last").style.display = "flex"
@@ -938,7 +973,17 @@ function resetDisabled(){
 }
 
 function methodPayFunction (value) {
+     document.querySelector(".monto-required").classList.remove("requiredActive")
     if(value === "Efectivo"){ return document.querySelector("#monto-abonar").style.display = "block"}
     if(value === "Transferencia"){ return document.querySelector("#monto-abonar").style.display = "none"}
     if(value === "DebitoOrCredito"){ return document.querySelector("#monto-abonar").style.display = "none"}
+}
+
+//LOGICA LAST FORM TO SEND WSP
+
+// let allRequireds = document.querySelectorAll("[required]");
+// console.log(allRequireds)
+
+function messageToWsp(){
+
 }

@@ -905,16 +905,14 @@ background-color: green;
 
 #monto-abonar {
    padding: 0.4rem .5rem;
-   width: 90%;
-   margin-top: 15px;
+   width: 100%;
    border: solid 1px rgba(171, 171, 171, 0.678);
 }
-
-
 
 .title-metodo-pago {
    font-size: 1rem;
    padding: 0.5rem 0;
+   margin-top: 0.9rem;
    position: relative;
    color: var(--main-Color);
    font-weight: bold;
@@ -979,31 +977,70 @@ background-color: green;
 }
 
 .delevery-last {
-   padding: 0.6rem 0;
+   padding-top: 0.6rem;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
 }
-
-.delevery-last input {
-   padding: 0.4rem .5rem;
+.avisoRequired {
    width: 90%;
    margin-top: 15px;
+   position: relative;
+}
+
+.requiredActive::before {
+   content: "requerido";
+   position: absolute;
+   right: -5px;
+   top: -20px;
+   background-color: rgb(202, 11, 11);
+   color: white;
+   font-size: 0.7rem;
+   padding: 0.2rem .5rem;
+   text-wrap: nowrap;
+   z-index: 200;
+   border-radius: 2px;
+   padding-bottom: 0.27rem;
+}
+
+.requiredActive::after {
+content: "";
+position: absolute;
+   right: 30px;
+   top: -12px;
+   background-color: rgb(202, 11, 11);
+   width: 15px;
+   height: 15px;
+   transform: rotate(40deg);
+   z-index: 130   ;
+}
+.delevery-last input {
+   width: 100%;
+   padding: 0.4rem .5rem;
    border: solid 1px rgba(171, 171, 171, 0.678);
    border-radius: 2px;
 }
 .number-dpto {
    display: flex;
    justify-content: space-between;
+   align-items: center;
    width: 90%;
    gap: 10px;
 }
+.number-house-div {
+   width: 30%;
+}
 .number-house {
-   max-width: 30%;
+   max-width: 100%;
+}
+.div-depto {
+   margin-top: 15px;
 }
 .dpto {
    width: 70%;
+   display: block;
+   padding: 0.3rem 0.6rem;
 }
 
 .price-envio {
@@ -1053,11 +1090,12 @@ background-color: green;
 
 #nombre-pedido {
    padding: 0.4rem .5rem;
-   width: 90%;
-   margin-top: 10px;
+   width: 100%;
    border: solid 1px rgba(171, 171, 171, 0.678);
    border-radius: 2px;
 }
+
+
 
 
  /*FOOTER */

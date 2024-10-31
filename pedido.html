@@ -584,13 +584,12 @@
             <label for="Envio-last" class="type-envio">Delevery</label>
          </div>
             <div class="delevery-last">
-
-                <input type="text" placeholder="Calle">
+                <div class="avisoRequired "><input type="text" placeholder="Calle" required class="street"></div>
                 <div class="number-dpto">
-                    <input type="number" placeholder="Numero" class="number-house">
-                    <input type="text" placeholder="Dpto (Optional)" class="dpto">
+                    <div class="avisoRequired  number-house-div"><input  type="number" placeholder="Numero" class="number-house" required> </div>
+                    <div class="div-depto"><input type="text" placeholder="Dpto (Optional)" class="dpto"></div>
                 </div>
-                <input type="text" placeholder="Localidad">
+                <div class="avisoRequired "><input type="text" placeholder="Localidad" class="localidad" required> </div>
                 <p class="price-envio">Costo envio: <span class="price-send">700$</span></p>
             </div>
          
@@ -601,11 +600,11 @@
                 <option value="Transferencia">Transferencia</option>
                 <option value="DebitoOrCredito">Tarjeta Debito / Credito</option>
             </select>
-            <input type="number" placeholder="Monto con el que abona" id="monto-abonar">
+            <div class="avisoRequired monto-required"><input type="number" placeholder="Monto con el que abona" id="monto-abonar"></div>
          </div>
          <div class="content-input-name">
             <p class="title-name-last">Nombre del pedido</p>
-            <input type="text" placeholder="Nombre..." id="nombre-pedido" class="name-pedido">
+            <div class="avisoRequired"><input type="text" placeholder="Nombre..." id="nombre-pedido" class="name-pedido" required></div>
             </div>
 
          <div class="footer-last-step">
