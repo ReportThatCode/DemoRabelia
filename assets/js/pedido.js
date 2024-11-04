@@ -10,6 +10,7 @@ let allRequireds = document.querySelectorAll("[required]");
 
 let cantidadSabores = 4;
 
+
 // DESTACADO
 
 fetch("header.html")
@@ -56,8 +57,10 @@ combos.forEach((el)=>{
         $templateCombo.querySelector(".container-item-combo").dataset.envio = "false" 
     }
 
+    if(el.title !== "Combo Helado"){
+        $templateCombo.querySelector(".container-item-combo").dataset.all = "allItems";
+    }
 
-    $templateCombo.querySelector(".container-item-combo").dataset.all = "allItems";
     $templateCombo.querySelector(".title-prod-combo").textContent = el.title;
     $templateCombo.querySelector(".descripcion-prod-combo").textContent = el.descripcion;
     $templateCombo.querySelector(".item-price").textContent = "$" + el.price;
@@ -146,7 +149,7 @@ isFavorito.textContent = ""
 isFavorito.classList.remove("active-fav");
 
 if(item.isFav){
-isFavorito.textContent = "Favoritos"
+isFavorito.innerHTML = `<i class="fa-regular fa-heart fav-prod"></i>Favoritos`
 isFavorito.classList.add("active-fav");
 } 
 
@@ -252,9 +255,13 @@ document.addEventListener("click", (e) => {
        document.querySelector(".carritoProd").classList.remove("openCart");
        document.querySelector(".overlay").classList.add("overlay-active")
        document.querySelector("body").classList.add("scroll-none");
-       document.querySelector(".carrito").style.zIndex = 300;
-
+       document.querySelector(".carrito").style.zIndex = 300;   
        document.querySelector(".final-price").textContent = finalPrice;
+
+       if(document.querySelector("#Envio-last").checked){
+        document.querySelector(".final-price").textContent = finalPrice + 700;
+   }
+
     }
 
 
@@ -267,7 +274,6 @@ document.addEventListener("click", (e) => {
         conCuantoPaga = document.querySelector("#monto-abonar"),
         nombrePedido = document.querySelector("#nombre-pedido"),
         choisedMethodPay = document.querySelector("#type-pay");
-
        if(document.querySelector("#Envio-last").checked){
         
 
@@ -431,6 +437,8 @@ function openModal(prod){
 document.querySelector("#myModal").style.display = "block";
 document.querySelector(".modal-header").style.display = "block"
 document.querySelector("body").classList.add("scroll-none")
+document.querySelector(".modal-content").scrollTop = 0;
+
 const {id,img,title,descripcion,withOptions,price} = prod;
 //variables modal
 const imgModal = document.querySelector(".modal-img"),
@@ -844,6 +852,12 @@ document.addEventListener("change",(e)=>{
     contentReDirec.style.display = "none";
     resetDisabled();
 
+
+    const mainLocal = document.querySelector("#Local"),
+    mainEnvio = document.querySelector("#Envio"),
+    secondLocal = document.querySelector("#Local-last"),
+    secondEnvio = document.querySelector("#Envio-last")
+
     if(e.target.matches("#monto-abonar") || e.target.matches("#nombre-pedido")){return}
 
     let methodPay = document.querySelector("#type-pay").value;
@@ -852,8 +866,17 @@ document.addEventListener("change",(e)=>{
         return methodPayFunction(methodPay)
     }
 
+       if(e.target === mainLocal && mainLocal.checked){
+        secondLocal.checked = true
+       }
 
-    if(e.target.matches("#Local-last")){
+       if(e.target === mainEnvio && mainEnvio.checked){
+        secondEnvio.checked = true
+       }
+
+
+       if(secondLocal.checked){
+        document.querySelector("#Local").checked = true
         document.querySelector(".final-price").textContent = finalPrice;
         allRequireds.forEach(input => {
             input.value = ""
@@ -863,7 +886,8 @@ document.addEventListener("change",(e)=>{
         return document.querySelector(".delevery-last").style.display = "none"
        }
     
-       if(e.target.matches("#Envio-last")){
+       if(secondEnvio.checked){
+        document.querySelector("#Envio").checked = true
         document.querySelector(".final-price").textContent = finalPrice + 700;
         allRequireds.forEach(input => {
             input.value = ""
@@ -874,15 +898,6 @@ document.addEventListener("change",(e)=>{
        }
       
 
-    if(document.querySelector("#muniz").checked && e.target.matches("#Envio")){
-        document.querySelector(".delevery-last").style.display = "flex"
-        document.querySelector("#Envio-last").checked = true;  
-    }
-
-    if(document.querySelector("#muniz").checked && e.target.matches("#Local")){
-        document.querySelector(".delevery-last").style.display = "none"
-        document.querySelector("#Local-last").checked = true;
-    }
 
 
     if(document.querySelector("#muniz").checked && document.querySelector("#Envio").checked){      

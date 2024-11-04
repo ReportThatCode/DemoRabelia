@@ -8,7 +8,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
 }
 body {
     position: relative;
@@ -545,6 +544,7 @@ color: white;
  .options {
    font-size: 0.6rem;
    padding: 0.2rem 0.5rem;
+   padding-bottom: 0.25rem;
    border-radius: 2px;
    font-family: monospace; 
    margin-left: 0.3rem;
@@ -559,8 +559,8 @@ color: white;
    position: absolute;
    right: 90px;   
    top: -8px;
-   border-radius: 4px;
-   padding: 0.1rem 0.5rem 0.15rem;
+   border-radius: 2px;
+   padding: 0.1rem 0.25rem 0.15rem;
    height: 20px;
    display: flex;
    justify-content: center;
@@ -570,9 +570,38 @@ color: white;
 }
 
 .active-fav {
-   background-color: rgba(243, 45, 45, 0.951);
+   background-color: rgb(230, 31, 31);
    color: rgb(255, 252, 252);
+   border: solid 1px rgb(238, 43, 43);
 }
+
+.fav-prod {
+font-size: 0.66rem;
+margin-top: 2px;
+margin-right: 4px;
+}
+
+.active-fav::after , .active-fav::before {
+   content: "";
+   width: 7px;
+   height: 80%;
+   position: absolute;
+   top: 50%;
+   background-color: rgba(206, 7, 7, 0.786);
+   transform: translateY(-50%);
+}
+.active-fav::after {
+   left: -7px;
+   clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 25% 50%, 0% 0%);
+
+}
+.active-fav::before {
+   right: -7px;
+   clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+
+}
+
+
  /*PRODUCTO*/
 
 

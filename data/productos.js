@@ -16,9 +16,8 @@ export const destacado = [
         offer: null,
         isFav: false,
         envio: true,
-        hasOptions: false,
-        withOptions: {
-        }
+        hasOptions: true,
+        withOptions: ["show-sabores","4sabores"]
     },
     {
         id: 2,
@@ -92,6 +91,19 @@ export const destacado = [
 ]
 
 export const combos = [
+    {
+        id: 107,
+        title: "Combo Helado",
+        descripcion: "Helado para rato!",
+        img: "https://imgs.search.brave.com/XfcO7dN0QiAQrY5RtsxJtjICCJRt-kNHKgGFWwQXuUI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5mb2JhZS5jb20v/cmVzaXplci92Mi83/S0FEUFgyTFZCRVRU/RDJFSFU3UUtSTE9I/RS5qcGc_YXV0aD1h/NjcxMGIyZWMyNDM3/MWE5MGQxNjNmMDcz/MDMxNmY3Zjg0ZGUy/MGM1MGJmYjY5Mjg5/MjMxMjNjZjFjMzFi/MzMzJnNtYXJ0PXRy/dWUmd2lkdGg9MzUw/JmhlaWdodD0xOTcm/cXVhbGl0eT04NQ  ",
+        envio: true,
+        price: 26000,
+        offer: 32000,
+        has: [
+            {cant: 3, name: "Kilos de helado"},
+            {cant: 10, name: "Vasitos"}
+        ]
+    },
     {
         id: 101,
         title: "Combo salado",

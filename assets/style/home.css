@@ -449,7 +449,7 @@ margin-inline: auto;
     justify-content: center;
     align-items: center;
     margin-inline: auto;
-    padding-bottom: 60px;
+    background-color: white;
 }
 .galeria .galeria-header {
     display: flex;
