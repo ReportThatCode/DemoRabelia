@@ -779,6 +779,14 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
         //console.log(mensaje)
 }
 
+        function removeOverlayScroll(){
+            document.querySelector(".overlay").classList.remove("overlay-active");
+            document.querySelector("body").classList.remove("scroll-none");
+        }
+        function addOverlayScroll(){
+            document.querySelector(".overlay").classList.add("overlay-active")
+            document.querySelector("body").classList.add("scroll-none");
+        }
         function sedeActual (){
             let sede;
             document.querySelectorAll(".sede-input").forEach(el => {
@@ -836,19 +844,21 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
 
 
 function changeCartSede(){
+        addOverlayScroll();
         document.querySelector(".alertDeleteCarrito").style.display = "flex";
         document.querySelector(".aviso-text").textContent = `Tienes ${shoppingCart.length} productos en el carrito y se eliminaran al cambiar de sucursal`
 
         document.querySelector(".continuar").addEventListener("click",()=>{
-
                 document.querySelector(".alertDeleteCarrito").style.display = "none"
+                removeOverlayScroll();
                 shoppingCart = [];
                 actualizarCarrito();
                 document.querySelector(".slide-carrito").innerHTML = ""
                 sedeOption(newValue)
             })
 
-        document.querySelector(".no-continuar").addEventListener("click",(e)=>{
+        document.querySelector(".no-continuar").addEventListener("click",(e)=>{ 
+            removeOverlayScroll();
             document.querySelector(".alertDeleteCarrito").style.display = "none"
             sedeOption(valorSedeActual);
         })
@@ -896,25 +906,25 @@ document.addEventListener("change",(e)=>{
        if(secondLocal.checked){
         document.querySelector("#Local").checked = true
         document.querySelector(".final-price").textContent = finalPrice;
-        allRequireds.forEach(input => {
-            input.value = ""
-            let parentInput = input.parentElement;
-            parentInput.classList.remove("requiredActive");
-        }) 
+      
          document.querySelector(".delevery-last").style.display = "none"
        }
     
        if(secondEnvio.checked){
         document.querySelector("#Envio").checked = true
         document.querySelector(".final-price").textContent = finalPrice + 700;
-        allRequireds.forEach(input => {
-            input.value = ""
-            let parentInput = input.parentElement;
-            parentInput.classList.remove("requiredActive");
-        }) 
+      
          document.querySelector(".delevery-last").style.display = "flex"
        }
-      
+        console.log(e.target)
+       if(e.target === secondLocal || e.target === secondEnvio ){
+            allRequireds.forEach(input => {
+                input.value = ""
+                let parentInput = input.parentElement;
+                parentInput.classList.remove("requiredActive");
+            }) 
+       }
+
 
     if(document.querySelector("#muniz").checked && document.querySelector("#Envio").checked){      
         if(document.querySelector(".overlay-item")){ return}
@@ -979,8 +989,7 @@ console.log(valorSedeActual);
 
     if(e.target.matches(".close-last")){
        document.querySelector(".modal-last-step").style.display = "none";
-       document.querySelector(".overlay").classList.remove("overlay-active");
-       document.querySelector("body").classList.remove("scroll-none");
+       removeOverlayScroll();
        document.querySelector(".carrito").style.zIndex = 989;
     }
 
@@ -1009,11 +1018,11 @@ console.log(valorSedeActual);
     }
 
     if(e.target.matches("#final-pedido")){
-
+        
+        if(shoppingCart.length <= 0){return}
        document.querySelector(".modal-last-step").style.display = "flex";
        document.querySelector(".carritoProd").classList.remove("openCart");
-       document.querySelector(".overlay").classList.add("overlay-active")
-       document.querySelector("body").classList.add("scroll-none");
+       addOverlayScroll();
        document.querySelector(".carrito").style.zIndex = 300;   
        document.querySelector(".final-price").textContent = finalPrice;
 
