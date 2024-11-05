@@ -3,7 +3,9 @@
    --main-Color: #404E7A;
    --second-Color: white;
 }
-
+html {
+   scroll-behavior: smooth;
+}
 * {
     margin: 0;
     padding: 0;
@@ -194,6 +196,7 @@ color: white;
     border-radius: 12px;
     color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: all 4s ease-in;
  }
 
  .title-destacado {
@@ -1648,6 +1651,43 @@ text-wrap: wrap;
    background-color: #F90050;
 }
 
+/*ELIMINAR CARRITO POR CAMBIAR SUCURSAL*/
+
+.alertDeleteCarrito {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+   width: 85%;
+   background-color: rgb(255, 255, 255);
+   display: none;
+   flex-direction: column;
+   padding: 1.4rem 2rem;
+   border-radius: 6px;
+   border: solid 1px rgb(2, 2, 2);
+}
+
+.aviso-text , .reAviso-text{
+   text-align: center;
+   padding-top: 1rem;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   font-size: 0.9rem;
+}
+.btns-decision {
+   width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+   padding-top: 1rem;
+}
+.btns-decision button {
+   padding: 0.5rem;
+   width: 100px;
+   background-color: var(--main-Color);
+   border: none;
+   color: white;
+   font-size: 0.7rem;
+   border-radius: 2px;
+}
 /*.item , .container-item-combo , .item-menu {
    background-color: white;
 }*/

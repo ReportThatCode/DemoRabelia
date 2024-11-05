@@ -50,13 +50,13 @@
             <h4 class="title title-categoria">Categorias</h4>
           <ul class="content-links">
             <div class="slide-links">
-            <li><a class="link" href="#link-heladeria">Helados</a></li>
-            <li><a class="link" href="#link-cafes">Cafes</a></li>
-            <li><a class="link" href="#link-panaderia">Panaderia</a></li>
-            <li><a class="link" href="#link-salado">Salados</a></li>
-            <li><a class="link" href="#link-pasteleria">Pasteleria</a></li>
-            <li><a class="link" href="#link-saludables">Saludables</a></li>
-            <li><a class="link" href="#link-rapido">Desayuno Rapido</a></li>
+            <li><a id="heladeria-href" class="link" href="#link-heladeria">Helados</a></li>
+            <li><a id="cafes-href" class="link" href="#link-cafes">Cafes</a></li>
+            <li><a id="panaderia-href" class="link" href="#link-panaderia">Panaderia</a></li>
+            <li><a id="salado-href" class="link" href="#link-salado">Salados</a></li>
+            <li><a id="pasteleria-href" class="link" href="#link-pasteleria">Pasteleria</a></li>
+            <li><a id="saludables-href" class="link" href="#link-saludables">Saludables</a></li>
+            <li><a id="rapido-href" class="link" href="#link-rapido">Desayuno Rapido</a></li>
             </div>  
         </ul>
         </div>
@@ -143,7 +143,7 @@
                 </div>
             </div>
 
-            <div class="acordion-container">
+            <div class="acordion-container acordion-heladeria">
                     <div class="acordion-content">
                         <div class="header-acordion">
                             <div class="header-container-img header-heladeria">
@@ -176,17 +176,15 @@
             </div>
 
         </div>
-
-            <div class="container-prod">
-
+            <!---->
+        <div class="container-prod">
                 <div id="link-panaderia" class="content-prod"> 
                     <img src="assets/images/pedido/not-products/panaderia.png" alt="Panaderia">
                     <div class="label-prod">
                         <p class="label-title">PANADERIA</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
                     </div>
                 </div>
-    
-                <div class="acordion-container">
+                <div class="acordion-container acordion-panaderia">
                         <div class="acordion-content">
                             <div class="header-acordion">
                                 <div class="header-container-img header-panaderia">
@@ -216,19 +214,16 @@
                             </div> 
                         </div>
                 </div>
-
+        </div>
             <!---->
-            <!---->
-            <div class="container-prod">
-
+        <div class="container-prod">
                 <div id="link-salado" class="content-prod"> 
                     <img src="assets/images/home/sandwich.png" alt="sandwich">
                     <div class="label-prod">
                         <p class="label-title">SALADO / TOSTADOS</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
                     </div>
                 </div>
-    
-                <div class="acordion-container">
+                <div class="acordion-container acordion-salado">
                         <div class="acordion-content">
                             <div class="header-acordion">
                                 <div class="header-container-img header-salado">
@@ -258,10 +253,9 @@
                             </div> 
                         </div>
                 </div>
-
+        </div>
             <!---->
-
-            <div class="container-prod">
+        <div class="container-prod">
                 <div id="link-pasteleria" class="content-prod"> 
                     <img src="assets/images/home/dulces.png" alt="Pasteleria">
                     <div class="label-prod">
@@ -269,7 +263,7 @@
                     </div>
                 </div>
     
-                <div class="acordion-container">
+                <div class="acordion-container acordion-pasteleria">
                         <div class="acordion-content">
                             <div class="header-acordion">
                                 <div class="header-container-img header-pasteleria">
@@ -299,10 +293,9 @@
                             </div> 
                         </div>
                 </div>
-
+        </div>
             <!---->
-            
-            <div class="container-prod">
+        <div class="container-prod">
 
                 <div id="link-saludables" class="content-prod"> 
                     <img src="assets/images/home/saludables.png" alt="Saludables">
@@ -311,7 +304,7 @@
                     </div>
                 </div>
     
-                <div class="acordion-container">
+                <div class="acordion-container acordion-saludables">
                         <div class="acordion-content">
                             <div class="header-acordion">
                                 <div class="header-container-img header-saludables">
@@ -341,102 +334,89 @@
                             </div> 
                         </div>
                 </div>
-
+        </div>
             <!---->
+        <div class="container-prod">
 
+            <div id="link-cafes" class="content-prod"> 
+                <img src="assets/images/pedido/not-products/rapido.png" alt="Desayuno rapido">
             
-            <div class="content-all-prods">
-
-                <div class="container-prod">
-        
-                    <div id="link-cafes" class="content-prod"> 
-                        <img src="assets/images/pedido/not-products/rapido.png" alt="Desayuno rapido">
-                    
-                        <div class="label-prod">
-                            <p class="label-title">CAFE / BEBIDAS</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
-                        </div>
-                    </div>
-        
-                    <div class="acordion-container">
-                            <div class="acordion-content">
-                                <div class="header-acordion">
-                                    <div class="header-container-img header-cafe">
-        
-                                    </div>
-                                </div>
-                                <div class="container-items body-cafe">
-                                    <template class="template-cafe">
-                                        <div class="item-menu">
-                                            <div class="item-body">
-                                                <div class="item-header">
-                                                <span class="item-title"></span>
-                                                <span class="item-desc"></span>
-                                            </div>
-                                            <div class="content-price">
-                                                <span class="item-price"></span>
-                                                <span class="item-price-descuento"></span>
-                                                <span class="options"></span>
-                                            </div>    
-                                            </div>
-                                            <div class="content-img-item">
-                                            </div>
-                                            <span class="is-fav"></span>
-                                        </div>
-                                    </template>
-        
-                                </div> 
-                            </div>
-                    </div>
-        
+                <div class="label-prod">
+                    <p class="label-title">CAFE / BEBIDAS</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
                 </div>
+            </div>
 
+            <div class="acordion-container acordion-cafes">
+                    <div class="acordion-content">
+                        <div class="header-acordion">
+                            <div class="header-container-img header-cafe">
+
+                            </div>
+                        </div>
+                        <div class="container-items body-cafe">
+                            <template class="template-cafe">
+                                <div class="item-menu">
+                                    <div class="item-body">
+                                        <div class="item-header">
+                                        <span class="item-title"></span>
+                                        <span class="item-desc"></span>
+                                    </div>
+                                    <div class="content-price">
+                                        <span class="item-price"></span>
+                                        <span class="item-price-descuento"></span>
+                                        <span class="options"></span>
+                                    </div>    
+                                    </div>
+                                    <div class="content-img-item">
+                                    </div>
+                                    <span class="is-fav"></span>
+                                </div>
+                            </template>
+
+                        </div> 
+                    </div>
+            </div>
+        </div>
             <!---->
-
-            
-            <div class="content-all-prods">
-
-                <div class="container-prod">
-        
-                    <div id="link-rapido" class="content-prod"> 
-                        <img src="assets/images/home/cafe.png" alt="Cafe">
-                        <div class="label-prod">
-                            <p class="label-title">DESAYUNO RAPIDO</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
-                        </div>
-                    </div>
-        
-                    <div class="acordion-container">
-                            <div class="acordion-content">
-                                <div class="header-acordion">
-                                    <div class="header-container-img header-rapido">
-        
-                                    </div>
-                                </div>
-                                <div class="container-items body-rapido">
-                                    <template class="template-rapido">
-                                        <div class="item-menu">
-                                            <div class="item-body">
-                                                <div class="item-header">
-                                                <span class="item-title"></span>
-                                                <span class="item-desc"></span>
-                                            </div>
-                                            <div class="content-price">
-                                                <span class="item-price"></span>
-                                                <span class="item-price-descuento"></span>
-                                                <span class="options"></span>
-                                            </div>    
-                                            </div>
-                                            <div class="content-img-item">
-                                            </div>
-                                            <span class="is-fav"></span>
-                                        </div>
-                                    </template>
-        
-                                </div> 
-                            </div>
-                    </div>
-        
+        <div class="container-prod">
+            <div id="link-rapido" class="content-prod"> 
+                <img src="assets/images/home/cafe.png" alt="Cafe">
+                <div class="label-prod">
+                    <p class="label-title">DESAYUNO RAPIDO</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
                 </div>
+            </div>
 
+            <div class="acordion-container acordion-rapido">
+                    <div class="acordion-content">
+                        <div class="header-acordion">
+                            <div class="header-container-img header-rapido">
+
+                            </div>
+                        </div>
+                        <div class="container-items body-rapido">
+                            <template class="template-rapido">
+                                <div class="item-menu">
+                                    <div class="item-body">
+                                        <div class="item-header">
+                                        <span class="item-title"></span>
+                                        <span class="item-desc"></span>
+                                    </div>
+                                    <div class="content-price">
+                                        <span class="item-price"></span>
+                                        <span class="item-price-descuento"></span>
+                                        <span class="options"></span>
+                                    </div>    
+                                    </div>
+                                    <div class="content-img-item">
+                                    </div>
+                                    <span class="is-fav"></span>
+                                </div>
+                            </template>
+
+                        </div> 
+                    </div>
+                </div>
+            </div>
             <!---->
 
 
@@ -617,48 +597,19 @@
          </div>
        </div>
 
+        
+        <div class="alertDeleteCarrito">
+            <p class="aviso-text">Se eliminara tu carrito al elegir otra sucursar</p>
+            <p class="reAviso-text">¿Estas seguro que desea cambiar de sucursal?</p>
+            <div class="btns-decision">
+                <button class="no-continuar">No</button>
+                <button class="continuar">Si</button>
+            </div>
+        </div>
+
+
+
+
     <script src="assets/js/pedido.js" type="module"></script>
-  
-
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-                                <!-- <li class="list-option">
-                                    <div class="title-price">
-                                    <label for="option1">Alfajor XL de Chocolate uno</label>
-                                    <span class="modal-price">$4600</span>    
-                                    </div>
-                                    <input type="radio" name="option" id="option1">
-                                </li>
-                                <li class="list-option">
-                                    <div class="title-price">
-                                    <label for="option2">Alfajor de frutos rojos XL</label>
-                                    <span class="modal-price">$4400</span>    
-                                    </div>
-                                    <input type="radio" name="option" id="option2">
-                                </li>
-                                <li class="list-option">
-                                    <div class="title-price">
-                                    <label for="option3">Alfajor XL de Maicena</label>
-                                    <span class="modal-price">$3500</span>
-                                </div>
-                                    <input type="radio" name="option" id="option3">
-                                </li>
-                                <li class="list-option">
-                                    <div class="title-price">
-                                    <label for="option4">Alfacookie XL</label>
-                                    <span class="modal-price">$5500</span>
-                                    </div>
-                                    <input type="radio" name="option" id="option4">
-                                </li> -->
-                                

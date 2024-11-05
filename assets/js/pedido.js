@@ -7,6 +7,9 @@ containerAcordion = document.querySelectorAll(".content-prod")
 
 let finalPrice;
 let allRequireds = document.querySelectorAll("[required]");
+let oldValue = [],
+newValue = null;
+let valorSedeActual;
 
 let cantidadSabores = 4;
 
@@ -196,7 +199,6 @@ if(item.offer){
 
 }
 
-
 showProducts(".template-heladeria",".header-heladeria",".body-heladeria",productos.heladeria,"heladeria")
 showProducts(".template-saludables",".header-saludables",".body-saludables",productos.saludables,"saludables")
 showProducts(".template-pasteleria",".header-pasteleria",".body-pasteleria",productos.pasteleria,"pasteleria")
@@ -205,185 +207,19 @@ showProducts(".template-salado",".header-salado",".body-salado",productos.salado
 showProducts(".template-cafe",".header-cafe",".body-cafe",productos.cafes,"cafes")
 showProducts(".template-rapido",".header-rapido",".body-rapido",productos.desayunoRapido,"rapido")
 
+function openAcordion(selector){
+   const $selector = document.querySelector(selector);
 
+    if($selector.style.maxHeight) {
+            $selector.style.maxHeight = null;
+        }
+        else {
+            $selector.style.maxHeight = `${$selector.scrollHeight}px`;
+        }
+}
 /* CARRITO DE COMPRAS*/
 
 let shoppingCart = [];
-// DOCUMENT EVENTOS GENERALES CON DELEGACION DE EVENTOS
-document.addEventListener("click", (e) => {
-    const itemMenu = e.target.closest(".item-menu");    
-    const itemDestacado = e.target.closest(".item");
-    const carritoFixed = e.target.closest(".carrito");
-    const itemCombo = e.target.closest(".container-item-combo");
-    const hamburgerIcon = e.target.closest(".menu-hamburger");
-    
-
-    if(e.target.matches(".close-last")){
-       document.querySelector(".modal-last-step").style.display = "none";
-       document.querySelector(".overlay").classList.remove("overlay-active");
-       document.querySelector("body").classList.remove("scroll-none");
-       document.querySelector(".carrito").style.zIndex = 989;
-    }
-
-    if(hamburgerIcon){
-        document.querySelector(".comp-header").classList.toggle("header-is-active");
-        document.querySelector("body").classList.toggle("scroll-none");
-      }
-
-    if(itemCombo){
-        if(itemCombo.dataset.all && document.querySelector("#villaDMayo").checked){return}
-        
-        if(itemCombo.querySelector(".overlay-item")){return}
-
-        pushCart(itemCombo.dataset.id,"combos")
-    }
-    
-    if(e.target.matches(".icon-rabe-footer")){
-        document.querySelector(".newProduct").classList.toggle("show-new-product")
-    }
-
-    if(itemDestacado){
-        if(itemDestacado.dataset.all  && document.querySelector("#villaDMayo").checked){return}
-        if(itemDestacado.querySelector(".overlay-item")){return}
-        pushCart(itemDestacado.dataset.id,"destacado")
-        
-    }
-
-    if(e.target.matches("#final-pedido")){
-
-       document.querySelector(".modal-last-step").style.display = "flex";
-       document.querySelector(".carritoProd").classList.remove("openCart");
-       document.querySelector(".overlay").classList.add("overlay-active")
-       document.querySelector("body").classList.add("scroll-none");
-       document.querySelector(".carrito").style.zIndex = 300;   
-       document.querySelector(".final-price").textContent = finalPrice;
-
-       if(document.querySelector("#Envio-last").checked){
-        document.querySelector(".final-price").textContent = finalPrice + 700;
-   }
-
-    }
-
-
-    if(e.target.matches("#reDirecToWsp")){
-
-        let street = document.querySelector(".street").value,
-        numberHouse = document.querySelector(".number-house").value,
-        dpto = document.querySelector(".dpto").value,
-        localidad = document.querySelector(".localidad").value,
-        conCuantoPaga = document.querySelector("#monto-abonar"),
-        nombrePedido = document.querySelector("#nombre-pedido"),
-        choisedMethodPay = document.querySelector("#type-pay");
-       if(document.querySelector("#Envio-last").checked){
-        
-
-        allRequireds.forEach(input => {
-
-            let parentInput = input.parentElement;
-
-            parentInput.classList.remove("requiredActive");
-            if(input.value === ""){
-               parentInput.classList.add("requiredActive");
-            }
-         })
-
-        if(choisedMethodPay.value === "Efectivo" && conCuantoPaga.value === "" ){
-            conCuantoPaga.required = true;
-            allRequireds = document.querySelectorAll("[required]");
-          return  conCuantoPaga.parentElement.classList.add("requiredActive");
-            }
-
-
-        if(street && numberHouse && localidad && nombrePedido.value){
-            return messageToWsp("envio",street,numberHouse,dpto,localidad,choisedMethodPay.value,conCuantoPaga.value,nombrePedido.value); 
-            //(calle,casaNumero,dpto,localidad,typePago,monto,nombre)
-            //console.log(street,numberHouse,localidad,nombrePedido.value,choisedMethodPay.value)
-        }
-
-      }
-       if(document.querySelector("#Local-last").checked){
-        conCuantoPaga.parentElement.classList.remove("requiredActive");
-        nombrePedido.parentElement.classList.remove("requiredActive");
-
-        if(choisedMethodPay.value === "Efectivo" && conCuantoPaga.value === "" ){
-        conCuantoPaga.required = true;
-        allRequireds = document.querySelectorAll("[required]");
-        conCuantoPaga.parentElement.classList.add("requiredActive");
-        }
-        if(nombrePedido.value === ""){
-           return nombrePedido.parentElement.classList.add("requiredActive");
-        }
-        
-        return messageToWsp("local",street,numberHouse,dpto,localidad,choisedMethodPay.value,conCuantoPaga.value,nombrePedido.value)
-        
-        //console.log(nombrePedido.value, choisedMethodPay.value);
-       }
-    } 
-
-    
-    //evento para Get Prod / id / categoria
-    if (itemMenu) {
-       const prodID = itemMenu.dataset.id;  
-       if(itemMenu.dataset.all  && document.querySelector("#villaDMayo").checked){return}
-       if(itemMenu.querySelector(".overlay-item")){return}
-       pushCart(prodID,itemMenu.dataset.categoria)
-        cantidadSabores = parseInt(itemMenu.dataset.cantSabores); 
-    }
-    if(e.target.id === "close"){
-        closeModal();
-    }
-
-    if(e.target.matches("#myModal *")){
-        hearModal(e);
-    }
-    if(carritoFixed){
-      const cartContent = document.querySelector(".carritoProd");
-      document.querySelector(".overlay").classList.toggle("overlay-active")
-      cartContent.classList.toggle("openCart");
-      document.querySelector("body").classList.toggle("scroll-none");
-    }
-   
-    // sumar cantidad carrito 
-    if(e.target.matches(".carrito-mas")){
-        let getId = parseInt(e.target.dataset.mas)
-        console.log(getId);
-        if(getId === 201 || getId === 202 || getId === 203) {return}
-        shoppingCart.find(el => {
-            if(el.id === getId){
-                el.cantidad += 1;
-                e.target.previousElementSibling.textContent = el.cantidad;
-            }
-            actualizarCarrito();
-        })
-    }
-    if(e.target.matches(".carrito-menos")){
-        let getId = parseInt(e.target.dataset.menos)
-        if(getId === 201 || getId === 202 || getId === 203) {return}
-        shoppingCart.find(el => {
-            if(el.cantidad > 1){
-                if(el.id === getId){
-                    el.cantidad -= 1;
-                    e.target.nextElementSibling.textContent = el.cantidad;
-                }
-
-            } 
-            
-        })
-        actualizarCarrito();
-    }
-    //borrar producto
-
-    if(e.target.matches(".carrito-delete")){
-        let idDelete = parseInt(e.target.dataset.delete);
-        shoppingCart = shoppingCart.filter(el => el.id !== idDelete);
-
-        showCarrito(shoppingCart);
-    }
-});
-
-document.addEventListener("change",(e)=>{
-    hearCheckbox(cantidadSabores);
-})
 
 function pushCart(id,typeProd){
 
@@ -585,10 +421,9 @@ function hearModal(e){
              if(estaEnCarrito){
             
                 shoppingCart.find(el => {
-                    console.log(el);
+ 
                     if(el.id === parseInt(btnPedido.dataset.heladoid)){
 
-                    console.log(el);
                     if(el.title === "1kg de Helado" || el.title === "1/2kg de Helado" || el.title === "1/4kg de Helado"){
                         let moreSabores = el.descripcion
                         choisedSabores.forEach(el => moreSabores.push(el));
@@ -616,6 +451,9 @@ function hearModal(e){
                 showCarrito(shoppingCart);
                 actualizarCarrito();
                 addProdNotification();
+                if(shoppingCart < 2){
+                    valorSedeActual = sedeActual();
+                }
                 return closeModal();
              }
              
@@ -730,8 +568,6 @@ function openModalOrPush(objeto){
     }
     else {
 
-
-
         let estaEnCarrito = shoppingCart.some(isProd => {
             return isProd.id === id;
         })
@@ -758,6 +594,9 @@ function openModalOrPush(objeto){
             showCarrito(shoppingCart);
             addProdNotification();
             actualizarCarrito();
+            if(shoppingCart.length < 2){
+                valorSedeActual = sedeActual();
+            }
         }        
      }
 }
@@ -807,18 +646,6 @@ total.textContent = "$" + acumulador;
 carritoLenght();
 }
 
-containerAcordion.forEach(el => {
-    el.addEventListener("click",(e)=>{
-        let acordion = e.currentTarget.nextElementSibling;
-
-        if(acordion.style.maxHeight) {
-                    acordion.style.maxHeight = null;
-                }
-                else {
-                    acordion.style.maxHeight = `${acordion.scrollHeight}px`;
-                }
-    })
-});
 
 
 function carritoLenght(){  
@@ -845,106 +672,6 @@ const allProducts = document.querySelectorAll(`[data-all="allItems"]`);
 const allNotSend = document.querySelectorAll(`[data-envio="false"]`);
 const contentReDirec = document.createElement("div");
 contentReDirec.style.display = "none";
-
-document.addEventListener("change",(e)=>{
-    //resets
-    contentReDirec.innerHTML = "";
-    contentReDirec.style.display = "none";
-    resetDisabled();
-
-
-    const mainLocal = document.querySelector("#Local"),
-    mainEnvio = document.querySelector("#Envio"),
-    secondLocal = document.querySelector("#Local-last"),
-    secondEnvio = document.querySelector("#Envio-last")
-
-    if(e.target.matches("#monto-abonar") || e.target.matches("#nombre-pedido")){return}
-
-    let methodPay = document.querySelector("#type-pay").value;
-    
-    if(e.target.matches("#type-pay")){
-        return methodPayFunction(methodPay)
-    }
-
-       if(e.target === mainLocal && mainLocal.checked){
-        secondLocal.checked = true
-       }
-
-       if(e.target === mainEnvio && mainEnvio.checked){
-        secondEnvio.checked = true
-       }
-
-
-       if(secondLocal.checked){
-        document.querySelector("#Local").checked = true
-        document.querySelector(".final-price").textContent = finalPrice;
-        allRequireds.forEach(input => {
-            input.value = ""
-            let parentInput = input.parentElement;
-            parentInput.classList.remove("requiredActive");
-        }) 
-        return document.querySelector(".delevery-last").style.display = "none"
-       }
-    
-       if(secondEnvio.checked){
-        document.querySelector("#Envio").checked = true
-        document.querySelector(".final-price").textContent = finalPrice + 700;
-        allRequireds.forEach(input => {
-            input.value = ""
-            let parentInput = input.parentElement;
-            parentInput.classList.remove("requiredActive");
-        }) 
-        return document.querySelector(".delevery-last").style.display = "flex"
-       }
-      
-
-
-
-    if(document.querySelector("#muniz").checked && document.querySelector("#Envio").checked){      
-        if(document.querySelector(".overlay-item")){ return}
-        allNotSend.forEach(el => {  
-            const overlayItem = document.createElement("div");
-            overlayItem.textContent = "No Disponible"
-            overlayItem.classList.add("overlay-item")
-            el.appendChild(overlayItem);
-            el.classList.add("all-items-disabled");
-            document.querySelector(".delevery-last").style.display = "flex"
-        })
-    }
-    if(document.querySelector("#muniz").checked){
-        document.querySelector(".main").style.display = "block";
-    }
-
-    if(document.querySelector("#villaDMayo").checked){
-
-        document.querySelector(".main").style.display = "block";
-
-          allProducts.forEach(el => {  
-            const overlayItem = document.createElement("div");
-            overlayItem.textContent = "No Disponible"
-            overlayItem.classList.add("overlay-item")
-            el.appendChild(overlayItem);
-            el.classList.add("all-items-disabled");
-              
-        })
-    }
-    
-
-    if(document.querySelector("#BellaVista").checked){
-        document.querySelector(".main").style.display = "none";
-        contentReDirec.style.display = "block";
-
-        contentReDirec.classList.add("content-re-direc");
-        contentReDirec.innerHTML = `<p class="re-direc-p">
-        En este momento solo contamos con envios por Pedidos ya
-        </p><br>
-        <div class="pedidos-ya">
-        <span><img src="assets/images/home/pedidosYa.png" alt="pedidosYa">PedidosYa</span>
-        </div>
-        `
-        document.querySelector(".header").insertAdjacentElement("afterend",contentReDirec);
-    }
-})
 
 
 function resetDisabled(){
@@ -1009,18 +736,6 @@ function generarListaDeProductos(productos) {
 function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,monto,nombre){
 
         let mensajeFinal;
-        console.log("FUNCTIOON MESSAGE TO WSP")
-        console.log(envioOrLocal)
-        console.log(calle)
-        console.log(casaNumero)
-        console.log(dpto)
-        console.log(localidad)
-        console.log(typePago)
-        console.log(monto)
-        console.log(nombre)
-
-       
-        
 
         let armadoMensaje = generarListaDeProductos(shoppingCart)
 
@@ -1062,11 +777,361 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
 
         //console.log(enlaceWhatsApp);  
         //console.log(mensaje)
-
-
-
-
-
-
-
 }
+
+        function sedeActual (){
+            let sede;
+            document.querySelectorAll(".sede-input").forEach(el => {
+                if(el.checked){
+                sede = el.value;
+                }           
+            })
+            return sede
+        }
+        valorSedeActual = sedeActual();
+        function villaDMayoProds(){
+            document.querySelector(".main").style.display = "block";
+
+            allProducts.forEach(el => {  
+              const overlayItem = document.createElement("div");
+              overlayItem.textContent = "No Disponible"
+              overlayItem.classList.add("overlay-item")
+              el.appendChild(overlayItem);
+              el.classList.add("all-items-disabled");
+                
+          })
+        }
+        function bellaVistaPY(){
+            document.querySelector(".main").style.display = "none";
+            contentReDirec.style.display = "block";
+    
+            contentReDirec.classList.add("content-re-direc");
+            contentReDirec.innerHTML = `<p class="re-direc-p">
+            En este momento solo contamos con envios por Pedidos ya
+            </p><br>
+            <div class="pedidos-ya">
+            <span><img src="assets/images/home/pedidosYa.png" alt="pedidosYa">PedidosYa</span>
+            </div>
+            `
+            document.querySelector(".header").insertAdjacentElement("afterend",contentReDirec);
+        }
+
+        
+        function sedeOption(valor){
+            if(valor === "muniz"){
+                document.querySelector("#muniz").checked = true
+                resetDisabled();
+                document.querySelector(".main").style.display = "block";
+            }
+            if(valor === "villaDeMayo"){
+                document.querySelector("#villaDMayo").checked = true
+                resetDisabled();
+                villaDMayoProds();
+            }
+            if(valor === "bellaVista"){
+                document.querySelector("#BellaVista").checked = true
+                bellaVistaPY();
+            }
+        }
+
+
+function changeCartSede(){
+        document.querySelector(".alertDeleteCarrito").style.display = "flex";
+        document.querySelector(".aviso-text").textContent = `Tienes ${shoppingCart.length} productos en el carrito y se eliminaran al cambiar de sucursal`
+
+        document.querySelector(".continuar").addEventListener("click",()=>{
+
+                document.querySelector(".alertDeleteCarrito").style.display = "none"
+                shoppingCart = [];
+                actualizarCarrito();
+                document.querySelector(".slide-carrito").innerHTML = ""
+                sedeOption(newValue)
+            })
+
+        document.querySelector(".no-continuar").addEventListener("click",(e)=>{
+            document.querySelector(".alertDeleteCarrito").style.display = "none"
+            sedeOption(valorSedeActual);
+        })
+}
+
+
+// tienes x productos en el carrito y se eliminaran al cambiar de sucursal
+
+document.addEventListener("change",(e)=>{
+
+    if(e.target.matches(".sede-input") && shoppingCart.length > 0){
+        newValue = e.target.value;
+        return changeCartSede();
+    }
+    
+    //resets
+    contentReDirec.innerHTML = "";
+    contentReDirec.style.display = "none";
+    resetDisabled();
+    hearCheckbox(cantidadSabores);
+
+    const mainLocal = document.querySelector("#Local"),
+    mainEnvio = document.querySelector("#Envio"),
+    secondLocal = document.querySelector("#Local-last"),
+    secondEnvio = document.querySelector("#Envio-last")
+
+    if(e.target.matches("#monto-abonar") || e.target.matches("#nombre-pedido")){return}
+   
+
+    let methodPay = document.querySelector("#type-pay").value;
+    
+    if(e.target.matches("#type-pay")){
+        return methodPayFunction(methodPay)
+    }
+
+       if(e.target === mainLocal && mainLocal.checked){
+        secondLocal.checked = true
+       }
+
+       if(e.target === mainEnvio && mainEnvio.checked){
+        secondEnvio.checked = true
+       }
+
+      
+       if(secondLocal.checked){
+        document.querySelector("#Local").checked = true
+        document.querySelector(".final-price").textContent = finalPrice;
+        allRequireds.forEach(input => {
+            input.value = ""
+            let parentInput = input.parentElement;
+            parentInput.classList.remove("requiredActive");
+        }) 
+         document.querySelector(".delevery-last").style.display = "none"
+       }
+    
+       if(secondEnvio.checked){
+        document.querySelector("#Envio").checked = true
+        document.querySelector(".final-price").textContent = finalPrice + 700;
+        allRequireds.forEach(input => {
+            input.value = ""
+            let parentInput = input.parentElement;
+            parentInput.classList.remove("requiredActive");
+        }) 
+         document.querySelector(".delevery-last").style.display = "flex"
+       }
+      
+
+    if(document.querySelector("#muniz").checked && document.querySelector("#Envio").checked){      
+        if(document.querySelector(".overlay-item")){ return}
+        allNotSend.forEach(el => {  
+            const overlayItem = document.createElement("div");
+            overlayItem.textContent = "No Disponible"
+            overlayItem.classList.add("overlay-item")
+            el.appendChild(overlayItem);
+            el.classList.add("all-items-disabled");
+            document.querySelector(".delevery-last").style.display = "flex"
+        })
+    }
+    if(document.querySelector("#muniz").checked){
+        document.querySelector(".main").style.display = "block";
+    }
+
+    if(document.querySelector("#villaDMayo").checked){
+        villaDMayoProds();
+    }
+    
+
+    if(document.querySelector("#BellaVista").checked){
+        bellaVistaPY();
+    }
+
+})
+
+
+
+
+
+
+// DOCUMENT EVENTOS GENERALES CON DELEGACION DE EVENTOS
+
+
+
+
+
+
+document.addEventListener("click", (e) => {
+
+console.log(valorSedeActual);
+
+//valorSedeActual = sedeActual();
+    const itemMenu = e.target.closest(".item-menu");    
+    const itemDestacado = e.target.closest(".item");
+    const carritoFixed = e.target.closest(".carrito");
+    const itemCombo = e.target.closest(".container-item-combo");
+    const hamburgerIcon = e.target.closest(".menu-hamburger");
+    
+/* SHOW PRODUCTOS*/
+
+    if(e.target.closest("#link-heladeria") || e.target.matches("#heladeria-href")){openAcordion(".acordion-heladeria");}
+    if(e.target.closest("#link-panaderia") || e.target.matches("#panaderia-href")){openAcordion(".acordion-panaderia");}
+    if(e.target.closest("#link-salado") || e.target.matches("#salado-href")){openAcordion(".acordion-salado");}
+    if(e.target.closest("#link-pasteleria") || e.target.matches("#pasteleria-href")){openAcordion(".acordion-pasteleria");}
+    if(e.target.closest("#link-saludables") || e.target.matches("#saludables-href")){openAcordion(".acordion-saludables");}
+    if(e.target.closest("#link-cafes") || e.target.matches("#cafes-href")){openAcordion(".acordion-cafes");}
+    if(e.target.closest("#link-rapido") || e.target.matches("#rapido-href")){openAcordion(".acordion-rapido");}
+ /* FINISH SHOW PRODUCTS */
+
+
+    if(e.target.matches(".close-last")){
+       document.querySelector(".modal-last-step").style.display = "none";
+       document.querySelector(".overlay").classList.remove("overlay-active");
+       document.querySelector("body").classList.remove("scroll-none");
+       document.querySelector(".carrito").style.zIndex = 989;
+    }
+
+    if(hamburgerIcon){
+        document.querySelector(".comp-header").classList.toggle("header-is-active");
+        document.querySelector("body").classList.toggle("scroll-none");
+      }
+
+    if(itemCombo){
+        if(itemCombo.dataset.all && document.querySelector("#villaDMayo").checked){return}
+        
+        if(itemCombo.querySelector(".overlay-item")){return}
+
+        pushCart(itemCombo.dataset.id,"combos")
+    }
+    
+    if(e.target.matches(".icon-rabe-footer")){
+        document.querySelector(".newProduct").classList.toggle("show-new-product")
+    }
+
+    if(itemDestacado){
+        if(itemDestacado.dataset.all  && document.querySelector("#villaDMayo").checked){return}
+        if(itemDestacado.querySelector(".overlay-item")){return}
+        pushCart(itemDestacado.dataset.id,"destacado")
+        
+    }
+
+    if(e.target.matches("#final-pedido")){
+
+       document.querySelector(".modal-last-step").style.display = "flex";
+       document.querySelector(".carritoProd").classList.remove("openCart");
+       document.querySelector(".overlay").classList.add("overlay-active")
+       document.querySelector("body").classList.add("scroll-none");
+       document.querySelector(".carrito").style.zIndex = 300;   
+       document.querySelector(".final-price").textContent = finalPrice;
+
+       if(document.querySelector("#Envio-last").checked){
+        document.querySelector(".final-price").textContent = finalPrice + 700;
+     }
+    }
+
+    if(e.target.matches("#reDirecToWsp")){
+
+        let street = document.querySelector(".street").value,
+        numberHouse = document.querySelector(".number-house").value,
+        dpto = document.querySelector(".dpto").value,
+        localidad = document.querySelector(".localidad").value,
+        conCuantoPaga = document.querySelector("#monto-abonar"),
+        nombrePedido = document.querySelector("#nombre-pedido"),
+        choisedMethodPay = document.querySelector("#type-pay");
+       if(document.querySelector("#Envio-last").checked){
+        
+
+        allRequireds.forEach(input => {
+
+            let parentInput = input.parentElement;
+
+            parentInput.classList.remove("requiredActive");
+            if(input.value === ""){
+               parentInput.classList.add("requiredActive");
+            }
+         })
+
+        if(choisedMethodPay.value === "Efectivo" && conCuantoPaga.value === "" ){
+            conCuantoPaga.required = true;
+            allRequireds = document.querySelectorAll("[required]");
+          return  conCuantoPaga.parentElement.classList.add("requiredActive");
+            }
+
+
+        if(street && numberHouse && localidad && nombrePedido.value){
+            return messageToWsp("envio",street,numberHouse,dpto,localidad,choisedMethodPay.value,conCuantoPaga.value,nombrePedido.value); 
+            //(calle,casaNumero,dpto,localidad,typePago,monto,nombre)
+            //console.log(street,numberHouse,localidad,nombrePedido.value,choisedMethodPay.value)
+        }
+
+      }
+       if(document.querySelector("#Local-last").checked){
+        conCuantoPaga.parentElement.classList.remove("requiredActive");
+        nombrePedido.parentElement.classList.remove("requiredActive");
+
+        if(choisedMethodPay.value === "Efectivo" && conCuantoPaga.value === "" ){
+        conCuantoPaga.required = true;
+        allRequireds = document.querySelectorAll("[required]");
+        conCuantoPaga.parentElement.classList.add("requiredActive");
+        }
+        if(nombrePedido.value === ""){
+           return nombrePedido.parentElement.classList.add("requiredActive");
+        }
+        
+        return messageToWsp("local",street,numberHouse,dpto,localidad,choisedMethodPay.value,conCuantoPaga.value,nombrePedido.value)
+        
+        //console.log(nombrePedido.value, choisedMethodPay.value);
+       }
+    } 
+    //evento para Get Prod / id / categoria
+    if (itemMenu) {
+       const prodID = itemMenu.dataset.id;  
+       if(itemMenu.dataset.all  && document.querySelector("#villaDMayo").checked){return}
+       if(itemMenu.querySelector(".overlay-item")){return}
+       pushCart(prodID,itemMenu.dataset.categoria)
+        cantidadSabores = parseInt(itemMenu.dataset.cantSabores); 
+    }
+    if(e.target.id === "close"){
+        closeModal();
+    }
+
+    if(e.target.matches("#myModal *")){
+        hearModal(e);
+    }
+    if(carritoFixed){
+      const cartContent = document.querySelector(".carritoProd");
+      document.querySelector(".overlay").classList.toggle("overlay-active")
+      cartContent.classList.toggle("openCart");
+      document.querySelector("body").classList.toggle("scroll-none");
+    }
+   
+    // sumar cantidad carrito 
+    if(e.target.matches(".carrito-mas")){
+        let getId = parseInt(e.target.dataset.mas)
+        console.log(getId);
+        if(getId === 201 || getId === 202 || getId === 203) {return}
+        shoppingCart.find(el => {
+            if(el.id === getId){
+                el.cantidad += 1;
+                e.target.previousElementSibling.textContent = el.cantidad;
+            }
+            actualizarCarrito();
+        })
+    }
+    if(e.target.matches(".carrito-menos")){
+        let getId = parseInt(e.target.dataset.menos)
+        if(getId === 201 || getId === 202 || getId === 203) {return}
+        shoppingCart.find(el => {
+            if(el.cantidad > 1){
+                if(el.id === getId){
+                    el.cantidad -= 1;
+                    e.target.nextElementSibling.textContent = el.cantidad;
+                }
+
+            } 
+            
+        })
+        actualizarCarrito();
+    }
+    //borrar producto
+
+    if(e.target.matches(".carrito-delete")){
+        let idDelete = parseInt(e.target.dataset.delete);
+        shoppingCart = shoppingCart.filter(el => el.id !== idDelete);
+
+        showCarrito(shoppingCart);
+    }
+});
