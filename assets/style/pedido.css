@@ -59,7 +59,6 @@ body {
     width: 350px;
     max-width: 90%;
     height: 200px;
-    border: solid 1px rgb(216, 216, 216);
     position: absolute;
     bottom: -120px;
     left: 50%;
@@ -69,6 +68,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /*border: solid 1px rgb(245, 245, 245);*/
+    box-shadow: 0px -5px 6px rgba(0, 0, 0, 0.08);
 }
 .content-type-envio {
     display: flex;
@@ -108,7 +109,7 @@ color: white;
 
 .content-choise-sede {
     flex: 1;
-    border: solid 1px rgba(198, 198, 198, 0.657);
+    border: solid 1px rgb(231, 231, 231);
     border-radius: 6px;
     width: 95%;
     margin: 8px;   
@@ -118,7 +119,7 @@ color: white;
     justify-content: space-evenly;
 }
 .choise-sede{
-  border: solid 1px rgb(177, 177, 177);
+  border: solid 1px rgb(224, 221, 221);
   border-radius: 6px;
   display: block;
   width: 95%;
@@ -1174,7 +1175,7 @@ position: absolute;
    font-size: 1rem;
    font-family: var(--font-main);
    font-weight: 400;
-   opacity: 0.9;
+   color: #4e4e4e;
    width: 90%;
    text-align: center;
 }
@@ -1238,16 +1239,16 @@ position: absolute;
    font-size: 0.9rem;
    font-family: var(--font-main);
    font-weight: 200;
-   opacity: 0.9;
+   opacity: 0.7;
    width: 70%;
    text-align: center;
 }
 
 .second-content-footer p {
-   font-size: 0.8rem;
+   font-size: 0.82rem;
    padding: 0;
    width: 250px;
-   font-family: var(--font-second);
+   font-family: var(--font-alt2);
    opacity: 0.8;
    width: 70%;
    text-align: center;
@@ -1262,7 +1263,7 @@ position: absolute;
  font-weight: 600;
  opacity: 0.7;
  text-decoration: none;
- color: black;
+ color:#272727;
 }
 
 .copyright {
@@ -1281,11 +1282,11 @@ position: absolute;
    left: 12px;
    right: 12px;
    bottom: 12px;
-   padding: 0.9rem;
+   padding: 1%;
    border-radius: 12px 12px 24px 24px;
    background-color: rgb(244, 244, 244);
    margin: 0 auto;
-   border: solid 1px rgb(99, 99, 99);
+   border: solid 1px rgb(235, 235, 235);
    z-index: 950;
    height: 70%;
    max-height: 600px;
@@ -1323,7 +1324,8 @@ position: absolute;
 
 .carrito-header {
    border-bottom: solid 1px #c6c6c6;
-   padding-bottom: 0.8rem;
+   padding-bottom: 0.4rem;
+   padding-left: 0.4rem;
    width: 100%;
    height: 2.4rem;
    display: flex;

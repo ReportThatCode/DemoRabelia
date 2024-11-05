@@ -206,7 +206,6 @@ showProducts(".template-panaderia",".header-panaderia",".body-panaderia",product
 showProducts(".template-salado",".header-salado",".body-salado",productos.salados,"salado")
 showProducts(".template-cafe",".header-cafe",".body-cafe",productos.cafes,"cafes")
 showProducts(".template-rapido",".header-rapido",".body-rapido",productos.desayunoRapido,"rapido")
-
 function openAcordion(selector){
    const $selector = document.querySelector(selector);
 
@@ -263,6 +262,10 @@ if(typeProd === "saludables"){
     }
 if(typeProd === "cafes"){
     const getProd = productos.cafes.prod.find(el => el.id === idProd);
+    openModalOrPush(getProd);
+    }
+if(typeProd === "rapido"){
+    const getProd = productos.desayunoRapido.prod.find(el => el.id === idProd);
     openModalOrPush(getProd);
     }
 }
@@ -905,16 +908,14 @@ document.addEventListener("change",(e)=>{
       
        if(secondLocal.checked){
         document.querySelector("#Local").checked = true
-        document.querySelector(".final-price").textContent = finalPrice;
-      
+        document.querySelector(".final-price").textContent = finalPrice; 
          document.querySelector(".delevery-last").style.display = "none"
        }
     
        if(secondEnvio.checked){
         document.querySelector("#Envio").checked = true
         document.querySelector(".final-price").textContent = finalPrice + 700;
-      
-         document.querySelector(".delevery-last").style.display = "flex"
+        document.querySelector(".delevery-last").style.display = "flex"
        }
         console.log(e.target)
        if(e.target === secondLocal || e.target === secondEnvio ){
@@ -953,21 +954,10 @@ document.addEventListener("change",(e)=>{
 })
 
 
-
-
-
-
 // DOCUMENT EVENTOS GENERALES CON DELEGACION DE EVENTOS
 
 
-
-
-
-
 document.addEventListener("click", (e) => {
-
-console.log(valorSedeActual);
-
 //valorSedeActual = sedeActual();
     const itemMenu = e.target.closest(".item-menu");    
     const itemDestacado = e.target.closest(".item");
@@ -1087,6 +1077,7 @@ console.log(valorSedeActual);
     } 
     //evento para Get Prod / id / categoria
     if (itemMenu) {
+        console.log(e.target)
        const prodID = itemMenu.dataset.id;  
        if(itemMenu.dataset.all  && document.querySelector("#villaDMayo").checked){return}
        if(itemMenu.querySelector(".overlay-item")){return}
