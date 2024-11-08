@@ -741,8 +741,7 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
         let armadoMensaje = generarListaDeProductos(shoppingCart)
 
         if(envioOrLocal === "envio"){
-            armadoMensaje += "\n"
-            armadoMensaje += "*🛵Delevery*:\n"
+            armadoMensaje += "*🛵Delevery*\n"
             armadoMensaje += `📍Calle: ${calle}\n`
             armadoMensaje += `Numero: ${casaNumero}\n`
             if(dpto !== ""){ armadoMensaje += `Dpto: ${dpto}\n`}
@@ -758,8 +757,7 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
         } 
 
         if(envioOrLocal === "local"){
-            armadoMensaje += "\n"
-            armadoMensaje += "*🏪Retiro Local*:\n"
+            armadoMensaje += "*🏪Retiro Local*\n"
             armadoMensaje += "\n"
             armadoMensaje += `*📝Total* ${finalPrice}\n`
             if(typePago === "Efectivo"){
