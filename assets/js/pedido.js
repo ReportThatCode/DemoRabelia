@@ -715,10 +715,10 @@ function methodPayFunction (value) {
 // REDIRECCION A WHATSAPP
 
 function generarListaDeProductos(productos) {
-    let lista = "👋🏻*Buenas RABELIA*, este es mi pedido:\n\n";
+    let lista = "*👋🏻Buenas RABELIA*, este es mi pedido:\n\n";
     
     productos.forEach((producto) => {
-      lista += `🔹*${producto.title}*\n`;
+      lista += `*🔹${producto.title}*\n`;
       lista += `Precio: $${producto.price}\n`;
       lista += `cantidad: ${producto.cantidad}\n`;
       if((typeof(producto.descripcion) === "string") || (typeof(producto.descripcion) === "object")){
@@ -741,29 +741,31 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
         let armadoMensaje = generarListaDeProductos(shoppingCart)
 
         if(envioOrLocal === "envio"){
-            armadoMensaje += "🛵*Delevery*:\n"
+            armadoMensaje += "\n"
+            armadoMensaje += "*🛵Delevery*:\n"
             armadoMensaje += `📍Calle: ${calle}\n`
             armadoMensaje += `Numero: ${casaNumero}\n`
             if(dpto !== ""){ armadoMensaje += `Dpto: ${dpto}\n`}
             armadoMensaje += `Localidad: ${localidad}\n`
             armadoMensaje += `Envio: $700\n\n`
+            armadoMensaje += `*📝Total* ${finalPrice}\n`
             if(typePago === "Efectivo"){
-            armadoMensaje += `*Metodo de pago*: (Efectivo) *Paga con*:(${monto}) \n`}
+            armadoMensaje += `*Metodo de pago*: (Efectivo) *Paga con*:(${monto})\n\n`}
             if(typePago !== "Efectivo"){armadoMensaje += `*Metodo de pago*: (${typePago})\n\n`}
-            armadoMensaje += `*📝Total* ${finalPrice}\n\n`
-            armadoMensaje += `👤*Nombre*: ${nombre}\n`
+            armadoMensaje += `*👤Nombre*: ${nombre}\n`
 
             mensajeFinal = encodeURIComponent(armadoMensaje); 
         } 
 
         if(envioOrLocal === "local"){
-            armadoMensaje += "🏪*Retiro Local*:\n"
             armadoMensaje += "\n"
+            armadoMensaje += "*🏪Retiro Local*:\n"
+            armadoMensaje += "\n"
+            armadoMensaje += `*📝Total* ${finalPrice}\n`
             if(typePago === "Efectivo"){
-            armadoMensaje += `*Metodo de pago*: (Efectivo) *Paga con*:(${monto}) \n`}
+            armadoMensaje += `*Metodo de pago*: (Efectivo) *Paga con*:(${monto}) \n\n`}
             if(typePago !== "Efectivo"){armadoMensaje += `*Metodo de pago*: (${typePago})\n\n`}
-            armadoMensaje += `📝*Total* ${finalPrice}\n\n`
-            armadoMensaje += `👤*Nombre*: ${nombre}\n`
+            armadoMensaje += `*👤Nombre*: ${nombre}\n`
 
             mensajeFinal = encodeURIComponent(armadoMensaje); 
         } 
