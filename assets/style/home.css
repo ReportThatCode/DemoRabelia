@@ -30,10 +30,10 @@ max-width: 2560;
     left: 470px;
     z-index: 910;
 }
-/*------------->HEADER<-------------*/
 
-/*-------------></HEADER<-------------*/
 /*------------->MAIN<-------------*/
+
+
 .container-home {
     width: 100%;
     height: 100vh;
@@ -371,16 +371,20 @@ padding: 0;
 opacity: 0.7;
 }
 .header-menu-show p a {
-    color: rgba(13, 150, 13, 0.812);
+    color: rgb(9, 70, 184);
     position: relative;
 }
 .header-menu-show p a::before {
     content: "";
-    width: 100%;
+    width: 50%;
     height: 1px;
-    background-color: rgba(104, 219, 104, 0.712);
     position: absolute;
     bottom: -1px;
+    background-color: rgb(62, 115, 214);
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.7;
+
 }
 .header-menu-show img {
     width: 200px;
@@ -441,6 +445,7 @@ margin-inline: auto;
 
 /*-------------></SECTIONS MENUS-SHOW<-------------*/
 /*------------->SECTIONS GALERI<-------------*/
+
 .galeria {
     min-width: 300px;
     max-width: 100%;
@@ -449,7 +454,7 @@ margin-inline: auto;
     justify-content: center;
     align-items: center;
     margin-inline: auto;
-    background-color: white;
+    padding-bottom: 4rem;
 }
 .galeria .galeria-header {
     display: flex;
@@ -986,6 +991,16 @@ right: -20px;
     opacity: 0.7;
 }
 /*-------------></SEDES<-------------*/
+
+
+.bold {
+    font-size: 1rem ;
+}
+
+h3::after, h3::before {
+    display: none !important; 
+}
+
 /*------------->FOOTER<-------------*/
 .footer {
     width: 100%;

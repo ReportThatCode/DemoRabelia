@@ -161,7 +161,7 @@ isFavorito.classList.add("active-fav");
 $template.querySelector(".item-price-descuento").textContent = "";
 
 if(item.offer){
-    $template.querySelector(".item-price-descuento").textContent = item.offer
+    $template.querySelector(".item-price-descuento").textContent = "$" + item.offer
 
 }
 
@@ -363,7 +363,6 @@ function hearModal(e){
             
         if(e.target.matches("#unidades-mas")){
             cantidad += 1;
-            console.log(e.target.dataset.produc)
             if(e.target.dataset.produc === "1kg de Helado"){
                 let tope = 4;
                 cantidadSabores += tope
@@ -703,7 +702,7 @@ function methodPayFunction (value) {
          document.querySelector("#monto-abonar").required = false;
          allRequireds = document.querySelectorAll("[required]");
          return document.querySelector("#monto-abonar").style.display = "none"}
-    if(value === "DebitoOrCredito"){
+    if(value === "Debito/Credito"){
         document.querySelector("#monto-abonar").required = false;
         allRequireds = document.querySelectorAll("[required]");
         return document.querySelector("#monto-abonar").style.display = "none"}
@@ -716,11 +715,10 @@ function methodPayFunction (value) {
 // REDIRECCION A WHATSAPP
 
 function generarListaDeProductos(productos) {
-    let lista = "Buenas RABELIA este es mi pedido:\n\n";
+    let lista = "👋🏻*Buenas RABELIA*, este es mi pedido:\n\n";
     
     productos.forEach((producto) => {
-
-      lista += `${producto.title}\n`;
+      lista += `🔹*${producto.title}*\n`;
       lista += `Precio: $${producto.price}\n`;
       lista += `cantidad: ${producto.cantidad}\n`;
       if((typeof(producto.descripcion) === "string") || (typeof(producto.descripcion) === "object")){
@@ -743,29 +741,29 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
         let armadoMensaje = generarListaDeProductos(shoppingCart)
 
         if(envioOrLocal === "envio"){
-            armadoMensaje += "\n"
-            armadoMensaje += `Calle: ${calle}\n`
+            armadoMensaje += "🛵*Delevery*:\n"
+            armadoMensaje += `📍Calle: ${calle}\n`
             armadoMensaje += `Numero: ${casaNumero}\n`
             if(dpto !== ""){ armadoMensaje += `Dpto: ${dpto}\n`}
             armadoMensaje += `Localidad: ${localidad}\n`
-            armadoMensaje += `Envio: $700\n`
+            armadoMensaje += `Envio: $700\n\n`
             if(typePago === "Efectivo"){
-            armadoMensaje += `Paga Con: ${monto} (${typePago}) \n`
-            }
-            if(typePago !== "Efectivo"){armadoMensaje += `Paga Con: ${typePago} \n`}
-            armadoMensaje += `Total ${finalPrice}\n`
-            armadoMensaje += `Nombre: ${nombre}\n`
+            armadoMensaje += `*Metodo de pago*: (Efectivo) *Paga con*:(${monto}) \n`}
+            if(typePago !== "Efectivo"){armadoMensaje += `*Metodo de pago*: (${typePago})\n\n`}
+            armadoMensaje += `*📝Total* ${finalPrice}\n\n`
+            armadoMensaje += `👤*Nombre*: ${nombre}\n`
 
             mensajeFinal = encodeURIComponent(armadoMensaje); 
         } 
 
         if(envioOrLocal === "local"){
+            armadoMensaje += "🏪*Retiro Local*:\n"
             armadoMensaje += "\n"
             if(typePago === "Efectivo"){
-            armadoMensaje += `Paga Con: ${monto} (${typePago}) \n`}
-            if(typePago !== "Efectivo"){armadoMensaje += `Paga Con: ${typePago} \n`}
-            armadoMensaje += `Total ${finalPrice}\n`
-            armadoMensaje += `Nombre: ${nombre}\n`
+            armadoMensaje += `*Metodo de pago*: (Efectivo) *Paga con*:(${monto}) \n`}
+            if(typePago !== "Efectivo"){armadoMensaje += `*Metodo de pago*: (${typePago})\n\n`}
+            armadoMensaje += `📝*Total* ${finalPrice}\n\n`
+            armadoMensaje += `👤*Nombre*: ${nombre}\n`
 
             mensajeFinal = encodeURIComponent(armadoMensaje); 
         } 
@@ -821,7 +819,7 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
             En este momento solo contamos con envios por Pedidos ya
             </p><br>
             <div class="pedidos-ya">
-            <span><img src="assets/images/home/pedidosYa.png" alt="pedidosYa">PedidosYa</span>
+            <span class="reDirecPY"><img src="assets/images/home/pedidosYa.png" alt="pedidosYa">PedidosYa</span>
             </div>
             `
             document.querySelector(".header").insertAdjacentElement("afterend",contentReDirec);
@@ -888,7 +886,7 @@ document.addEventListener("change",(e)=>{
     secondLocal = document.querySelector("#Local-last"),
     secondEnvio = document.querySelector("#Envio-last")
 
-    if(e.target.matches("#monto-abonar") || e.target.matches("#nombre-pedido")){return}
+   // if(e.target.matches("#monto-abonar") || e.target.matches("#nombre-pedido")){return}
    
 
     let methodPay = document.querySelector("#type-pay").value;
@@ -917,7 +915,6 @@ document.addEventListener("change",(e)=>{
         document.querySelector(".final-price").textContent = finalPrice + 700;
         document.querySelector(".delevery-last").style.display = "flex"
        }
-        console.log(e.target)
        if(e.target === secondLocal || e.target === secondEnvio ){
             allRequireds.forEach(input => {
                 input.value = ""
@@ -964,6 +961,7 @@ document.addEventListener("click", (e) => {
     const carritoFixed = e.target.closest(".carrito");
     const itemCombo = e.target.closest(".container-item-combo");
     const hamburgerIcon = e.target.closest(".menu-hamburger");
+    const reDirecPY = e.target.closest(".reDirecPY")
     
 /* SHOW PRODUCTOS*/
 
@@ -976,6 +974,9 @@ document.addEventListener("click", (e) => {
     if(e.target.closest("#link-rapido") || e.target.matches("#rapido-href")){openAcordion(".acordion-rapido");}
  /* FINISH SHOW PRODUCTS */
 
+    if(reDirecPY){
+        window.location.href = "https://www.pedidosya.com.ar/restaurantes/san-miguel/rabelia-muniz-bc3bf8f8-ec32-4039-b795-0e0f1d1613cd-menu"
+    }
 
     if(e.target.matches(".close-last")){
        document.querySelector(".modal-last-step").style.display = "none";
@@ -1077,7 +1078,6 @@ document.addEventListener("click", (e) => {
     } 
     //evento para Get Prod / id / categoria
     if (itemMenu) {
-        console.log(e.target)
        const prodID = itemMenu.dataset.id;  
        if(itemMenu.dataset.all  && document.querySelector("#villaDMayo").checked){return}
        if(itemMenu.querySelector(".overlay-item")){return}

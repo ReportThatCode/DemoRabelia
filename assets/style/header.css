@@ -74,6 +74,7 @@
     color: white;
     cursor: pointer;
     font-size: 0.6rem;
+    display: none;
 }
 
 .link-comp {
@@ -85,14 +86,14 @@ font-weight: bold;
 color: rgb(247, 247, 247);
 position: relative;
 cursor: pointer;
-font-size: 0.7rem;
+font-size: 0.8rem;
 }
 
 .link-comp::after {
     content: "";
     height: 2px;
     width: 50%;
-    background-color: rgba(255, 255, 255, 0.64);
+    background-color: rgba(255, 255, 255, 0.5);
     position: absolute;
     bottom: -7px;
     left: 50%;
@@ -291,6 +292,7 @@ font-size: 0.7rem;
     .list-links li i {
         color: #404E7A;
         font-size: 0.9rem;
+        display: block;
     }
     .link::after {
      display: none;

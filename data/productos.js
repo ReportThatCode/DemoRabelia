@@ -249,7 +249,7 @@ heladeria: {
     {
         id: 206,
         title: "Cucurucho con bombones",
-        descripcion: "Hasta 3 sabores",
+        descripcion: "",
         img: "assets/images/home/helado.png",
         price: 2600,
         offer: null,
