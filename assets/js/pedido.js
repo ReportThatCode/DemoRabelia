@@ -5,6 +5,8 @@ document.querySelector(".delevery-last").style.display = "none"
 const contentLinks = document.querySelectorAll(".content-links"),
 containerAcordion = document.querySelectorAll(".content-prod")
 
+
+let numeroTelefono = "5491159740964" //Sede muniz
 let finalPrice;
 let allRequireds = document.querySelectorAll("[required]");
 let oldValue = [],
@@ -771,8 +773,8 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
 
         //mensajeFinal = encodeURIComponent(generarListaDeProductos(shoppingCart));
         
-         const numeroTelefono = "5491159740964", // El número de WhatsApp en formato internacional (sin +)
-         enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensajeFinal}`;
+          // El número de WhatsApp en formato internacional (sin +)
+         let enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensajeFinal}`;
          
          return window.location.href = enlaceWhatsApp;
 
@@ -937,10 +939,12 @@ document.addEventListener("change",(e)=>{
     }
     if(document.querySelector("#muniz").checked){
         document.querySelector(".main").style.display = "block";
+        numeroTelefono = "5491159740964"
     }
 
     if(document.querySelector("#villaDMayo").checked){
         villaDMayoProds();
+        numeroTelefono = "5491124003927"
     }
     
 
@@ -962,6 +966,7 @@ document.addEventListener("click", (e) => {
     const itemCombo = e.target.closest(".container-item-combo");
     const hamburgerIcon = e.target.closest(".menu-hamburger");
     const reDirecPY = e.target.closest(".reDirecPY")
+    const cartaOnline = e.target.matches(".carta-online");
     
 /* SHOW PRODUCTOS*/
 
@@ -974,6 +979,14 @@ document.addEventListener("click", (e) => {
     if(e.target.closest("#link-rapido") || e.target.matches("#rapido-href")){openAcordion(".acordion-rapido");}
  /* FINISH SHOW PRODUCTS */
 
+
+    if(cartaOnline || e.target.matches(".text-carta")){
+        window.location.href = "https://heyzine.com/flip-book/7775e00f2c.html#page/1"
+    }
+    if(e.target.matches(".close-carta")){
+        e.preventDefault();
+        document.querySelector(".carta-online").style.display = "none";
+    }
     if(reDirecPY){
         window.location.href = "https://www.pedidosya.com.ar/restaurantes/san-miguel/rabelia-muniz-bc3bf8f8-ec32-4039-b795-0e0f1d1613cd-menu"
     }

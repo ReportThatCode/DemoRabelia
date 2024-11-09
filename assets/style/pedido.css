@@ -396,6 +396,54 @@ color: white;
 }
 
 
+
+/*CARTA*/
+
+.carta-online {
+   width: 90%;
+   border-radius: 16px;
+   background-color: rgba(26, 103, 190, 0.829);
+   color: white;
+   margin: 0 auto;
+   height: 70px;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   position: relative;
+   cursor: pointer;
+   box-shadow: -1px 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.carta-img {
+   height: 100%;
+   width: auto;
+   padding-left: 0.9rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.carta-img img {
+   width: 50px;
+   transform: scale(0.7);
+   object-fit: cover;
+}
+
+.text-carta {
+ color: white;
+ font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ font-weight: 400;
+
+ 
+}
+.close-carta {
+   position: absolute;
+   right: 20px;
+   top: 50%;
+   transform: translateY(-50%);
+   font-size: 0.8rem;
+}
+
  /*PRODUCTO*/
 
 
