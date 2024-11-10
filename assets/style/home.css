@@ -31,6 +31,29 @@ max-width: 2560;
     z-index: 910;
 }
 
+/*DISABLED/VISABLED*/
+
+.not-visible {
+    opacity: 0 !important;
+    transform: translateX(200px) scale(0.5)!important;
+    transition: all 0.7s !important;
+}
+
+.visible {
+    opacity: 1 !important;
+    transform: translateX(0) scale(1)!important;
+}
+
+.ob-disabled {
+    opacity: 0.3 !important;
+    transform: translateY(100px) scale(0.7)!important;
+    transition: all 0.7s !important;
+}
+.ob-active {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1)!important;
+}
+
 /*------------->MAIN<-------------*/
 
 

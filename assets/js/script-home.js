@@ -12,18 +12,42 @@ imgList = document.querySelector(".img-list");
 imgList.scrollLeft = 900;
 //logica carrucel </
 
+const visible = document.querySelectorAll(".not-visible"),
+elementsObserver = document.querySelectorAll(".ob-disabled"); 
+document.addEventListener("DOMContentLoaded",()=>{
+
+  visible.forEach(el =>{
+    el.classList.add("visible")
+  })
 
 
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('ob-active'); // Agrega clase para iniciar la animación
+        observer.unobserve(entry.target); // Deja de observar después de activar la animación
+      }
+    });
+  }, {
+    threshold: 0.1 // Ajusta el umbral de visibilidad necesario
+  });
+  
+  // Agrega cada elemento al observador
+  elementsObserver.forEach(elemento => {
+    observer.observe(elemento);
+  });
+
+
+
+})
 
 document.addEventListener("DOMContentLoaded",()=>{
 
   fetch("header.html")
   .then(res => res.text())
   .then(data =>{
-  console.log(data)
   document.querySelector("#placeholder-header").outerHTML = data;
   })
-
 })
 
 
