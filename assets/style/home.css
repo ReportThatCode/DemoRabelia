@@ -6,6 +6,7 @@ body {
     flex-direction: column;
     background-color: #F7F3EF;
     margin-inline: auto;
+    overflow-x: hidden;
 }
 
 :root {

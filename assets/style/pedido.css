@@ -14,6 +14,7 @@ html {
 body {
     position: relative;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .scroll-none {
@@ -51,7 +52,7 @@ body {
 .ob-menu {
    opacity: 0.3 !important;
    transform: translateX(100px)!important;
-   transition: all 0.9s ease !important;
+   transition: all 0.9gs ease !important;
 }
 
 .ob-menu-active{
@@ -100,6 +101,7 @@ body {
     align-items: center;
     /*border: solid 1px rgb(245, 245, 245);*/
     box-shadow: 0px -5px 6px rgba(0, 0, 0, 0.08);
+    z-index: 900;
 }
 .content-type-envio {
     display: flex;
@@ -174,7 +176,6 @@ color: white;
  .main {
     background-color: white;
     flex: 1;
-    overflow: hidden;
  }
 
  .header-main-links {
@@ -446,7 +447,8 @@ color: white;
    position: relative;
    cursor: pointer;
    box-shadow: -1px 2px 10px rgba(0, 0, 0, 0.35);
-}
+   margin-top: 10px;
+ }
 
 .carta-img {
    height: 100%;
