@@ -798,9 +798,9 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
             if(dpto !== ""){ armadoMensaje += `Dpto: ${dpto}\n`}
             armadoMensaje += `Localidad: ${localidad}\n`
             armadoMensaje += `Envio: $700\n\n`
-            armadoMensaje += `*📝Total* ${finalPrice}\n`
+            armadoMensaje += `*📝Total* $${finalPrice}\n`
             if(typePago === "Efectivo"){
-            armadoMensaje += `*Metodo de pago*: (Efectivo) *Paga con*:(${monto})\n\n`}
+            armadoMensaje += `*Metodo de pago*: (Efectivo) *Paga con*:($${monto})\n\n`}
             if(typePago !== "Efectivo"){armadoMensaje += `*Metodo de pago*: (${typePago})\n\n`}
             armadoMensaje += `*👤Nombre*: ${nombre}\n`
 
@@ -810,9 +810,9 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
         if(envioOrLocal === "local"){
             armadoMensaje += "*🏪Retiro Local*\n"
             armadoMensaje += "\n"
-            armadoMensaje += `*📝Total* ${finalPrice}\n`
+            armadoMensaje += `*📝Total* $${finalPrice}\n`
             if(typePago === "Efectivo"){
-            armadoMensaje += `*Metodo de pago*: (Efectivo) *Paga con*:(${monto}) \n\n`}
+            armadoMensaje += `*Metodo de pago*: (Efectivo) *Paga con*:($${monto}) \n\n`}
             if(typePago !== "Efectivo"){armadoMensaje += `*Metodo de pago*: (${typePago})\n\n`}
             armadoMensaje += `*👤Nombre*: ${nombre}\n`
 
@@ -988,17 +988,20 @@ document.addEventListener("change",(e)=>{
     }
     if(document.querySelector("#muniz").checked){
         document.querySelector(".main").style.display = "block";
+         document.querySelector(".item-img").src = "assets/images/home/Muniz.jpg"
         numeroTelefono = "5491159740964"
     }
 
     if(document.querySelector("#villaDMayo").checked){
         villaDMayoProds();
         numeroTelefono = "5491124003927"
+        document.querySelector(".item-img").src = "assets/images/home/villaDmayoLast.png"
     }
     
 
     if(document.querySelector("#BellaVista").checked){
         bellaVistaPY();
+        document.querySelector(".item-img").src = "assets/images/home/bellaVista.jpg"
     }
 
 })
