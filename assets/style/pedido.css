@@ -52,7 +52,7 @@ body {
 .ob-menu {
    opacity: 0.3 !important;
    transform: translateX(100px)!important;
-   transition: all 0.9gs ease !important;
+   transition: all 0.9s ease !important;
 }
 
 .ob-menu-active{
