@@ -1024,7 +1024,7 @@ document.addEventListener("click", (e) => {
 
     if(e.target.closest("#link-heladeria") || e.target.matches("#heladeria-href")){
         openAcordion(".acordion-heladeria");
-         hearObserverMenu();
+        hearObserverMenu();
     }
     if(e.target.closest("#link-panaderia") || e.target.matches("#panaderia-href")){
         openAcordion(".acordion-panaderia");

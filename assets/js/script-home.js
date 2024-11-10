@@ -83,7 +83,7 @@ document.addEventListener("click",(e)=>{
             sedeNumber.textContent = "1111111111";
             sedeCuidad.textContent = "San miguel";
             sedeDireccion.textContent = "San José 997, B1662DAT Muñiz, Provincia de Buenos Aires";
-            sedeImg.src = "assets/images/home/muniz.jpg"
+            sedeImg.src = "assets/images/home/Muniz.jpg"
             sedemap.src = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13145.061296105168!2d-58.70191!3d-34.546837!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcbd07cb518497%3A0xfcb9e4b25b6107cd!2sSan%20Jos%C3%A9%20997%2C%20B1662DAT%20Mu%C3%B1iz%2C%20Provincia%20de%20Buenos%20Aires%2C%20Argentina!5e0!3m2!1ses!2sus!4v1728369528392!5m2!1ses!2sus";
             break;
 

@@ -25,7 +25,7 @@
         <div class="container-staff">
             <!-- --------------------------------------------- -->
 
-            <div class="content-staff">
+            <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/Muniz-1.png" alt="staff 1">
                 </div>
@@ -36,7 +36,7 @@
                </div>
 
 
-               <div class="content-staff">
+               <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/Muniz-2.png" alt="staff 1">
                 </div>
@@ -47,7 +47,7 @@
                </div>
 
 
-               <div class="content-staff">
+               <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/Muniz-3.png" alt="staff 1">
                 </div>
@@ -58,7 +58,7 @@
                </div>
 
 
-               <div class="content-staff">
+               <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/Muniz-4.png" alt="staff 1">
                 </div>
@@ -69,7 +69,7 @@
                </div>
 
 
-               <div class="content-staff">
+               <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/Muniz-5.png" alt="staff 1">
                 </div>
@@ -80,7 +80,7 @@
                </div>
 
 
-               <div class="content-staff">
+               <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/Muniz-6.png" alt="staff 1">
                 </div>
@@ -93,11 +93,11 @@
     </section>
 
     <section class="staff staff-villaDMayo">
-        <h3 class="title-sede">Staff - Villa de Mayo</h3>
+        <h3 class="title-sede ob-disabled">Staff - Villa de Mayo</h3>
         <div class="container-staff">
             <!-- --------------------------------------------- -->
 
-            <div class="content-staff">
+            <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/villadMayo-1.png" alt="staff 1">
                 </div>
@@ -108,7 +108,7 @@
                </div>
 
 
-               <div class="content-staff">
+               <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/VilladMayo-2.png" alt="staff 1">
                 </div>
@@ -119,7 +119,7 @@
                </div>
 
 
-               <div class="content-staff">
+               <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/VilladMayo-3.png" alt="staff 1">
                 </div>
@@ -130,7 +130,7 @@
                </div>
 
 
-               <div class="content-staff">
+               <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/VilladMayo-4.png" alt="staff 1">
                 </div>
@@ -141,7 +141,7 @@
                </div>
 
 
-               <div class="content-staff">
+               <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/VilladMayo-5.png" alt="staff 1">
                 </div>
@@ -152,7 +152,7 @@
                </div>
 
 
-               <div class="content-staff">
+               <div class="content-staff ob-disabled">
                 <div class="content-staff-img">
                     <img  class="staff-img" src="assets/images/staff-sinfondo/VilladMayo-6.png" alt="staff 1">
                 </div>
@@ -182,6 +182,27 @@
             if(hamburgerIcon){
                 document.querySelector(".comp-header").classList.toggle("header-is-active");
             }     
+})
+
+const elementsObserver = document.querySelectorAll(".ob-disabled")
+document.addEventListener("DOMContentLoaded",()=>{
+
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('ob-active'); // Agrega clase para iniciar la animación
+        observer.unobserve(entry.target); // Deja de observar después de activar la animación
+      }
+    });
+  }, {
+    threshold: 0.1 // Ajusta el umbral de visibilidad necesario
+  });
+  
+  // Agrega cada elemento al observador
+  elementsObserver.forEach(elemento => {
+    observer.observe(elemento);
+  });
 })
 </script>
 </body>
