@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     el.classList.add("visible")
   })
 
-
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded",()=>{
   elementsObserver.forEach(elemento => {
     observer.observe(elemento);
   });
-
 
 
 })

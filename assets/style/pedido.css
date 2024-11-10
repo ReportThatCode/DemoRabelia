@@ -25,7 +25,40 @@ body {
    margin: 0 auto;
    max-width: 800px;
 }
+/*OBSERVER*/
 
+.not-visible {
+   opacity: 0 !important;
+   transform: translateX(100px) scale(0.8)!important;
+   transition: all 0.7s !important;
+}
+
+.visible {
+   opacity: 1 !important;
+   transform: translateX(0) scale(1)!important;
+}
+
+.ob-disabled {
+   opacity: 0.3 !important;
+   transform: translateY(100px) scale(0.7)!important;
+   transition: all 0.4s !important;
+}
+.ob-active {
+   opacity: 1 !important;
+   transform: translateY(0) scale(1)!important;
+}
+
+.ob-menu {
+   opacity: 0.3 !important;
+   transform: translateX(100px)!important;
+   transition: all 0.5s ease !important;
+}
+
+.ob-menu-active{
+   opacity: 1 !important;
+   transform: translateX(0)!important;
+}
+/*OBSERVER*/
 
 .header {
     width: 100%;
@@ -442,6 +475,7 @@ color: white;
    top: 50%;
    transform: translateY(-50%);
    font-size: 0.8rem;
+   padding: 1rem;
 }
 
  /*PRODUCTO*/

@@ -46,7 +46,7 @@
 
     <main class="main">
       
-        <div class="header-main-links">
+        <div class="header-main-links not-visible">
             <h4 class="title title-categoria">Categorias</h4>
           <ul class="content-links">
             <div class="slide-links">
@@ -64,8 +64,8 @@
 <!-- CONTAINER DESTACADO DE LA SEMANA -->
 
 
-        <h4 class="title title-destacado">Descatado de la semana</h4>
-        <div class="destacado" id="link-destacado">
+        <h4 class="title title-destacado not-visible">Descatado de la semana</h4>
+        <div class="destacado not-visible" id="link-destacado">
    
             <div class="content-slider-destacado">
 
@@ -94,10 +94,10 @@
 
 <!-- CONTAINER - COMBOS - OFERTAS -->
 
-        <h4 class="title title-combos-oferta">Combos y Ofertas</h4>   
+        <h4 class="title title-combos-oferta ob-disabled">Combos y Ofertas</h4>   
         <div class="container-combos-promos" id="link-combos">
 
-            <div class="content-combos-promos">
+            <div class="content-combos-promos ob-disabled">
                 
                     <template id="template-combo">
 
@@ -130,11 +130,11 @@
 
 
         <!-- CARTA ONLINE-->
-         <div class="carta-online">
+         <div class="carta-online ob-disabled   ">
             <div class="carta-img">
                 <img src="assets/images/pedido/not-products/carta-menu-white.png" alt="carta online">
             </div>
-            <span class="text-carta">Modo Carta</span>
+            <span class="text-carta">Modo carta</span>
             <i class="fa-solid fa-x close-carta"></i>
          </div>
 
@@ -142,7 +142,7 @@
 
       <div class="content-all-prods" >
 
-        <div class="container-prod">
+        <div class="container-prod ob-disabled">
 
             <div id="link-heladeria" class="content-prod"> 
                 <img src="assets/images/sabores/dulceDeLeche.png" alt="Helados">
@@ -160,7 +160,7 @@
                         </div>
                         <div class="container-items body-heladeria">
                             <template class="template-heladeria">
-                                <div class="item-menu">
+                                <div class="item-menu ob-menu">
                                     <div class="item-body">
                                         <div class="item-header">
                                         <span class="item-title"></span>
@@ -185,7 +185,7 @@
 
         </div>
             <!---->
-        <div class="container-prod">
+        <div class="container-prod ob-disabled">
                 <div id="link-panaderia" class="content-prod"> 
                     <img src="assets/images/pedido/not-products/panaderia.png" alt="Panaderia">
                     <div class="label-prod">
@@ -201,7 +201,7 @@
                             </div>
                             <div class="container-items body-panaderia">
                                 <template class="template-panaderia">
-                                    <div class="item-menu">
+                                    <div class="item-menu ob-menu">
                                         <div class="item-body">
                                             <div class="item-header">
                                             <span class="item-title"></span>
@@ -224,7 +224,7 @@
                 </div>
         </div>
             <!---->
-        <div class="container-prod">
+        <div class="container-prod ob-disabled">
                 <div id="link-salado" class="content-prod"> 
                     <img src="assets/images/home/sandwich.png" alt="sandwich">
                     <div class="label-prod">
@@ -240,7 +240,7 @@
                             </div>
                             <div class="container-items body-salado">
                                 <template class="template-salado">
-                                    <div class="item-menu">
+                                    <div class="item-menu ob-menu">
                                         <div class="item-body">
                                             <div class="item-header">
                                             <span class="item-title"></span>
@@ -263,7 +263,7 @@
                 </div>
         </div>
             <!---->
-        <div class="container-prod">
+        <div class="container-prod ob-disabled">
                 <div id="link-pasteleria" class="content-prod"> 
                     <img src="assets/images/home/dulces.png" alt="Pasteleria">
                     <div class="label-prod">
@@ -280,7 +280,7 @@
                             </div>
                             <div class="container-items body-pasteleria">
                                 <template class="template-pasteleria">
-                                    <div class="item-menu">
+                                    <div class="item-menu ob-menu">
                                         <div class="item-body">
                                             <div class="item-header">
                                             <span class="item-title"></span>
@@ -303,7 +303,7 @@
                 </div>
         </div>
             <!---->
-        <div class="container-prod">
+        <div class="container-prod ob-disabled">
 
                 <div id="link-saludables" class="content-prod"> 
                     <img src="assets/images/home/saludables.png" alt="Saludables">
@@ -321,7 +321,7 @@
                             </div>
                             <div class="container-items body-saludables">
                                 <template class="template-saludables">
-                                    <div class="item-menu">
+                                    <div class="item-menu ob-menu">
                                         <div class="item-body">
                                             <div class="item-header">
                                             <span class="item-title"></span>
@@ -344,7 +344,7 @@
                 </div>
         </div>
             <!---->
-        <div class="container-prod">
+        <div class="container-prod ob-disabled">
 
             <div id="link-cafes" class="content-prod"> 
                 <img src="assets/images/pedido/not-products/rapido.png" alt="Desayuno rapido">
@@ -363,7 +363,7 @@
                         </div>
                         <div class="container-items body-cafe">
                             <template class="template-cafe">
-                                <div class="item-menu">
+                                <div class="item-menu ob-menu">
                                     <div class="item-body">
                                         <div class="item-header">
                                         <span class="item-title"></span>
@@ -386,7 +386,7 @@
             </div>
         </div>
             <!---->
-        <div class="container-prod">
+        <div class="container-prod ob-disabled">
             <div id="link-rapido" class="content-prod"> 
                 <img src="assets/images/home/cafe.png" alt="Cafe">
                 <div class="label-prod">
@@ -403,7 +403,7 @@
                         </div>
                         <div class="container-items body-rapido">
                             <template class="template-rapido">
-                                <div class="item-menu">
+                                <div class="item-menu ob-menu">
                                     <div class="item-body">
                                         <div class="item-header">
                                         <span class="item-title"></span>
@@ -426,9 +426,7 @@
                 </div>
             </div>
             <!---->
-
-
-      </div>
+    </div>
 
     </main>
 
@@ -486,6 +484,8 @@
              </div>
             </div>
         </div>
+
+
         <template class="template-optionsModal">
             <li class="list-option">
                 <div class="title-price">
@@ -495,8 +495,6 @@
                 <input type="radio" name="option" id="option" class="input-option">
             </li>
         </template>
-
-
 
         <template class="template-sabores">
          <li>
@@ -512,74 +510,77 @@
          <span class="sabores-title" id="frutales">Frutales</span>
         </template>
 
+        <div class="carrito">
+            <div class="content-carrito">
+                <span class="cart-i"><i class="fa-solid fa-cart-shopping"></i></span>
+                <span class="howMuch">4</span>
+                <span class="newProduct">Se agrego al carrito</span>
+            </div>
+        </div>
 
-    <div class="carrito">
-        <div class="content-carrito">
-            <span class="cart-i"><i class="fa-solid fa-cart-shopping"></i></span>
-            <span class="howMuch">4</span>
-            <span class="newProduct">Se agrego al carrito</span>
+        <div class="overlay">
         </div>
-    </div>
-   <div class="overlay">
-   </div>
-    <div class="carritoProd">
-        <article class="cart">
-        <div class="carrito-header">
-            <span class="carrito-header-title">Tu pedido:</span>
-        </div>
-        <div class="carrito-body">
-            <div class="slide-carrito">
-          <!-- TEMPLATE-->
-         </div>
-        </div>
-        <div class="total"><span>TOTAL:</span><span class="carrito-final-price">$12400</span></div>
-        <div class="carrito-footer">
-            <button id="final-pedido">FINALIZAR PEDIDO</button>
-        </div>
-        </article>
-    </div>
 
-    <template class="template-carrito-item">
-        <div class="carrito-item">
-           <span class="carrito-delete">x</span>
-           <div class="carrito-item-content">
-               <span class="carrito-item-title"></span>
-               <p class="carrito-item-desc"></p>
-               <div class="carrito-sumar-restar">
-                <span class="carrito-item-price"></span>
-                <div class="cant">
-                    <span class="carrito-cantidad carrito-menos">-</span>
-                    <span class="carrito-cantidad prod-cant">1</span>
-                    <span class="carrito-cantidad carrito-mas">+</span>
+        <div class="carritoProd">
+            <article class="cart">
+            <div class="carrito-header">
+                <span class="carrito-header-title">Tu pedido:</span>
+            </div>
+            <div class="carrito-body">
+                <div class="slide-carrito">
+            <!-- TEMPLATE-->
+            </div>
+            </div>
+            <div class="total"><span>TOTAL:</span><span class="carrito-final-price">$12400</span></div>
+            <div class="carrito-footer">
+                <button id="final-pedido">FINALIZAR PEDIDO</button>
+            </div>
+            </article>
+        </div>
+
+        <template class="template-carrito-item">
+            <div class="carrito-item">
+            <span class="carrito-delete">x</span>
+            <div class="carrito-item-content">
+                <span class="carrito-item-title"></span>
+                <p class="carrito-item-desc"></p>
+                <div class="carrito-sumar-restar">
+                    <span class="carrito-item-price"></span>
+                    <div class="cant">
+                        <span class="carrito-cantidad carrito-menos">-</span>
+                        <span class="carrito-cantidad prod-cant">1</span>
+                        <span class="carrito-cantidad carrito-mas">+</span>
+                    </div>
                 </div>
             </div>
-           </div>
-           <div class="carrito-options">
-               <div class="carrito-content-img">
-                <img src="assets/images/pedido/productos/panaderia/alfajor.png" alt="alfajore" class="img-cart">
-            </div>
-           </div>
-        </div>
-       </template>
-       <div class="modal-last-step" style="display: none;">
-        <span class="close-last">x</span>
-        <h4>Ultimo paso:</h4>
-        <div class="content-type-envio-last">
-            <input type="radio" id="Local-last" name="type-of-envio-last" checked value="local">
-            <label for="Local-last" class="type-envio">Retiro en Local</label>
-
-            <input type="radio" id="Envio-last" name="type-of-envio-last" value="delevery">
-            <label for="Envio-last" class="type-envio">Delevery</label>
-         </div>
-            <div class="delevery-last">
-                <div class="avisoRequired "><input type="text" placeholder="Calle" required class="street"></div>
-                <div class="number-dpto">
-                    <div class="avisoRequired  number-house-div"><input  type="number" placeholder="Numero" class="number-house" required> </div>
-                    <div class="div-depto"><input type="text" placeholder="Dpto (Optional)" class="dpto"></div>
+            <div class="carrito-options">
+                <div class="carrito-content-img">
+                    <img src="assets/images/pedido/productos/panaderia/alfajor.png" alt="alfajore" class="img-cart">
                 </div>
-                <div class="avisoRequired "><input type="text" placeholder="Localidad" class="localidad" required> </div>
-                <p class="price-envio">Costo envio: <span class="price-send">700$</span></p>
             </div>
+            </div>
+        </template>
+
+
+        <div class="modal-last-step" style="display: none;">
+            <span class="close-last">x</span>
+            <h4>Ultimo paso:</h4>
+            <div class="content-type-envio-last">
+                <input type="radio" id="Local-last" name="type-of-envio-last" checked value="local">
+                <label for="Local-last" class="type-envio">Retiro en Local</label>
+
+                <input type="radio" id="Envio-last" name="type-of-envio-last" value="delevery">
+                <label for="Envio-last" class="type-envio">Delevery</label>
+            </div>
+                <div class="delevery-last">
+                    <div class="avisoRequired "><input type="text" placeholder="Calle" required class="street"></div>
+                    <div class="number-dpto">
+                        <div class="avisoRequired  number-house-div"><input  type="number" placeholder="Numero" class="number-house" required> </div>
+                        <div class="div-depto"><input type="text" placeholder="Dpto (Optional)" class="dpto"></div>
+                    </div>
+                    <div class="avisoRequired "><input type="text" placeholder="Localidad" class="localidad" required> </div>
+                    <p class="price-envio">Costo envio: <span class="price-send">700$</span></p>
+                </div>
          
          <div class="method-payment">
             <p class="title-metodo-pago">Metodo de pago</p>
@@ -605,7 +606,6 @@
          </div>
        </div>
 
-        
         <div class="alertDeleteCarrito">
             <i class="fa-solid fa-circle-exclamation"></i>
             <p class="aviso-text">Se eliminara tu carrito al elegir otra sucursar</p>
@@ -615,9 +615,6 @@
                 <button class="continuar">Si</button>
             </div>
         </div>
-
-
-
 
     <script src="assets/js/pedido.js" type="module"></script>
 </body>

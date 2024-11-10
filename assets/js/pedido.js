@@ -29,6 +29,55 @@ document.querySelector("#placeholder-header").outerHTML = data;
 const $template = document.querySelector("#template-destacado").content,
 $fragmen = document.createDocumentFragment(),
 containerDestacado = document.querySelector(".content-slider-destacado");
+const visible = document.querySelectorAll(".not-visible");
+
+
+const elementsObserver = document.querySelectorAll(".ob-disabled"); 
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    visible.forEach(el =>{
+      el.classList.add("visible")
+    })
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('ob-active'); // Agrega clase para iniciar la animación
+            observer.unobserve(entry.target); // Deja de observar después de activar la animación
+          }
+        });
+      }, {
+        threshold: 0.1 // Ajusta el umbral de visibilidad necesario
+      });
+      
+      // Agrega cada elemento al observador
+      elementsObserver.forEach(elemento => {
+        observer.observe(elemento);
+      });
+})
+
+
+function hearObserverMenu(){
+   const itemsMenu = document.querySelectorAll(".ob-menu");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add('ob-menu-active'); // Agrega clase para iniciar la animación
+            observer.unobserve(entry.target); // Deja de observar después de activar la animación
+          }
+        });
+      }, {
+        threshold: 0.1 // Ajusta el umbral de visibilidad necesario
+      });
+      
+      // Agrega cada elemento al observador
+      itemsMenu.forEach(elemento => {
+        observer.observe(elemento);
+      });
+}
 
 
 destacado.forEach((el) => {
@@ -970,13 +1019,34 @@ document.addEventListener("click", (e) => {
     
 /* SHOW PRODUCTOS*/
 
-    if(e.target.closest("#link-heladeria") || e.target.matches("#heladeria-href")){openAcordion(".acordion-heladeria");}
-    if(e.target.closest("#link-panaderia") || e.target.matches("#panaderia-href")){openAcordion(".acordion-panaderia");}
-    if(e.target.closest("#link-salado") || e.target.matches("#salado-href")){openAcordion(".acordion-salado");}
-    if(e.target.closest("#link-pasteleria") || e.target.matches("#pasteleria-href")){openAcordion(".acordion-pasteleria");}
-    if(e.target.closest("#link-saludables") || e.target.matches("#saludables-href")){openAcordion(".acordion-saludables");}
-    if(e.target.closest("#link-cafes") || e.target.matches("#cafes-href")){openAcordion(".acordion-cafes");}
-    if(e.target.closest("#link-rapido") || e.target.matches("#rapido-href")){openAcordion(".acordion-rapido");}
+    if(e.target.closest("#link-heladeria") || e.target.matches("#heladeria-href")){
+        openAcordion(".acordion-heladeria");
+         hearObserverMenu();
+    }
+    if(e.target.closest("#link-panaderia") || e.target.matches("#panaderia-href")){
+        openAcordion(".acordion-panaderia");
+        hearObserverMenu();
+    }
+    if(e.target.closest("#link-salado") || e.target.matches("#salado-href")){
+        openAcordion(".acordion-salado");
+        hearObserverMenu();
+    }
+    if(e.target.closest("#link-pasteleria") || e.target.matches("#pasteleria-href")){
+        openAcordion(".acordion-pasteleria");
+        hearObserverMenu();
+    }
+    if(e.target.closest("#link-saludables") || e.target.matches("#saludables-href")){
+        openAcordion(".acordion-saludables");
+        hearObserverMenu();
+    }
+    if(e.target.closest("#link-cafes") || e.target.matches("#cafes-href")){
+        openAcordion(".acordion-cafes");
+        hearObserverMenu();
+    }
+    if(e.target.closest("#link-rapido") || e.target.matches("#rapido-href")){
+        openAcordion(".acordion-rapido");
+        hearObserverMenu();
+    }
  /* FINISH SHOW PRODUCTS */
 
 
@@ -1148,3 +1218,5 @@ document.addEventListener("click", (e) => {
         showCarrito(shoppingCart);
     }
 });
+
+
