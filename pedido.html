@@ -94,10 +94,10 @@
 
 <!-- CONTAINER - COMBOS - OFERTAS -->
 
-        <h4 class="title title-combos-oferta ob-disabled">Combos y Ofertas</h4>   
+        <h4 class="title title-combos-oferta not-visible">Combos y Ofertas</h4>   
         <div class="container-combos-promos" id="link-combos">
 
-            <div class="content-combos-promos ob-disabled">
+            <div class="content-combos-promos not-visible">
                 
                     <template id="template-combo">
 
@@ -145,7 +145,7 @@
         <div class="container-prod ob-disabled">
 
             <div id="link-heladeria" class="content-prod"> 
-                <img src="assets/images/sabores/dulceDeLeche.png" alt="Helados">
+                <img src="assets/images/sabores/dulceDeLeche.png" alt="Helados" class="img-acordion">
                 <div class="label-prod">
                     <p class="label-title">HELADERIA</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
                 </div>
@@ -187,7 +187,7 @@
             <!---->
         <div class="container-prod ob-disabled">
                 <div id="link-panaderia" class="content-prod"> 
-                    <img src="assets/images/pedido/not-products/panaderia.png" alt="Panaderia">
+                    <img src="assets/images/pedido/not-products/panaderia.png" class="img-acordion" alt="Panaderia">
                     <div class="label-prod">
                         <p class="label-title">PANADERIA</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
                     </div>
@@ -226,7 +226,7 @@
             <!---->
         <div class="container-prod ob-disabled">
                 <div id="link-salado" class="content-prod"> 
-                    <img src="assets/images/home/sandwich.png" alt="sandwich">
+                    <img src="assets/images/home/sandwich.png" class="img-acordion" alt="sandwich">
                     <div class="label-prod">
                         <p class="label-title">SALADO / TOSTADOS</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
                     </div>
@@ -265,7 +265,7 @@
             <!---->
         <div class="container-prod ob-disabled">
                 <div id="link-pasteleria" class="content-prod"> 
-                    <img src="assets/images/home/dulces.png" alt="Pasteleria">
+                    <img src="assets/images/home/dulces.png" class="img-acordion" alt="Pasteleria">
                     <div class="label-prod">
                         <p class="label-title">PASTELERIA</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
                     </div>
@@ -306,7 +306,7 @@
         <div class="container-prod ob-disabled">
 
                 <div id="link-saludables" class="content-prod"> 
-                    <img src="assets/images/home/saludables.png" alt="Saludables">
+                    <img src="assets/images/home/saludables.png" class="img-acordion" alt="Saludables">
                     <div class="label-prod">
                         <p class="label-title">SALUDABLES</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
                     </div>
@@ -347,7 +347,7 @@
         <div class="container-prod ob-disabled">
 
             <div id="link-cafes" class="content-prod"> 
-                <img src="assets/images/pedido/not-products/rapido.png" alt="Desayuno rapido">
+                <img src="assets/images/pedido/not-products/rapido.png" class="img-acordion" alt="Desayuno rapido">
             
                 <div class="label-prod">
                     <p class="label-title">CAFE / BEBIDAS</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
@@ -388,7 +388,7 @@
             <!---->
         <div class="container-prod ob-disabled">
             <div id="link-rapido" class="content-prod"> 
-                <img src="assets/images/home/cafe.png" alt="Cafe">
+                <img src="assets/images/home/cafe.png" class="img-acordion" alt="Cafe">
                 <div class="label-prod">
                     <p class="label-title">DESAYUNO RAPIDO</p> <span><i class="fa-solid fa-arrow-turn-down arrow"></i></span>
                 </div>
@@ -614,6 +614,11 @@
                 <button class="no-continuar">No</button>
                 <button class="continuar">Si</button>
             </div>
+        </div>
+
+        <div class="zoom-content">
+            <img src="" alt="" class="zoom-img">
+            <i class="fa-solid fa-x close-zoom-img"></i>
         </div>
 
     <script src="assets/js/pedido.js" type="module"></script>

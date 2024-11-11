@@ -4,7 +4,7 @@ body {
     max-width: 2560px;
     display: flex;
     flex-direction: column;
-    background-color: #F7F3EF;
+    background-color: white;
     margin-inline: auto;
     overflow-x: hidden;
 }
@@ -480,6 +480,7 @@ margin-inline: auto;
     align-items: center;
     margin-inline: auto;
     padding-bottom: 4rem;
+    background-color: white;
 }
 .galeria .galeria-header {
     display: flex;
@@ -529,6 +530,7 @@ right: -20px;
     font-size: 1;
     padding: 0 0 40px 0;
     font-family: var(--font-second);
+    max-width: 90%;
 }
 .galeria .galeria-header img {
     width: 200px;
@@ -752,6 +754,7 @@ line-height: 14px;
     grid-template-columns: repeat(3,300px);
     grid-template-rows: repeat(3,300px);
     gap: 5px;
+    overflow-y: hidden;
 }
 
 .container-img-ig a {
@@ -1030,6 +1033,7 @@ h3::after, h3::before {
 .footer {
     width: 100%;
     border-top: solid 1px rgba(235, 234, 234, 0.644);
+    background-color: #F7F3EF;
 }
 .content-footer {
     display: flex;

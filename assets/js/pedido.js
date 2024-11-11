@@ -161,7 +161,7 @@ function showProducts (template,contentHeader,contentBody,producto,typeProd){
    //HEADER IMG
    producto.headerImg.forEach(img => {
     const $img = document.createElement("img");
-    $img.src = img 
+    $img.src = img;
     $img.classList.add("img-header")
     header.appendChild($img)
    })
@@ -769,7 +769,7 @@ function generarListaDeProductos(productos) {
     let lista = "*👋🏻Buenas RABELIA*, este es mi pedido:\n\n";
     
     productos.forEach((producto) => {
-      lista += `*🔹${producto.title}*\n`;
+      lista += `*${producto.title}*\n`;
       lista += `Precio: $${producto.price}\n`;
       lista += `cantidad: ${producto.cantidad}\n`;
       if((typeof(producto.descripcion) === "string") || (typeof(producto.descripcion) === "object")){
@@ -882,15 +882,18 @@ function messageToWsp(envioOrLocal,calle,casaNumero,dpto,localidad,typePago,mont
                 document.querySelector("#muniz").checked = true
                 resetDisabled();
                 document.querySelector(".main").style.display = "block";
+                document.querySelector(".item-img").src = "assets/images/home/Muniz.jpg"
             }
             if(valor === "villaDeMayo"){
                 document.querySelector("#villaDMayo").checked = true
                 resetDisabled();
                 villaDMayoProds();
+                document.querySelector(".item-img").src = "assets/images/home/villaDmayoLast.png"
             }
             if(valor === "bellaVista"){
                 document.querySelector("#BellaVista").checked = true
                 bellaVistaPY();
+                document.querySelector(".item-img").src = "assets/images/home/bellaVista.jpg"
             }
         }
 
@@ -1019,7 +1022,8 @@ document.addEventListener("click", (e) => {
     const hamburgerIcon = e.target.closest(".menu-hamburger");
     const reDirecPY = e.target.closest(".reDirecPY")
     const cartaOnline = e.target.matches(".carta-online");
-    
+
+
 /* SHOW PRODUCTOS*/
 
     if(e.target.closest("#link-heladeria") || e.target.matches("#heladeria-href")){
@@ -1220,6 +1224,24 @@ document.addEventListener("click", (e) => {
 
         showCarrito(shoppingCart);
     }
+
+        /* ZOOM img  */
+
+        if(e.target.matches(".img-header")){
+            if(e.target.matches(".img-acordion") || e.target.tagName === "img"){return}
+            document.querySelector(".zoom-content").style.display = "flex";
+            document.querySelector(".zoom-img").src = e.target.src;
+            document.querySelector(".overlay").classList.add("overlay-active")
+            document.querySelector("body").classList.add("scroll-none");
+        }
+        
+        if(e.target.matches(".close-zoom-img")){
+            document.querySelector(".zoom-content").style.display = "none";
+            document.querySelector(".overlay").classList.remove("overlay-active")
+            document.querySelector("body").classList.remove("scroll-none");
+        
+        }
+
 });
 
 
