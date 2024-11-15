@@ -189,12 +189,9 @@ export const combos = [
             {cant: 1, name: "Medialuna de Dulce de leche"},
             {cant: 1, name: "Budin o muffin a Eleccion"},
             {cant: 1, name: "Mini alfajor de Chocolate"},
-            {cant: 1, name: "Conito de Dulce de leche"} 
         ]
     },
 ]
-
-
 
 
 

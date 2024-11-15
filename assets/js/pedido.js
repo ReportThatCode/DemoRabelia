@@ -6,7 +6,7 @@ const contentLinks = document.querySelectorAll(".content-links"),
 containerAcordion = document.querySelectorAll(".content-prod")
 
 
-let numeroTelefono = "5491159740964" //Sede muniz
+let numeroTelefono = "5491165363966" //Sede muniz
 let finalPrice;
 let allRequireds = document.querySelectorAll("[required]");
 let oldValue = [],
@@ -992,7 +992,7 @@ document.addEventListener("change",(e)=>{
     if(document.querySelector("#muniz").checked){
         document.querySelector(".main").style.display = "block";
          document.querySelector(".item-img").src = "assets/images/home/Muniz.jpg"
-        numeroTelefono = "5491159740964"
+        numeroTelefono = "5491165363966"
     }
 
     if(document.querySelector("#villaDMayo").checked){
@@ -1231,14 +1231,12 @@ document.addEventListener("click", (e) => {
             if(e.target.matches(".img-acordion") || e.target.tagName === "img"){return}
             document.querySelector(".zoom-content").style.display = "flex";
             document.querySelector(".zoom-img").src = e.target.src;
-            document.querySelector(".overlay").classList.add("overlay-active")
-            document.querySelector("body").classList.add("scroll-none");
+            document.querySelector(".overlay").style.display = "block";
         }
         
         if(e.target.matches(".close-zoom-img")){
             document.querySelector(".zoom-content").style.display = "none";
-            document.querySelector(".overlay").classList.remove("overlay-active")
-            document.querySelector("body").classList.remove("scroll-none");
+            document.querySelector(".overlay").style.display = "none";
         
         }
 
