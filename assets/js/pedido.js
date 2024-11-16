@@ -766,7 +766,7 @@ function methodPayFunction (value) {
 // REDIRECCION A WHATSAPP
 
 function generarListaDeProductos(productos) {
-    let lista = `*👋🏻Buenas RABELIA*, este es mi pedido, orden: ${ramdomIdProducto()}\n\n`;
+    let lista = `*👋🏻Buenas RABELIA* este es mi pedido, orden: ${ramdomIdProducto()}\n\n`;
 
     productos.forEach((producto) => {
       lista += `*${producto.title}*\n`;
