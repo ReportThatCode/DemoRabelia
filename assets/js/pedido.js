@@ -766,7 +766,7 @@ function methodPayFunction (value) {
 // REDIRECCION A WHATSAPP
 
 function generarListaDeProductos(productos) {
-    let lista = `*👋🏻Buenas RABELIA*, este es mi pedido orden: ${ramdomIdProducto()}\n\n`;
+    let lista = `*👋🏻Buenas RABELIA*, este es mi pedido, orden: ${ramdomIdProducto()}\n\n`;
 
     productos.forEach((producto) => {
       lista += `*${producto.title}*\n`;
@@ -922,7 +922,7 @@ function changeCartSede(){
 
         function ramdomIdProducto(){
             let idProd = "#"
-            const abecedario = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+            const abecedario = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L','N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
             
             const randomLetra = Math.ceil(Math.random() * abecedario.length - 1);
             idProd += abecedario[randomLetra]
