@@ -766,8 +766,8 @@ function methodPayFunction (value) {
 // REDIRECCION A WHATSAPP
 
 function generarListaDeProductos(productos) {
-    let lista = "*👋🏻Buenas RABELIA*, este es mi pedido:\n\n";
-    
+    let lista = `*👋🏻Buenas RABELIA*, este es mi pedido orden: ${ramdomIdProducto()}\n\n`;
+
     productos.forEach((producto) => {
       lista += `*${producto.title}*\n`;
       lista += `Precio: $${producto.price}\n`;
@@ -920,7 +920,27 @@ function changeCartSede(){
 }
 
 
-// tienes x productos en el carrito y se eliminaran al cambiar de sucursal
+        function ramdomIdProducto(){
+            let idProd = "#"
+            const abecedario = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+            
+            const randomLetra = Math.ceil(Math.random() * abecedario.length - 1);
+            idProd += abecedario[randomLetra]
+            
+            for(let x = 0; x < 3;x++){
+                console.log(x)
+                idProd += randomNumbers();
+            }
+            return idProd
+        }
+
+        function randomNumbers(){
+            const numbers = [1,2,3,4,5,6,7,8,9];
+            const randomNumber = Math.ceil(Math.random() * numbers.length - 1)
+            return numbers[randomNumber];
+        }
+
+
 
 document.addEventListener("change",(e)=>{
 
